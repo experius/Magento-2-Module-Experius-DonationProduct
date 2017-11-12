@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <attribute name="class" value="page-product-donation"/>
+        <referenceBlock name="product.info.form.content">
+            <block class="Experius\DonationProduct\Block\Product\Type\Donation" name="product.info.options.donation" as="options_donation" before="-" template="product/view/type/options/donation.phtml"/>
+        </referenceBlock>
+    </body>
+</page>

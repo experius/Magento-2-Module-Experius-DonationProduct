@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+	<preference for="Experius\DonationProduct\Api\DonationsRepositoryInterface" type="Experius\DonationProduct\Model\DonationsRepository"/>
+	<preference for="Experius\DonationProduct\Api\Data\DonationsInterface" type="Experius\DonationProduct\Model\Donations"/>
+	<preference for="Experius\DonationProduct\Api\Data\DonationsSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<preference for="Experius\DonationProduct\Api\Data\DonationOptionsInterface" type="Experius\DonationProduct\Model\DonationOptions"/>
+
+	<type name="Magento\Catalog\Helper\Product\Configuration">
+		<plugin disabled="false" name="Experius_DonationProduct_Plugin_Magento_Catalog_Helper_Product_Configuration" sortOrder="0" type="Experius\DonationProduct\Plugin\Magento\Catalog\Helper\Product\Configuration"/>
+	</type>
+	<type name="Magento\Checkout\Block\Cart\Item\Renderer">
+		<plugin disabled="false" name="Experius_DonationProduct_Plugin_Magento_Checkout_Block_Cart_Item_Renderer" sortOrder="0" type="Experius\DonationProduct\Plugin\Magento\Checkout\Block\Cart\Item\Renderer"/>
+	</type>
+
+	<type name="Magento\Quote\Model\Quote\Item\Repository">
+		<arguments>
+			<argument name="cartItemProcessors" xsi:type="array">
+				<item name="donation" xsi:type="object">Experius\DonationProduct\Model\Quote\Item\CartItemProcessor</item>
+			</argument>
+		</arguments>
+	</type>
+
+</config>
