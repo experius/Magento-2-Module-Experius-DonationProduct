@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Experius::top_level" module="Experius_DonationProduct" resource="Magento_Backend::content" sortOrder="9999" title="Experius"/>
+		<add action="experius_donationproduct/donations/index" id="Experius::experius_donationproduct_donations" module="Experius_DonationProduct" parent="Experius::top_level" resource="Magento_Backend::content" sortOrder="9999" title="Donations"/>
+		<add action="experius_donationproduct/charity/index" id="Experius::experius_donationproduct_charities" module="Experius_DonationProduct" parent="Experius::top_level" resource="Magento_Backend::content" sortOrder="9999" title="Charities"/>
+	</menu>
+</config>

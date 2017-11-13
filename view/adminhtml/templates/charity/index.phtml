@@ -1,0 +1,28 @@
+<?php /* @var $block \Experius\DonationProduct\Block\Adminhtml\Charity\Index */ ?>
+
+<div class="admin__data-grid-wrap" data-role="grid-wrapper">
+    <table class="data-grid data-grid-draggable" data-role="grid">
+        <thead>
+            <th class="data-grid-th">
+                <span class="data-grid-cell-content"><?php echo __('Image'); ?></span>
+            </th>
+            <th class="data-grid-th">
+                <span class="data-grid-cell-content"><?php echo __('Name'); ?></span>
+            </th>
+            <th class="data-grid-th">
+                <span class="data-grid-cell-content"><?php echo __('Import'); ?></span>
+            </th>
+        </thead>
+        <tbody>
+            <?php foreach($block->getCharities() as $charity): ?>
+                <tr class="data-row _odd-row">
+                    <td><img src="<?php echo $charity['image_url']; ?>" width="200" height="200"/></td>
+                    <td><?php echo $charity['name']; ?></td>
+                    <td class="data-grid-actions-cell">
+                        <a class="action-menu-item" target="_self" href="<?php echo $block->getUrl(); ?>">View</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

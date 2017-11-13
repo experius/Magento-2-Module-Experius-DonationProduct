@@ -110,4 +110,42 @@ class Donations extends \Magento\Framework\Model\AbstractModel implements Donati
     {
         return $this->setData(self::ORDER_ID, $order_id);
     }
+
+    /**
+     * Get order_status
+     * @return string
+     */
+    public function getOrderStatus()
+    {
+        return $this->getData(self::ORDER_STATUS);
+    }
+
+    /**
+     * Set order_status
+     * @param string $order_status
+     * @return \Experius\DonationProduct\Api\Data\DonationsInterface
+     */
+    public function setOrderStatus($order_status)
+    {
+        return $this->setData(self::ORDER_STATUS, $order_status);
+    }
+
+    /**
+     * Get invoiced
+     * @return string
+     */
+    public function getInvoiced()
+    {
+        return $this->getData(self::INVOICED);
+    }
+
+    /**
+     * Set invoiced
+     * @param string $invoiced
+     * @return \Experius\DonationProduct\Api\Data\DonationsInterface
+     */
+    public function setInvoiced($invoiced)
+    {
+        return $this->setData(self::INVOICED, $invoiced);
+    }
 }

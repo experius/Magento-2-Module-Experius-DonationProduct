@@ -5,6 +5,9 @@
             <general>
                 <minimal_amount>1</minimal_amount>
             </general>
+            <charities>
+                <api_url>https://raw.githubusercontent.com/experius/Experius-DonationFeed/master</api_url>
+            </charities>
         </experius_donation_product>
     </default>
 </config>

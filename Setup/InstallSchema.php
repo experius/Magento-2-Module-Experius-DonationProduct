@@ -20,10 +20,10 @@ class InstallSchema implements InstallSchemaInterface
         $installer = $setup;
         $installer->startSetup();
 
-        $table_experius_donations_donations = $setup->getConnection()->newTable($setup->getTable('experius_donations'));
+        $table_experius_donationproduct_donations = $setup->getConnection()->newTable($setup->getTable('experius_donations'));
 
         
-        $table_experius_donations_donations->addColumn(
+        $table_experius_donationproduct_donations->addColumn(
             'donations_id',
             \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
             null,
@@ -33,7 +33,7 @@ class InstallSchema implements InstallSchemaInterface
         
 
         
-        $table_experius_donations_donations->addColumn(
+        $table_experius_donationproduct_donations->addColumn(
             'name',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             255,
@@ -43,7 +43,7 @@ class InstallSchema implements InstallSchemaInterface
         
 
         
-        $table_experius_donations_donations->addColumn(
+        $table_experius_donationproduct_donations->addColumn(
             'sku',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             255,
@@ -53,7 +53,7 @@ class InstallSchema implements InstallSchemaInterface
         
 
         
-        $table_experius_donations_donations->addColumn(
+        $table_experius_donationproduct_donations->addColumn(
             'amount',
             \Magento\Framework\DB\Ddl\Table::TYPE_DECIMAL,
             '12,4',
@@ -63,7 +63,7 @@ class InstallSchema implements InstallSchemaInterface
         
 
         
-        $table_experius_donations_donations->addColumn(
+        $table_experius_donationproduct_donations->addColumn(
             'order_id',
             \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
             null,
@@ -72,7 +72,27 @@ class InstallSchema implements InstallSchemaInterface
         );
         
 
-        $setup->getConnection()->createTable($table_experius_donations_donations);
+        
+        $table_experius_donationproduct_donations->addColumn(
+            'order_status',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            null,
+            [],
+            'order_status'
+        );
+        
+
+        
+        $table_experius_donationproduct_donations->addColumn(
+            'invoiced',
+            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            null,
+            [],
+            'invoiced'
+        );
+        
+
+        $setup->getConnection()->createTable($table_experius_donationproduct_donations);
 
         $setup->endSetup();
     }

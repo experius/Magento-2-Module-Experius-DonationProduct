@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Magento_Backend::stores">
+					<resource id="Magento_Backend::stores_settings">
+						<resource id="Magento_Config::config">
+							<resource id="Experius_DonationProduct::config_experius_donationproduct" title="experius_donation_product"/>
+						</resource>
+					</resource>
+				</resource>
+				<resource id="Experius_DonationProduct::Donations" sortOrder="10" title="Donations">
+					<resource id="Experius_DonationProduct::Donations_save" sortOrder="10" title="Save Donations"/>
+					<resource id="Experius_DonationProduct::Donations_delete" sortOrder="20" title="Delete Donations"/>
+					<resource id="Experius_DonationProduct::Donations_update" sortOrder="30" title="Update Donations"/>
+					<resource id="Experius_DonationProduct::Donations_view" sortOrder="40" title="View Donations"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

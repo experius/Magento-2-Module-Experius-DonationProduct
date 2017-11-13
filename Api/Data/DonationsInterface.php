@@ -6,10 +6,12 @@ namespace Experius\DonationProduct\Api\Data;
 interface DonationsInterface
 {
 
+    const ORDER_STATUS = 'order_status';
     const ORDER_ID = 'order_id';
-    const AMOUNT = 'amount';
-    const NAME = 'name';
     const DONATIONS_ID = 'donations_id';
+    const NAME = 'name';
+    const AMOUNT = 'amount';
+    const INVOICED = 'invoiced';
     const SKU = 'sku';
 
 
@@ -77,4 +79,30 @@ interface DonationsInterface
      * @return \Experius\DonationProduct\Api\Data\DonationsInterface
      */
     public function setOrderId($order_id);
+
+    /**
+     * Get order_status
+     * @return string|null
+     */
+    public function getOrderStatus();
+
+    /**
+     * Set order_status
+     * @param string $order_status
+     * @return \Experius\DonationProduct\Api\Data\DonationsInterface
+     */
+    public function setOrderStatus($order_status);
+
+    /**
+     * Get invoiced
+     * @return string|null
+     */
+    public function getInvoiced();
+
+    /**
+     * Set invoiced
+     * @param string $invoiced
+     * @return \Experius\DonationProduct\Api\Data\DonationsInterface
+     */
+    public function setInvoiced($invoiced);
 }

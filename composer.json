@@ -1,5 +1,5 @@
 {
-    "name": "experius/module-donations",
+    "name": "experius/module-donationproduct",
     "description": "",
     "license": "proprietary",
     "authors": [
@@ -19,7 +19,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Experius\\Donations\\": ""
+            "Experius\\DonationProduct\\": ""
         }
     }
 }

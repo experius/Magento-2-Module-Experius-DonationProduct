@@ -20,5 +20,19 @@
 			</argument>
 		</arguments>
 	</type>
+	
+	<virtualType name="Experius\DonationProduct\Model\ResourceModel\Donations\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">experius_donations</argument>
+			<argument name="resourceModel" xsi:type="string">Experius\DonationProduct\Model\ResourceModel\Donations\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="experius_donationproduct_donations_grid_data_source" xsi:type="string">Experius\DonationProduct\Model\ResourceModel\Donations\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
 
 </config>
