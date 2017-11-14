@@ -4,10 +4,6 @@
     "license": "proprietary",
     "authors": [
         {
-            "email": "info@mage2gen.com",
-            "name": "Mage2Gen"
-        },
-        {
             "email": "derrick@experius.nl",
             "name": "Derrick Heesbeen"
         }

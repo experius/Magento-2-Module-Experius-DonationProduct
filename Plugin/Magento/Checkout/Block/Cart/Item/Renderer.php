@@ -30,7 +30,7 @@ class Renderer
             $options = [];
 
             if ($itemOption) {
-                $options = $this->configuratorHelper->optionsJsonToMagentoOptionsArray($itemOption->getValue(),$product);
+                $options = $this->donationProductHelper->optionsJsonToMagentoOptionsArray($itemOption->getValue(),$product);
             }
 
             return array_merge($options, $result);
