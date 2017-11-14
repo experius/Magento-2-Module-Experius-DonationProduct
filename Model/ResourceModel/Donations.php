@@ -1,17 +1,17 @@
 <?php
 
-
 namespace Experius\DonationProduct\Model\ResourceModel;
 
-class Donations extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
-{
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
+class Donations extends AbstractDb
+{
     /**
      * Define resource model
      *
      * @return void
      */
-    protected function _construct()
+    public function _construct()
     {
         $this->_init('experius_donations', 'donations_id');
     }

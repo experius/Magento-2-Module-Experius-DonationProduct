@@ -1,17 +1,16 @@
 <?php
 
-
 namespace Experius\DonationProduct\Model;
 
 use Experius\DonationProduct\Api\Data\DonationsInterface;
+use Magento\Framework\Model\AbstractModel;
 
-class Donations extends \Magento\Framework\Model\AbstractModel implements DonationsInterface
+class Donations extends AbstractModel implements DonationsInterface
 {
-
     /**
      * @return void
      */
-    protected function _construct()
+    public function _construct()
     {
         $this->_init('Experius\DonationProduct\Model\ResourceModel\Donations');
     }
@@ -147,5 +146,24 @@ class Donations extends \Magento\Framework\Model\AbstractModel implements Donati
     public function setInvoiced($invoiced)
     {
         return $this->setData(self::INVOICED, $invoiced);
+    }
+
+    /**
+     * Get created_at
+     * @return string|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->getData(self::INVOICED, $invoiced);
+    }
+
+    /**
+     * Set created_at
+     * @param string $createdAt
+     * @return \Experius\DonationProduct\Api\Data\DonationsInterface
+     */
+    public function setCreatedAt($createdAt)
+    {
+        return $this->setData(self::CREATED_AT, $createdAt);
     }
 }

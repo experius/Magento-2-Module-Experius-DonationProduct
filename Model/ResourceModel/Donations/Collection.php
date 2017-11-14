@@ -1,17 +1,17 @@
 <?php
 
-
 namespace Experius\DonationProduct\Model\ResourceModel\Donations;
 
-class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
-{
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
+class Collection extends AbstractCollection
+{
     /**
      * Define resource model
      *
      * @return void
      */
-    protected function _construct()
+    public function _construct()
     {
         $this->_init(
             'Experius\DonationProduct\Model\Donations',

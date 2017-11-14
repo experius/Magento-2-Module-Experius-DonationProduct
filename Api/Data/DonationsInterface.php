@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Experius\DonationProduct\Api\Data;
 
 interface DonationsInterface
@@ -13,6 +12,7 @@ interface DonationsInterface
     const AMOUNT = 'amount';
     const INVOICED = 'invoiced';
     const SKU = 'sku';
+    const CREATED_AT = 'created_at';
 
 
     /**
@@ -23,7 +23,7 @@ interface DonationsInterface
 
     /**
      * Set donations_id
-     * @param string $donations_id
+     * @param string $donationsId
      * @return \Experius\DonationProduct\Api\Data\DonationsInterface
      */
     public function setDonationsId($donationsId);
@@ -105,4 +105,17 @@ interface DonationsInterface
      * @return \Experius\DonationProduct\Api\Data\DonationsInterface
      */
     public function setInvoiced($invoiced);
+
+    /**
+     * Get created_at
+     * @return string|null
+     */
+    public function getCreatedAt();
+
+    /**
+     * Set created_at
+     * @param string $createdAt
+     * @return \Experius\DonationProduct\Api\Data\DonationsInterface
+     */
+    public function setCreatedAt($createdAt);
 }
