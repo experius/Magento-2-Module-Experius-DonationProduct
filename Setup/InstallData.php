@@ -1,17 +1,15 @@
 <?php
 
-
 namespace Experius\DonationProduct\Setup;
 
+use Magento\Catalog\Model\Product;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
-use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
 
 class InstallData implements InstallDataInterface
 {
-
     private $eavSetupFactory;
 
     /**
@@ -34,13 +32,13 @@ class InstallData implements InstallDataInterface
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
 
         $eavSetup->addAttribute(
-            \Magento\Catalog\Model\Product::ENTITY,
+            Product::ENTITY,
             'experius_donation_min_amount',
             [
                 'type' => 'decimal',
                 'backend' => '',
                 'frontend' => '',
-                'label' => 'experius_donation_minimal_amount',
+                'label' => 'Minimal Donation Amount',
                 'input' => 'price',
                 'class' => '',
                 'source' => '',
@@ -58,7 +56,7 @@ class InstallData implements InstallDataInterface
                 'apply_to' => 'donation',
                 'system' => 1,
                 'group' => 'General',
-                'option' => array('values' => array(""))
+                'option' => ['values' => [""]]
             ]
         );
     }
