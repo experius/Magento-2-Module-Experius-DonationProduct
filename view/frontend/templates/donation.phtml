@@ -1,0 +1,27 @@
+<?php /* @var $block Experius\DonationProduct\Block\Checkout\Donation\ProductList */  ?>
+
+<?php $items = $block->getProductCollection(); ?>
+
+
+<?php  /* @var $item Magento\Catalog\Model\Product */ ?>
+<?php foreach($items as $item): ?>
+
+
+    <form data-role="tocart-form" action="<?php echo $block->getAddToCartUrl($item); ?>" method="post">
+        <?php echo $block->getBlockHtml('formkey'); ?>
+        <?php echo $item->getName(); ?>
+
+        <input name="amount" id="amount" title="amount" class="input-text validate-number" type="text" data-validate="{required:true, 'validate-number': true}" aria-required="true" value="">
+
+        <button type="submit" title="Add to Cart" class="action tocart primary">
+            <span>Add to Cart</span>
+        </button>
+    </form>
+
+<?php endforeach; ?>
+
+<script>
+//    jQuery(document).ready(function(){
+//       alert('test');
+//    });
+</script>

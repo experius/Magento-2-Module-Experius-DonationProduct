@@ -62,4 +62,8 @@ class Data extends AbstractHelper
 
         return 1;
     }
+
+    public function isEnabled(){
+        return true;
+    }
 }
