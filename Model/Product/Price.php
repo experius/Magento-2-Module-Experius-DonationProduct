@@ -40,13 +40,13 @@ class Price extends \Magento\Catalog\Model\Product\Type\Price
 
     public function getPrice($product)
     {
-        $price = $this->getConfiguratorPrice(1, $product);
+        $price = $this->getDonationAmount(1, $product);
         return $price;
     }
 
     public function getFinalPrice($qty, $product)
     {
-        $finalPrice = $this->getConfiguratorPrice($qty, $product);
+        $finalPrice = $this->getDonationAmount($qty, $product);
         $product->setFinalPrice($finalPrice);
 
         $this->_eventManager->dispatch('catalog_product_get_final_price', ['product' => $product, 'qty' => $qty]);
@@ -61,11 +61,11 @@ class Price extends \Magento\Catalog\Model\Product\Type\Price
 
     public function getBasePrice($product, $qty = null)
     {
-        $price =  $this->getConfiguratorPrice($qty, $product);
+        $price =  $this->getDonationAmount($qty, $product);
         return $price;
     }
 
-    public function getConfiguratorPrice($qty, $product)
+    public function getDonationAmount($qty, $product)
     {
 
         $price = $product->getData('price');
