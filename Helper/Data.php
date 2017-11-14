@@ -2,13 +2,9 @@
 
 namespace Experius\DonationProduct\Helper;
 
-use Braintree\Exception;
-use Magento\Framework\App\Request\DataPersistorInterface;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\DataObject;
-use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\App\Helper\AbstractHelper;
 
-class Data extends \Magento\Framework\App\Helper\AbstractHelper
+class Data extends AbstractHelper
 {
 
     const DONATION_OPTION_CODE = 'donation_options';
@@ -17,7 +13,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
 
     public function optionsJsonToMagentoOptionsArray($optionJson, $product)
     {
-
         $options = [];
 
         if (!$optionJson) {
@@ -37,7 +32,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
                     'option_id' => '',
                     'option_type' => '',
                     'custom_view' => '',
-                    'print_value' => $label,
                     'option_value' => $value,
                 ];
             }
@@ -56,8 +50,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
 
     public function getMinimalAmount($product)
     {
-        if ($product->getExperiusDonationMinimalAmount()) {
-            return (int) $product->getExperiusDonationMinimalAmount();
+        if ($product->getExperiusDonationMinAmount()) {
+            return (int) $product->getExperiusDonationMinAmount();
         }
 
         $config = $this->scopeConfig->getValue(self::DONATION_CONFIGURATION_MINIMAL_AMOUNT);
@@ -68,5 +62,4 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
 
         return 1;
     }
-
 }

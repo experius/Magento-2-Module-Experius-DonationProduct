@@ -35,7 +35,7 @@ class InstallData implements InstallDataInterface
 
         $eavSetup->addAttribute(
             \Magento\Catalog\Model\Product::ENTITY,
-            'experius_donation_minimal_amount',
+            'experius_donation_min_amount',
             [
                 'type' => 'decimal',
                 'backend' => '',
