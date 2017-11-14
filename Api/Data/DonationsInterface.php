@@ -13,6 +13,7 @@ interface DonationsInterface
     const INVOICED = 'invoiced';
     const SKU = 'sku';
     const CREATED_AT = 'created_at';
+    const ORDER_ITEM_ID = 'order_item_id';
 
 
     /**
@@ -66,6 +67,19 @@ interface DonationsInterface
      * @return \Experius\DonationProduct\Api\Data\DonationsInterface
      */
     public function setAmount($amount);
+
+    /**
+     * Get order_item_id
+     * @return string|null
+     */
+    public function getOrderItemId();
+
+    /**
+     * Set order_item_id
+     * @param string $order_item_id
+     * @return \Experius\DonationProduct\Api\Data\DonationsInterface
+     */
+    public function setOrderItemId($order_item_id);
 
     /**
      * Get order_id

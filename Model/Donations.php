@@ -92,6 +92,25 @@ class Donations extends AbstractModel implements DonationsInterface
     }
 
     /**
+     * Get order_item_id
+     * @return string
+     */
+    public function getOrderItemId()
+    {
+        return $this->getData(self::ORDER_ITEM_ID);
+    }
+
+    /**
+     * Set order_item_id
+     * @param string $order_item_id
+     * @return \Experius\DonationProduct\Api\Data\DonationsInterface
+     */
+    public function setOrderItemId($order_item_id)
+    {
+        return $this->setData(self::ORDER_ITEM_ID, $order_item_id);
+    }
+
+    /**
      * Get order_id
      * @return string
      */
@@ -154,7 +173,7 @@ class Donations extends AbstractModel implements DonationsInterface
      */
     public function getCreatedAt()
     {
-        return $this->getData(self::INVOICED, $invoiced);
+        return $this->getData(self::CREATED_AT);
     }
 
     /**

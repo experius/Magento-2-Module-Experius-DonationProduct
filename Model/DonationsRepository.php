@@ -162,4 +162,15 @@ class DonationsRepository implements donationsRepositoryInterface
     {
         return $this->delete($this->getById($donationsId));
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDonationsByOrderId($orderId)
+    {
+        /** @var \Experius\DonationProduct\Model\Donations $donations */
+        $collectionFactory = $this->donationsCollectionFactory->create()->addFieldToFilter('order_id', $orderId);
+
+        return $collectionFactory;
+    }
 }

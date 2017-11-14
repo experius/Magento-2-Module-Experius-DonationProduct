@@ -19,9 +19,11 @@ class InstallSchema implements InstallSchemaInterface
         $installer = $setup;
         $installer->startSetup();
 
-        $table_experius_donationproduct_donations = $setup->getConnection()->newTable($setup->getTable('experius_donations'));
+        $tableExperiusDonationProductDonations = $setup->getConnection()->newTable(
+            $setup->getTable('experius_donations')
+        );
 
-        $table_experius_donationproduct_donations->addColumn(
+        $tableExperiusDonationProductDonations->addColumn(
             'donations_id',
             Table::TYPE_INTEGER,
             null,
@@ -34,7 +36,7 @@ class InstallSchema implements InstallSchemaInterface
             'Entity ID'
         );
 
-        $table_experius_donationproduct_donations->addColumn(
+        $tableExperiusDonationProductDonations->addColumn(
             'name',
             Table::TYPE_TEXT,
             255,
@@ -42,7 +44,7 @@ class InstallSchema implements InstallSchemaInterface
             'name'
         );
 
-        $table_experius_donationproduct_donations->addColumn(
+        $tableExperiusDonationProductDonations->addColumn(
             'sku',
             Table::TYPE_TEXT,
             255,
@@ -50,15 +52,15 @@ class InstallSchema implements InstallSchemaInterface
             'sku'
         );
 
-        $table_experius_donationproduct_donations->addColumn(
-            'amount',
-            Table::TYPE_DECIMAL,
-            '12,4',
+        $tableExperiusDonationProductDonations->addColumn(
+            'order_item_id',
+            Table::TYPE_INTEGER,
+            null,
             [],
-            'amount'
+            'order_item_id'
         );
 
-        $table_experius_donationproduct_donations->addColumn(
+        $tableExperiusDonationProductDonations->addColumn(
             'order_id',
             Table::TYPE_INTEGER,
             null,
@@ -66,7 +68,7 @@ class InstallSchema implements InstallSchemaInterface
             'order_id'
         );
 
-        $table_experius_donationproduct_donations->addColumn(
+        $tableExperiusDonationProductDonations->addColumn(
             'order_status',
             Table::TYPE_TEXT,
             null,
@@ -74,7 +76,15 @@ class InstallSchema implements InstallSchemaInterface
             'order_status'
         );
 
-        $table_experius_donationproduct_donations->addColumn(
+        $tableExperiusDonationProductDonations->addColumn(
+            'amount',
+            Table::TYPE_DECIMAL,
+            '12,4',
+            [],
+            'amount'
+        );
+
+        $tableExperiusDonationProductDonations->addColumn(
             'invoiced',
             Table::TYPE_BOOLEAN,
             null,
@@ -82,7 +92,7 @@ class InstallSchema implements InstallSchemaInterface
             'invoiced'
         );
 
-        $table_experius_donationproduct_donations->addColumn(
+        $tableExperiusDonationProductDonations->addColumn(
             'created_at',
             Table::TYPE_TIMESTAMP,
             null,
@@ -90,7 +100,7 @@ class InstallSchema implements InstallSchemaInterface
             'Creation date'
         );
 
-        $setup->getConnection()->createTable($table_experius_donationproduct_donations);
+        $setup->getConnection()->createTable($tableExperiusDonationProductDonations);
 
         $setup->endSetup();
     }

@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_save_after">
+        <observer instance="Experius\DonationProduct\Observer\Sales\OrderSaveAfter" name="experius_donationproduct_observer_sales_ordersaveafter_sales_order_save_after"/>
+    </event>
+    <event name="sales_order_item_save_after">
+        <observer instance="Experius\DonationProduct\Observer\Sales\OrderItemSaveAfter" name="experius_donationproduct_observer_sales_orderitemsaveafter_sales_order_item_save_after"/>
+    </event>
+</config>
