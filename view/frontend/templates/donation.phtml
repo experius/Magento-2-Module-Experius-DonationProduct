@@ -1,27 +1,112 @@
 <?php /* @var $block Experius\DonationProduct\Block\Checkout\Donation\ProductList */  ?>
+<?php 
+$items = $block->getProductCollection();
+if(count($items)): 
+?>
+<section class="exp-donation">
+    <header>
+        <h3>
+            Steun een goed doel met uw donatie.
+        </h3>
+    </header>
+    <p>
+        Lorem Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.             
+    </p>
+    <section class="exp-donation-product-list">
+        <header><h4>Goede doelen die jouw steun kunnen gebruiken:</h4></header>
+        <?php $items = $block->getProductCollection(); ?>
 
-<div id="experius-donations">
+	    <?php  /* @var $item Magento\Catalog\Model\Product */ ?>
+	    <?php foreach($items as $item): ?>
+	    	<article
+	        	class="exp-donation-product"
+	        	data-title="<?php echo $item->getName(); ?>"
+	        	data-description="<?php echo $item->getShortDescription(); ?>"
+	        	data-imageurl="/media/catalog/product<?php echo $item->getSmallImage(); ?>"
+	        	data-productid="<?php echo $item->getId(); ?>"
+	        	data-addtocarturl="<?php echo $block->getAddToCartUrl($item); ?>">
+	            <a title="<?php echo $item->getName(); ?>" class="exp-donation-image-wrapper">
+	                <img src="/media/catalog/product<?php echo $item->getSmallImage(); ?>" alt="<?php echo $item->getName(); ?>" class="exp-donation-product-image" />
+	            </a>
+	            <a class="exp-donation-product-tocart">
+	                ADDTOCARTLABEL
+	            </a>
+	        </article>
+	    <?php endforeach; ?>
+    </section>
+</section>
 
-    <?php $items = $block->getProductCollection(); ?>
-
-    <?php  /* @var $item Magento\Catalog\Model\Product */ ?>
-    <?php foreach($items as $item): ?>
-        <form data-role="tocart-form" action="<?php echo $block->getAddToCartUrl($item); ?>" method="post" id="product_addtocart_form">
-            <?php echo $block->getBlockHtml('formkey'); ?>
-            <?php echo $item->getName(); ?>
-
-            <input type="hidden" name="product" value="<?php echo $item->getId(); ?>">
-
+<div class="donation-modal">
+    <article>
+        <img src="http://via.placeholder.com/200x200" alt="" class="charity-image" />
+        <p class="charity-description"></p>
+    </article>
+    <form method="POST" class="charity-form" id="product_addtocart_form">
+    	<?php echo $block->getBlockHtml('formkey'); ?>
+        <div class="donation-amounts">
+            <label class="donation-amount-btn" data-amount="5">
+                <input type="radio" name="amount" value="5">
+                <span>€ 5</span>
+            </label>
+            <label class="donation-amount-btn" data-amount="10">
+                <input type="radio" name="amount" value="10">
+                <span>€ 10</span>
+            </label>
+            <label class="donation-amount-btn" data-amount="15">
+                <input type="radio" name="amount" value="15">
+                <span>€ 15</span>
+            </label>
+            <label class="donation-amount-btn" data-amount="25">
+                <input type="radio" name="amount" value="25">
+                <span>€ 25</span>
+            </label>
+            <label class="donation-amount-btn" data-amount="50">
+                <input type="radio" name="amount" value="50">
+                <span>€ 50</span>
+            </label>
+            <label for="donation-amount-custom">€</label>
             <input name="amount" id="amount" title="amount" class="input-text validate-number" type="text" data-validate="{required:true, 'validate-number': true}" aria-required="true" value="">
-
-            <button type="submit" title="Add to Cart" class="action tocart primary">
-                <span>Add to Cart</span>
-            </button>
-
-        </form>
-    <?php endforeach; ?>
-
+        </div>
+        <button type="submit" class="button charity-button" id="submit">Ja, ik help mee</button>
+    </form>
 </div>
+<script>
+	require([
+	    'jquery',
+	    'Magento_Ui/js/modal/modal'
+	], function ($, modal) {
+		
+    var options = {
+        type: 'popup',
+        responsive: true,
+        innerScroll: true,
+        title: 'popup modal title'
+    }
+	
+	var popupContainer = $('.donation-modal');
+	var pImage = $('.charity-image', popupContainer);
+	var pDescription = $('.charity-description', popupContainer);
+	var pForm = $('.charity-form', popupContainer);
+	var popup = modal(options, popupContainer);
+	
+	$('html').on('click', '.exp-donation-product', function(){
+		charity = jQuery(this);
+		if(charity.data('productid') != ''){
+			var title 			= charity.data('title'),
+				description 	= charity.data('description'),
+				imageurl		= charity.data('imageurl'),
+				addtocarturl	= charity.data('addtocarturl');
+				
+				pImage.attr('src', imageurl).attr('alt', title);;
+				pDescription.html(description);
+				pForm.attr('action', addtocarturl);
+				pImage.attr('src', imageurl);
+				
+			$('.donation-modal').modal('openModal');
+		}
+	});
+});
+</script>
 
 <script>
 
@@ -41,3 +126,71 @@
     });
 
 </script>
+<?php endif; ?>
+
+<style>
+	.exp-donation {
+	    background-color: rgba(28,100,138,0.05);
+	    box-sizing: border-box;
+	    margin-bottom: 24px;
+	    padding: 20px;
+	}
+	.exp-donation * {
+	    box-sizing: border-box;
+	}
+	.exp-donation-product-list {
+	    display: flex;
+	    flex-flow: row wrap;
+	    justify-content: space-between;
+	}
+	.exp-donation-product-list header {
+	    width: 100%;
+	}
+	.exp-donation-product {
+	    background-color: #FFFFFF;
+	    border-radius: 2px;
+	    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+	    padding: 20px;
+	    flex: 0 0 23%;
+	}
+	.exp-donation-image-wrapper {
+	    display: block;
+	    height: 0;
+	    padding-bottom: 100%;
+	    position: relative;
+	    width: 100%;
+	}
+	.exp-donation-product-image {
+	    left: 50%;
+	    max-height: 100%;
+	    max-width: 100%;
+	    position: absolute;
+	    top: 50%;
+	    transform: translate(-50%,-50%);
+	    width: auto;
+	}
+	.exp-donation-product-tocart {
+	    background-color: #00457F;
+	    border-radius: 2px;
+	    border: none;
+	    color: white;
+		display: block;
+	    height: 40px;
+	    line-height: 40px;
+	    padding: 0 5px;
+	    margin-top: 20px;
+	    text-align: center;
+	    width: 100%;
+	}
+	.exp-donation-product:hover .exp-donation-product-tocart {
+	    background-color: #ff8159;
+	}
+	
+	/* Magento 1 inside column */
+	.col-left .exp-donation {
+	    padding: 10px;
+	}
+	.col-left .exp-donation-product {
+	    flex: 0 0 100%;
+	}
+</style>
