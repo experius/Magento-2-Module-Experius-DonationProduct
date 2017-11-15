@@ -27,5 +27,4 @@ class DonationOptions extends AbstractExtensibleModel implements DonationOptions
     {
         return $this->setData(self::AMOUNT, $amount);
     }
-
 }

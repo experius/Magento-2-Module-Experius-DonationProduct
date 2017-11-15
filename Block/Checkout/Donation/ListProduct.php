@@ -58,7 +58,8 @@ class ListProduct extends \Magento\Framework\View\Element\Template
         return $products->getItems();
     }
 
-    public function getProductCollectionArray(){
+    public function getProductCollectionArray()
+    {
         $products = [];
         foreach ($this->getProductCollection() as $productId => $product) {
             $products[$productId] = $product->getData();
@@ -83,5 +84,4 @@ class ListProduct extends \Magento\Framework\View\Element\Template
 //        }
         return $this->cartHelper->getAddUrl($product, $additional);
     }
-
 }

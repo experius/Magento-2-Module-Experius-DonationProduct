@@ -18,7 +18,6 @@ class Serializer extends AbstractHelper
      */
     public function __construct(
         Context $context
-
     ) {
         parent::__construct($context);
     }

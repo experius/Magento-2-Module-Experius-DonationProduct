@@ -20,5 +20,4 @@ interface DonationOptionsInterface
      * @return \Experius\DonationProduct\Api\Data\DonationOptionsInterface
      */
     public function setAmount($amount);
-
 }

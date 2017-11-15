@@ -1,7 +1,7 @@
 <?php /* @var $block Experius\DonationProduct\Block\Checkout\Donation\ProductList */  ?>
-<?php 
+<?php
 $items = $block->getProductCollection();
-if(count($items)): 
+if (count($items)) :
 ?>
 <section class="exp-donation">
     <header>
@@ -16,23 +16,23 @@ if(count($items)):
         <header><h4>Goede doelen die jouw steun kunnen gebruiken:</h4></header>
         <?php $items = $block->getProductCollection(); ?>
 
-	    <?php  /* @var $item Magento\Catalog\Model\Product */ ?>
-	    <?php foreach($items as $item): ?>
-	    	<article
-	        	class="exp-donation-product"
-	        	data-title="<?php echo $item->getName(); ?>"
-	        	data-description="<?php echo $item->getShortDescription(); ?>"
-	        	data-imageurl="/media/catalog/product<?php echo $item->getSmallImage(); ?>"
-	        	data-productid="<?php echo $item->getId(); ?>"
-	        	data-addtocarturl="<?php echo $block->getAddToCartUrl($item); ?>">
-	            <a title="<?php echo $item->getName(); ?>" class="exp-donation-image-wrapper">
-	                <img src="/media/catalog/product<?php echo $item->getSmallImage(); ?>" alt="<?php echo $item->getName(); ?>" class="exp-donation-product-image" />
-	            </a>
-	            <a class="exp-donation-product-tocart">
-	                ADDTOCARTLABEL
-	            </a>
-	        </article>
-	    <?php endforeach; ?>
+        <?php  /* @var $item Magento\Catalog\Model\Product */ ?>
+        <?php foreach ($items as $item) : ?>
+            <article
+                class="exp-donation-product"
+                data-title="<?php echo $item->getName(); ?>"
+                data-description="<?php echo $item->getShortDescription(); ?>"
+                data-imageurl="/media/catalog/product<?php echo $item->getSmallImage(); ?>"
+                data-productid="<?php echo $item->getId(); ?>"
+                data-addtocarturl="<?php echo $block->getAddToCartUrl($item); ?>">
+                <a title="<?php echo $item->getName(); ?>" class="exp-donation-image-wrapper">
+                    <img src="/media/catalog/product<?php echo $item->getSmallImage(); ?>" alt="<?php echo $item->getName(); ?>" class="exp-donation-product-image" />
+                </a>
+                <a class="exp-donation-product-tocart">
+                    ADDTOCARTLABEL
+                </a>
+            </article>
+        <?php endforeach; ?>
     </section>
 </section>
 
@@ -42,7 +42,7 @@ if(count($items)):
         <p class="charity-description"></p>
     </article>
     <form method="POST" class="charity-form" id="product_addtocart_form">
-    	<?php echo $block->getBlockHtml('formkey'); ?>
+        <?php echo $block->getBlockHtml('formkey'); ?>
         <div class="donation-amounts">
             <label class="donation-amount-btn" data-amount="5">
                 <input type="radio" name="amount" value="5">
@@ -71,40 +71,40 @@ if(count($items)):
     </form>
 </div>
 <script>
-	require([
-	    'jquery',
-	    'Magento_Ui/js/modal/modal'
-	], function ($, modal) {
-		
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/modal'
+    ], function ($, modal) {
+        
     var options = {
         type: 'popup',
         responsive: true,
         innerScroll: true,
         title: 'popup modal title'
     }
-	
-	var popupContainer = $('.donation-modal');
-	var pImage = $('.charity-image', popupContainer);
-	var pDescription = $('.charity-description', popupContainer);
-	var pForm = $('.charity-form', popupContainer);
-	var popup = modal(options, popupContainer);
-	
-	$('html').on('click', '.exp-donation-product', function(){
-		charity = jQuery(this);
-		if(charity.data('productid') != ''){
-			var title 			= charity.data('title'),
-				description 	= charity.data('description'),
-				imageurl		= charity.data('imageurl'),
-				addtocarturl	= charity.data('addtocarturl');
-				
-				pImage.attr('src', imageurl).attr('alt', title);;
-				pDescription.html(description);
-				pForm.attr('action', addtocarturl);
-				pImage.attr('src', imageurl);
-				
-			$('.donation-modal').modal('openModal');
-		}
-	});
+    
+    var popupContainer = $('.donation-modal');
+    var pImage = $('.charity-image', popupContainer);
+    var pDescription = $('.charity-description', popupContainer);
+    var pForm = $('.charity-form', popupContainer);
+    var popup = modal(options, popupContainer);
+    
+    $('html').on('click', '.exp-donation-product', function(){
+        charity = jQuery(this);
+        if(charity.data('productid') != ''){
+            var title           = charity.data('title'),
+                description     = charity.data('description'),
+                imageurl        = charity.data('imageurl'),
+                addtocarturl    = charity.data('addtocarturl');
+                
+                pImage.attr('src', imageurl).attr('alt', title);;
+                pDescription.html(description);
+                pForm.attr('action', addtocarturl);
+                pImage.attr('src', imageurl);
+                
+            $('.donation-modal').modal('openModal');
+        }
+    });
 });
 </script>
 
@@ -129,68 +129,68 @@ if(count($items)):
 <?php endif; ?>
 
 <style>
-	.exp-donation {
-	    background-color: rgba(28,100,138,0.05);
-	    box-sizing: border-box;
-	    margin-bottom: 24px;
-	    padding: 20px;
-	}
-	.exp-donation * {
-	    box-sizing: border-box;
-	}
-	.exp-donation-product-list {
-	    display: flex;
-	    flex-flow: row wrap;
-	    justify-content: space-between;
-	}
-	.exp-donation-product-list header {
-	    width: 100%;
-	}
-	.exp-donation-product {
-	    background-color: #FFFFFF;
-	    border-radius: 2px;
-	    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
-	    padding: 20px;
-	    flex: 0 0 23%;
-	}
-	.exp-donation-image-wrapper {
-	    display: block;
-	    height: 0;
-	    padding-bottom: 100%;
-	    position: relative;
-	    width: 100%;
-	}
-	.exp-donation-product-image {
-	    left: 50%;
-	    max-height: 100%;
-	    max-width: 100%;
-	    position: absolute;
-	    top: 50%;
-	    transform: translate(-50%,-50%);
-	    width: auto;
-	}
-	.exp-donation-product-tocart {
-	    background-color: #00457F;
-	    border-radius: 2px;
-	    border: none;
-	    color: white;
-		display: block;
-	    height: 40px;
-	    line-height: 40px;
-	    padding: 0 5px;
-	    margin-top: 20px;
-	    text-align: center;
-	    width: 100%;
-	}
-	.exp-donation-product:hover .exp-donation-product-tocart {
-	    background-color: #ff8159;
-	}
-	
-	/* Magento 1 inside column */
-	.col-left .exp-donation {
-	    padding: 10px;
-	}
-	.col-left .exp-donation-product {
-	    flex: 0 0 100%;
-	}
+    .exp-donation {
+        background-color: rgba(28,100,138,0.05);
+        box-sizing: border-box;
+        margin-bottom: 24px;
+        padding: 20px;
+    }
+    .exp-donation * {
+        box-sizing: border-box;
+    }
+    .exp-donation-product-list {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+    .exp-donation-product-list header {
+        width: 100%;
+    }
+    .exp-donation-product {
+        background-color: #FFFFFF;
+        border-radius: 2px;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+        padding: 20px;
+        flex: 0 0 23%;
+    }
+    .exp-donation-image-wrapper {
+        display: block;
+        height: 0;
+        padding-bottom: 100%;
+        position: relative;
+        width: 100%;
+    }
+    .exp-donation-product-image {
+        left: 50%;
+        max-height: 100%;
+        max-width: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: auto;
+    }
+    .exp-donation-product-tocart {
+        background-color: #00457F;
+        border-radius: 2px;
+        border: none;
+        color: white;
+        display: block;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 5px;
+        margin-top: 20px;
+        text-align: center;
+        width: 100%;
+    }
+    .exp-donation-product:hover .exp-donation-product-tocart {
+        background-color: #ff8159;
+    }
+    
+    /* Magento 1 inside column */
+    .col-left .exp-donation {
+        padding: 10px;
+    }
+    .col-left .exp-donation-product {
+        flex: 0 0 100%;
+    }
 </style>

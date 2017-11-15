@@ -28,5 +28,4 @@ class Donation extends AbstractProduct
     {
         return $this->donationHelper->getMinimalAmount($this->getProduct());
     }
-
 }

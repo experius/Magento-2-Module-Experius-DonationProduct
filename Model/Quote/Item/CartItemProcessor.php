@@ -109,7 +109,6 @@ class CartItemProcessor implements CartItemProcessorInterface
             $extensibleAttribute->setDonationOptions($donationOptions);
             $productOption->setExtensionAttributes($extensibleAttribute);
             $cartItem->setProductOption($productOption);
-
         }
 
         return $cartItem;

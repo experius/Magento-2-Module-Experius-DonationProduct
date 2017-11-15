@@ -72,9 +72,9 @@ class Donation extends \Magento\Catalog\Model\Product\Type\AbstractType
         $options = parent::getOrderOptions($product);
 
         if ($configurationOption = $product->getCustomOption(Data::DONATION_OPTION_CODE)) {
-            $optionsArray = $this->donationProductHelper->optionsJsonToMagentoOptionsArray($configurationOption->getValue(),$product);
+            $optionsArray = $this->donationProductHelper->optionsJsonToMagentoOptionsArray($configurationOption->getValue(), $product);
             $currentOptions = (isset($options['options'])) ? $options['options'] : [];
-            $options['options'] = array_merge($currentOptions,$optionsArray);
+            $options['options'] = array_merge($currentOptions, $optionsArray);
         }
 
         return $options;
@@ -92,7 +92,6 @@ class Donation extends \Magento\Catalog\Model\Product\Type\AbstractType
 
     public function deleteTypeSpecificData(\Magento\Catalog\Model\Product $product)
     {
-
     }
 
     public function prepareForCartAdvanced(\Magento\Framework\DataObject $buyRequest, $product, $processMode = null)
@@ -101,7 +100,6 @@ class Donation extends \Magento\Catalog\Model\Product\Type\AbstractType
         $typeId = $product->getTypeId();
 
         if ($typeId == self::TYPE_CODE) {
-
             $donationData['amount'] = $buyRequest->getData('amount');
 
             $product->addCustomOption(Data::DONATION_OPTION_CODE, json_encode($donationData));

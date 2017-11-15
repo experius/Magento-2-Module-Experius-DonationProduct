@@ -84,5 +84,4 @@ class Price extends \Magento\Catalog\Model\Product\Type\Price
 
         return $price;
     }
-
 }
