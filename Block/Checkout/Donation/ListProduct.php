@@ -8,6 +8,7 @@ use Magento\Catalog\Model\ProductRepository;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SortOrder;
 use Magento\Checkout\Helper\Cart as CartHelper;
+use Magento\Catalog\Block\Product\ImageBuilder;
 
 class ListProduct extends \Magento\Framework\View\Element\Template
 {
@@ -21,6 +22,8 @@ class ListProduct extends \Magento\Framework\View\Element\Template
 
     protected $cartHelper;
 
+    private $imageBuilder;
+
     public function __construct(
         DonationHelper $donationHelper,
         ProductRepository $productRepository,
@@ -28,6 +31,7 @@ class ListProduct extends \Magento\Framework\View\Element\Template
         SortOrder $sortOrder,
         Context $context,
         CartHelper $cartHelper,
+        ImageBuilder $imageBuilder,
         array $data = []
     ) {
 
@@ -36,6 +40,7 @@ class ListProduct extends \Magento\Framework\View\Element\Template
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->sortOrder = $sortOrder;
         $this->cartHelper = $cartHelper;
+        $this->imageBuilder = $imageBuilder;
 
         parent::__construct(
             $context,
@@ -71,17 +76,23 @@ class ListProduct extends \Magento\Framework\View\Element\Template
 
     public function getAddToCartUrl($product, $additional = [])
     {
-//        if (!$product->getTypeInstance()->isPossibleBuyFromList($product)) {
-//            if (!isset($additional['_escape'])) {
-//                $additional['_escape'] = true;
-//            }
-//            if (!isset($additional['_query'])) {
-//                $additional['_query'] = [];
-//            }
-//            $additional['_query']['options'] = 'cart';
-//
-//            return $this->getProductUrl($product, $additional);
-//        }
         return $this->cartHelper->getAddUrl($product, $additional);
+    }
+
+
+    /**
+     * Retrieve product image
+     *
+     * @param \Magento\Catalog\Model\Product $product
+     * @param string $imageId
+     * @param array $attributes
+     * @return \Magento\Catalog\Block\Product\Image
+     */
+    public function getImage($product, $imageId, $attributes = [])
+    {
+        return $this->imageBuilder->setProduct($product)
+            ->setImageId($imageId)
+            ->setAttributes($attributes)
+            ->create();
     }
 }

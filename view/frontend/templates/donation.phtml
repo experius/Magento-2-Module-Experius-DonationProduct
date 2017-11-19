@@ -1,19 +1,23 @@
-<?php /* @var $block Experius\DonationProduct\Block\Checkout\Donation\ProductList */  ?>
+<?php /* @var $block Experius\DonationProduct\Block\Checkout\Donation\ListProduct */  ?>
 <?php
 $items = $block->getProductCollection();
+$imageThumbnailId = 'category_page_grid';
+$imageDetailId = 'category_page_grid';
+
 if (count($items)) :
 ?>
+
 <section class="exp-donation">
     <header>
         <h3>
-            Steun een goed doel met uw donatie.
+            <?php echo __('Support a charity with your donation'); ?>
         </h3>
     </header>
     <p>
-        Lorem Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.             
+        <?php echo __('Support a charity with your donation'); ?>
     </p>
     <section class="exp-donation-product-list">
-        <header><h4>Goede doelen die jouw steun kunnen gebruiken:</h4></header>
+        <header><h4> <?php echo __('Charities that can use your support'); ?></h4></header>
         <?php $items = $block->getProductCollection(); ?>
 
         <?php  /* @var $item Magento\Catalog\Model\Product */ ?>
@@ -22,14 +26,14 @@ if (count($items)) :
                 class="exp-donation-product"
                 data-title="<?php echo $item->getName(); ?>"
                 data-description="<?php echo $item->getShortDescription(); ?>"
-                data-imageurl="/media/catalog/product<?php echo $item->getSmallImage(); ?>"
+                data-imageurl="<?php echo $block->getImage($item,$imageDetailId)->getImageUrl(); ?>"
                 data-productid="<?php echo $item->getId(); ?>"
                 data-addtocarturl="<?php echo $block->getAddToCartUrl($item); ?>">
                 <a title="<?php echo $item->getName(); ?>" class="exp-donation-image-wrapper">
-                    <img src="/media/catalog/product<?php echo $item->getSmallImage(); ?>" alt="<?php echo $item->getName(); ?>" class="exp-donation-product-image" />
+                    <img src="<?php echo $block->getImage($item,$imageThumbnailId)->getImageUrl(); ?>" alt="<?php echo $item->getName(); ?>" class="exp-donation-product-image" />
                 </a>
                 <a class="exp-donation-product-tocart">
-                    ADDTOCARTLABEL
+                    <?php echo __('Donate'); ?>
                 </a>
             </article>
         <?php endforeach; ?>
@@ -41,7 +45,7 @@ if (count($items)) :
         <img src="http://via.placeholder.com/200x200" alt="" class="charity-image" />
         <p class="charity-description"></p>
     </article>
-    <form method="POST" class="charity-form" id="product_addtocart_form">
+    <form method="POST" class="charity-form" id="donation-product-addtocart-form">
         <?php echo $block->getBlockHtml('formkey'); ?>
         <div class="donation-amounts">
             <label class="donation-amount-btn" data-amount="5">
@@ -67,7 +71,7 @@ if (count($items)) :
             <label for="donation-amount-custom">€</label>
             <input name="amount" id="amount" title="amount" class="input-text validate-number" type="text" data-validate="{required:true, 'validate-number': true}" aria-required="true" value="">
         </div>
-        <button type="submit" class="button charity-button" id="submit">Ja, ik help mee</button>
+        <button type="submit" class="button charity-button" id="submit"><?php echo __('Add donation to cart'); ?></button>
     </form>
 </div>
 <script>
@@ -115,8 +119,9 @@ if (count($items)) :
 
         jQuery.ajax({
             type: "POST",
-            url: jQuery("#product_addtocart_form").attr('action'),
-            data: jQuery("#product_addtocart_form").serialize()
+            url: jQuery("#donation-product-addtocart-form").attr('action'),
+            data: jQuery("#donation-product-addtocart-form").serialize(),
+            showLoader: true
 //            success: function(data)
 //            {
 //
