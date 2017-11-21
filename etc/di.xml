@@ -12,6 +12,9 @@
 	<type name="Magento\Checkout\Block\Cart\Item\Renderer">
 		<plugin disabled="false" name="Experius_DonationProduct_Plugin_Magento_Checkout_Block_Cart_Item_Renderer" sortOrder="0" type="Experius\DonationProduct\Plugin\Magento\Checkout\Block\Cart\Item\Renderer"/>
 	</type>
+	<type name="Magento\Catalog\Block\Product\ListProduct">
+		<plugin disabled="false" name="Experius_DonationProduct_Plugin_Magento_Catalog_Block_Product_ListProduct" sortOrder="10" type="Experius\DonationProduct\Plugin\Magento\Catalog\Block\Product\ListProduct"/>
+	</type>
 
 	<type name="Magento\Quote\Model\Quote\Item\Repository">
 		<arguments>

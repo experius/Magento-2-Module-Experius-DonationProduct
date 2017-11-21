@@ -1,19 +1,9 @@
-**Experius DonationProduct (IN DEVELOPMENT)**
+**Experius DonationProduct (ALPHA)**
 
-Todo
+![](https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/product-page.png)
 
-// - Test api
+![](https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/product-type-donation.png)
 
-// - Minimal amount setting
+![](https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/report.png)
 
-- Cart block
-- Minimal amount validation (Peter K.)
-- Reporting data on event
-- Prijs niet tonen
-- Qty niet tonen
-- Product Data Install
-- Amount valuta in label
-
-Roadmap
-
-- Quick donate on success page
+![](https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/import.png)

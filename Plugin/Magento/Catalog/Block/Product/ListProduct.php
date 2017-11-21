@@ -19,14 +19,19 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Experius\DonationProduct\Block\Adminhtml\Charity;
+namespace Experius\DonationProduct\Plugin\Magento\Catalog\Block\Product;
 
-class Index extends \Magento\Framework\View\Element\Template
+class ListProduct
 {
 
-    public function getCharities()
-    {
-        $apiUrl = $this->_scopeConfig->getValue('experius_donation_product/charities/api_url') . '/US' . '/feed.json';
-        return json_decode(file_get_contents($apiUrl), true);
+    public function aroundGetProductPrice(
+        \Magento\Catalog\Block\Product\ListProduct $subject,
+        \Closure $proceed,
+        \Magento\Catalog\Model\Product $product
+    ) {
+        if ($product->getTypeId()=='donation') {
+            return '';
+        }
+        return $proceed($product);
     }
 }

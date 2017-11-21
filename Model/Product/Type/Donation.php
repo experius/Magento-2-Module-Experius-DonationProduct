@@ -1,4 +1,23 @@
 <?php
+/**
+ * A Magento 2 module named Experius/DonationProduct
+ * Copyright (C) 2017 Derrick Heesbeen
+ *
+ * This file is part of Experius/DonationProduct.
+ *
+ * Experius/DonationProduct is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 namespace Experius\DonationProduct\Model\Product\Type;
 
@@ -50,7 +69,13 @@ class Donation extends \Magento\Catalog\Model\Product\Type\AbstractType
 
     public function checkProductBuyState($product)
     {
-        return parent::checkProductBuyState($product);
+        parent::checkProductBuyState($product);
+
+        if (!$product->getCustomOption(Data::DONATION_OPTION_CODE)) {
+            throw new \Magento\Framework\Exception\LocalizedException($this->getSpecifyOptionMessage());
+        }
+
+        return $this;
     }
 
     public function _prepareProduct(\Magento\Framework\DataObject $buyRequest, $product, $processMode)
@@ -64,7 +89,7 @@ class Donation extends \Magento\Catalog\Model\Product\Type\AbstractType
 
     public function getSpecifyOptionMessage()
     {
-        return __('You need to choose options for your item.');
+        return __('You need to choose a amount to donate');
     }
 
     public function getOrderOptions($product)
@@ -99,13 +124,24 @@ class Donation extends \Magento\Catalog\Model\Product\Type\AbstractType
 
         $typeId = $product->getTypeId();
 
-        if ($typeId == self::TYPE_CODE) {
+        if ($typeId == self::TYPE_CODE && $buyRequest->getData('amount')) {
             $amountFixed = $buyRequest->getData('amount_fixed');
             $amount = $buyRequest->getData('amount');
-            $donationData['amount'] = ($amount>0) ? $amount : $amountFixed;
+            $finalAmount = ($amount>0) ? $amount : $amountFixed;
+
+            if (!$finalAmount) {
+                throw new \Magento\Framework\Exception\LocalizedException(__('Please enter a donation amount'));
+            }
+
+            if ($finalAmount<$this->donationProductHelper->getMinimalAmount($product)) {
+                throw new \Magento\Framework\Exception\LocalizedException(__('Donation amount lower then minimal amount'));
+            }
+
+            $donationData['amount'] = $finalAmount;
             $product->addCustomOption(Data::DONATION_OPTION_CODE, json_encode($donationData));
         }
 
         return parent::prepareForCartAdvanced($buyRequest, $product, $processMode);
     }
+
 }
