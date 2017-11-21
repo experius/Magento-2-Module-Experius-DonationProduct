@@ -1,17 +1,9 @@
 **Experius DonationProduct (ALPHA)**
 
-Todo
+![Screenshot](Docs/Screenshots/product-page.png)
 
-// - Test api
+![Screenshot](Docs/Screenshots/product-type.png)
 
-// - Minimal amount setting
+![Screenshot](Docs/Screenshots/report.png)
 
-- Minimal amount validation (Peter K.)
-- Reporting data on event
-
-- Product Data Install
-- Amount valuta in label
-
-Roadmap
-
-- Quick donate on success page
+![Screenshot](Docs/Screenshots/import.png)
