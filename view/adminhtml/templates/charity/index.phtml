@@ -14,12 +14,12 @@
             </th>
         </thead>
         <tbody>
-            <?php foreach ($block->getCharities() as $charity) : ?>
+            <?php foreach ($block->getCharities() as $id=>$charity) : ?>
                 <tr class="data-row _odd-row">
                     <td><img src="<?php echo $charity['image_url']; ?>" width="200" height="200"/></td>
                     <td><?php echo $charity['name']; ?></td>
                     <td class="data-grid-actions-cell">
-                        <a class="action-menu-item" target="_self" href="<?php echo $block->getUrl(); ?>">View</a>
+                        <a class="action-menu-item" target="_self" href="<?php echo $block->getUrl('experius_donationproduct/charity/import',['id'=>$id]); ?>"><?php echo __('Import'); ?></a>
                     </td>
                 </tr>
             <?php endforeach; ?>

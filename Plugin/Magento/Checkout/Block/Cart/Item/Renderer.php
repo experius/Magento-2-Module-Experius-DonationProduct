@@ -27,8 +27,8 @@ class Renderer
         if ($typeId == \Experius\DonationProduct\Model\Product\Type\Donation::TYPE_CODE) {
             $itemOption = $item->getOptionByCode(Data::DONATION_OPTION_CODE);
             $options = [];
-
-            if ($itemOption) {
+            $showOptionsInCart = false;
+            if ($itemOption && $showOptionsInCart) {
                 $options = $this->donationProductHelper->optionsJsonToMagentoOptionsArray($itemOption->getValue(), $product);
             }
 

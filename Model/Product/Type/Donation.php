@@ -100,8 +100,9 @@ class Donation extends \Magento\Catalog\Model\Product\Type\AbstractType
         $typeId = $product->getTypeId();
 
         if ($typeId == self::TYPE_CODE) {
-            $donationData['amount'] = $buyRequest->getData('amount');
-
+            $amountFixed = $buyRequest->getData('amount_fixed');
+            $amount = $buyRequest->getData('amount');
+            $donationData['amount'] = ($amount>0) ? $amount : $amountFixed;
             $product->addCustomOption(Data::DONATION_OPTION_CODE, json_encode($donationData));
         }
 

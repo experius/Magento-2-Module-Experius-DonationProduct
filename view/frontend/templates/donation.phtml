@@ -47,28 +47,14 @@ if (count($items)) :
     </article>
     <form method="POST" class="charity-form" id="donation-product-addtocart-form">
         <?php echo $block->getBlockHtml('formkey'); ?>
-        <div class="donation-amounts">
-            <label class="donation-amount-btn" data-amount="5">
-                <input type="radio" name="amount" value="5">
-                <span>€ 5</span>
-            </label>
-            <label class="donation-amount-btn" data-amount="10">
-                <input type="radio" name="amount" value="10">
-                <span>€ 10</span>
-            </label>
-            <label class="donation-amount-btn" data-amount="15">
-                <input type="radio" name="amount" value="15">
-                <span>€ 15</span>
-            </label>
-            <label class="donation-amount-btn" data-amount="25">
-                <input type="radio" name="amount" value="25">
-                <span>€ 25</span>
-            </label>
-            <label class="donation-amount-btn" data-amount="50">
-                <input type="radio" name="amount" value="50">
-                <span>€ 50</span>
-            </label>
-            <label for="donation-amount-custom">€</label>
+        <div class="donation-amounts" data-role="">
+            <?php foreach($block->getFixedAmounts() as $fixedAmount=>$viewFixedAmount): ?>
+                <label class="donation-amount-btn" data-amount="<?php echo $fixedAmount; ?>">
+                    <input type="radio" name="amount_fixed" value="<?php echo $fixedAmount; ?>">
+                    <span><?php echo $viewFixedAmount; ?></span>
+                </label>
+            <?php endforeach; ?>
+            <label for="donation-amount-custom"><?php echo $block->getCurrencySymbol(); ?></label>
             <input name="amount" id="amount" title="amount" class="input-text validate-number" type="text" data-validate="{required:true, 'validate-number': true}" aria-required="true" value="">
         </div>
         <button type="submit" class="button charity-button" id="submit"><?php echo __('Add donation to cart'); ?></button>
@@ -79,58 +65,57 @@ if (count($items)) :
         'jquery',
         'Magento_Ui/js/modal/modal'
     ], function ($, modal) {
-        
-    var options = {
-        type: 'popup',
-        responsive: true,
-        innerScroll: true,
-        title: 'popup modal title'
-    }
-    
+
+
+        var options = {
+            type: 'popup',
+            responsive: true,
+            innerScroll: true,
+            title: 'test',
+            buttons: []
+        }
+
     var popupContainer = $('.donation-modal');
     var pImage = $('.charity-image', popupContainer);
     var pDescription = $('.charity-description', popupContainer);
     var pForm = $('.charity-form', popupContainer);
     var popup = modal(options, popupContainer);
-    
+
     $('html').on('click', '.exp-donation-product', function(){
-        charity = jQuery(this);
+        var charity = jQuery(this);
         if(charity.data('productid') != ''){
             var title           = charity.data('title'),
                 description     = charity.data('description'),
                 imageurl        = charity.data('imageurl'),
                 addtocarturl    = charity.data('addtocarturl');
                 
-                pImage.attr('src', imageurl).attr('alt', title);;
+                pImage.attr('src', imageurl).attr('alt', title);
                 pDescription.html(description);
                 pForm.attr('action', addtocarturl);
                 pImage.attr('src', imageurl);
-                
-            $('.donation-modal').modal('openModal');
+
+            options['title'] = 'asdfasdf';
+
+            $('.donation-modal').modal(options).modal('openModal');
         }
     });
-});
-</script>
 
-<script>
+    <?php if($block->useAjaxAddToCart()): ?>
+    $("#donation-product-addtocart-form").submit(function(e) {
 
-
-    jQuery("#product_addtocart_form").submit(function(e) {
-
-        jQuery.ajax({
+        $.ajax({
             type: "POST",
             url: jQuery("#donation-product-addtocart-form").attr('action'),
             data: jQuery("#donation-product-addtocart-form").serialize(),
             showLoader: true
-//            success: function(data)
-//            {
-//
-//            }
         });
         e.preventDefault();
     });
+    <?php endif; ?>
 
+});
 </script>
+
 <?php endif; ?>
 
 <style>

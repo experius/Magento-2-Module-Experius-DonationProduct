@@ -3,7 +3,7 @@
 namespace Experius\DonationProduct\Block\Checkout;
 
 use Experius\DonationProduct\Helper\Data as DonationHelper;
-use Experius\DonationProduct\Block\Checkout\Donation\ListProduct as DonationProducts;
+use Experius\DonationProduct\Block\Donation\ListProduct as DonationProducts;
 
 class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcessorInterface
 {

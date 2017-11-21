@@ -3,6 +3,8 @@
 namespace Experius\DonationProduct\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
+use Magento\Framework\App\Helper\Context;
+use Magento\Store\Model\StoreManagerInterface;
 
 class Data extends AbstractHelper
 {
@@ -10,6 +12,17 @@ class Data extends AbstractHelper
     const DONATION_OPTION_CODE = 'donation_options';
 
     const DONATION_CONFIGURATION_MINIMAL_AMOUNT = 'experius_donation_product/general/minimal_amount';
+
+    private $storeManager;
+
+    public function __construct(
+        Context $context,
+        StoreManagerInterface $storeManager
+    ) {
+        $this->storeManager = $storeManager;
+
+        parent::__construct($context);
+    }
 
     public function optionsJsonToMagentoOptionsArray($optionJson, $product)
     {
@@ -66,5 +79,21 @@ class Data extends AbstractHelper
     public function isEnabled()
     {
         return true;
+    }
+
+    public function getFixedAmounts()
+    {
+        $fixedAmountsConfig = [5,10,15,25,50];
+
+        $fixedAmounts = [];
+        foreach ($fixedAmountsConfig as $fixedAmount) {
+            $fixedAmounts[$fixedAmount] = $this->getCurrencySymbol() . ' ' . $fixedAmount;
+        }
+        return $fixedAmounts;
+    }
+
+    public function getCurrencySymbol()
+    {
+        return $this->storeManager->getStore()->getCurrentCurrency()->getCurrencySymbol();
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Experius\DonationProduct\Block\Checkout\Donation;
+namespace Experius\DonationProduct\Block\Donation;
 
 use Magento\Framework\View\Element\Template\Context;
 use Experius\DonationProduct\Helper\Data as DonationHelper;
@@ -94,5 +94,20 @@ class ListProduct extends \Magento\Framework\View\Element\Template
             ->setImageId($imageId)
             ->setAttributes($attributes)
             ->create();
+    }
+
+    public function getFixedAmounts()
+    {
+        return $this->donationHelper->getFixedAmounts();
+    }
+
+    public function getCurrencySymbol()
+    {
+        return $this->donationHelper->getCurrencySymbol();
+    }
+
+    public function useAjaxAddToCart()
+    {
+        return $this->getData('ajax_add_to_cart');
     }
 }
