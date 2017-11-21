@@ -127,7 +127,17 @@ class Donation extends \Magento\Catalog\Model\Product\Type\AbstractType
         if ($typeId == self::TYPE_CODE && $buyRequest->getData('amount')) {
             $amountFixed = $buyRequest->getData('amount_fixed');
             $amount = $buyRequest->getData('amount');
-            $donationData['amount'] = ($amount>0) ? $amount : $amountFixed;
+            $finalAmount = ($amount>0) ? $amount : $amountFixed;
+
+            if (!$finalAmount) {
+                throw new \Magento\Framework\Exception\LocalizedException(__('Please enter a donation amount'));
+            }
+
+            if ($finalAmount<$this->donationProductHelper->getMinimalAmount($product)) {
+                throw new \Magento\Framework\Exception\LocalizedException(__('Donation amount lower then minimal amount'));
+            }
+
+            $donationData['amount'] = $finalAmount;
             $product->addCustomOption(Data::DONATION_OPTION_CODE, json_encode($donationData));
         }
 

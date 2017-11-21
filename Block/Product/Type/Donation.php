@@ -58,7 +58,15 @@ class Donation extends AbstractProduct
         return $this->donationHelper->getCurrencySymbol();
     }
 
-    public function getFixedAmounts(){
+    public function getFixedAmounts()
+    {
         return $this->donationHelper->getFixedAmounts();
     }
+
+    public function getMinimalDonationAmount()
+    {
+        return $this->donationHelper->getCurrencySymbol() . ' ' . $this->donationHelper->getMinimalAmount($this->getProduct());
+    }
+
+
 }
