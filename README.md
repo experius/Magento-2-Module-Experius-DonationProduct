@@ -1,6 +1,6 @@
 **Experius DonationProduct (ALPHA)**
 
-![Screenshot](Docs/Screenshots/product-page.png)
+![Screenshot](Docs/Screenshots/product-page.png = 100x100)
 
 ![Screenshot](Docs/Screenshots/product-type.png)
 
