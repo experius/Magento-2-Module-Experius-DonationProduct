@@ -1,9 +1,21 @@
-**Experius DonationProduct (ALPHA)**
+<h1>Magento 2 Module Experius DonationProduct</h1>
 
-![](https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/product-page.png)
+<h2>Product Type</h2>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/product-type-donation.png" width="50%" title="Product Type">
+</p>
 
-![](https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/product-type-donation.png)
+<h2>Product Page</h2>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/product-page.png" width="50%" title="Product Page">
+</p>
 
-![](https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/report.png)
+<h2>Report</h2>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/report.png" width="50%" title="Report">
+</p>
 
-![](https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/import.png)
+<h2>Import</h2>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/import.png" width="50%" title="Import">
+</p>
