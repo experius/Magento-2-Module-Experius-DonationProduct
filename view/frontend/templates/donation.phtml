@@ -28,7 +28,7 @@ if (count($items)) :
             <article
                 class="experius-donation-product"
                 data-title="<?php echo $item->getName(); ?>"
-                data-description="<?php echo $item->getShortDescription(); ?>"
+                data-description="<?php echo htmlspecialchars($item->getShortDescription()); ?>"
                 data-imageurl="<?php echo $block->getImage($item,$imageDetailId)->getImageUrl(); ?>"
                 data-productid="<?php echo $item->getId(); ?>"
                 data-addtocarturl="<?php echo $block->getAddToCartUrl($item); ?>">
@@ -51,18 +51,27 @@ if (count($items)) :
     <form method="POST" class="charity-form" id="experius-donation-product-addtocart-form">
         <?php echo $block->getBlockHtml('formkey'); ?>
         <div class="experius-donation-amounts" data-role="">
-            <?php foreach($block->getFixedAmounts() as $fixedAmount=>$viewFixedAmount): ?>
-                <input type="radio" name="amount_fixed" id="amount_fixed_<?php echo $fixedAmount; ?>" value="<?php echo $fixedAmount; ?>">
-                <label for="amount_fixed_<?php echo $fixedAmount; ?>" class="experius-donation-amount-label" data-amount="<?php echo $fixedAmount; ?>">
-                    <span><?php echo $viewFixedAmount; ?></span>
-                </label>
-            <?php endforeach; ?>
+            <div class="experius-donations-fixed-amounts">
+                <?php foreach($block->getFixedAmounts() as $fixedAmount=>$viewFixedAmount): ?>
+                    <input type="radio" name="amount_fixed" id="amount_fixed_<?php echo $fixedAmount; ?>" value="<?php echo $fixedAmount; ?>">
+                    <label for="amount_fixed_<?php echo $fixedAmount; ?>" class="experius-donation-amount-label" data-amount="<?php echo $fixedAmount; ?>">
+                        <span><?php echo $viewFixedAmount; ?></span>
+                    </label>
+                <?php endforeach; ?>
+            </div>
             <p class="experius-donation-custom-amount">
-                <label for="donation-amount-custom"><?php echo $block->getCurrencySymbol(); ?></label>
-                <input name="amount" id="amount" title="amount" class="input-text validate-number" type="text" data-validate="{required:true, 'validate-number': true}" aria-required="true" value="">
+                <span class="custom-donation-amount-field">
+                    <span class="custom-amount-currency-symbol"><?php echo $block->getCurrencySymbol(); ?></span>
+                    <input name="amount" id="amount" title="amount" class="input-text validate-number" type="text" data-validate="{required:true, 'validate-number': true}" aria-required="true" value="">
+                </span>
+            </p>
+            <p class="experius-donation-amount-notification">
+                <?php echo __('The selected amount will be added to your shopping cart.'); ?>
             </p>
         </div>
-        <button type="submit" class="button charity-button action primary" id="submit"><?php echo __('I want to donate this amount'); ?></button>
+        <div class="experius-donation-form-actions">
+            <button type="submit" class="button charity-button action primary" id="submit"><?php echo __('I want to donate this amount'); ?></button>
+        </div>
     </form>
 </div>
 <script>
@@ -149,7 +158,7 @@ if (count($items)) :
         border-radius: 2px;
         box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
         display: inline-block;
-        margin: 0 0 10px;
+        margin: 0 1% 10px 0;
         padding: 20px;
         width: 48%;
     }
@@ -186,33 +195,70 @@ if (count($items)) :
     .experius-donation-modal {
         text-align: center;
     }
-    .experius-donation-modal .charity-form .experius-donation-amounts input[type="radio"] {
+
+    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donations-fixed-amounts {
+        display: flex;
+        flex-direction:row;
+    }
+    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donations-fixed-amounts  input[type="radio"] {
         display: none;
     }
-    .experius-donation-modal .charity-form .experius-donation-amounts label.experius-donation-amount-label {
+    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donations-fixed-amounts  label.experius-donation-amount-label {
         background-color: #00457F;
-        border-radius: 2px;
+        border-radius: 3px;
         border: none;
+        box-sizing: border-box;
         color: white;
-        display: inline-block;
+        flex:1 1 auto;
         height: 40px;
         line-height: 40px;
-        margin-top: 20px;
-        min-width: 50px;
+        margin: 5px;
         padding: 0 5px;
         text-align: center;
+    }
+    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donation-custom-amount {
+        margin: 2rem 0;
+        padding: 5px;
+    }
+
+    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donation-amount-notification {
+        margin-bottom: 2 rem;
+    }
+    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donation-custom-amount .custom-donation-amount-field .custom-amount-currency-symbol{
+        border: 1px solid #c2c2c2;
+        border-radius: 3px 0 0 3px;
+        border-right: 0;
+        box-sizing: border-box;
+        display: block;
+        float: left;
+        font-weight: bold;
+        height: 32px;
+        line-height: 30px;
+        width: 7%;
+    }
+    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donation-custom-amount .custom-donation-amount-field input{
+        border-radius: 0 3px 3px 0;
+        box-sizing: border-box;
+        display: block;
+        padding: 0 20px;
+        width: 93%;
     }
     .experius-donation  .experius-donation-product:hover,
     .experius-donation-modal .charity-form .experius-donation-amounts label:hover {
         cursor: pointer;
     }
     .experius-donation  .experius-donation-product:hover .experius-donation-product-tocart,
-    .experius-donation-modal .charity-form .experius-donation-amounts label:hover,
-    .experius-donation-modal .charity-form .experius-donation-amounts input[type="radio"]:checked+label {
+    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donations-fixed-amounts label:hover,
+    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donations-fixed-amounts input[type="radio"]:checked+label {
         background-color: #ff8159;
         text-decoration: none;
     }
-    .experius-donation-modal .charity-form button.charity-button.action {
+    .experius-donation-modal .charity-form .experius-donation-form-actions {
+        padding: 5px;
+    }
+    .experius-donation-modal .charity-form .experius-donation-form-actions button.charity-button.action {
+        line-height: 2.2rem;
+        padding: 14px 17px;
         width: 100%;
     }
 
@@ -225,9 +271,6 @@ if (count($items)) :
     }
 
     @media (min-width: 479px) {
-        .experius-donation .experius-donation-product {
-            margin: 0;
-        }
         .experius-donation .experius-donation-mobile-instructions {
             display: none;
         }
@@ -250,7 +293,7 @@ if (count($items)) :
             width: 50%;
         }
         .checkout-cart-index .experius-donation .experius-donation-product {
-            width: 23%;
+            width: 23.5%;
         }
     }
     @media (min-width: 1024px) {
@@ -258,7 +301,7 @@ if (count($items)) :
             width: 40%;
         }
         .experius-donation .experius-donation-product {
-            width: 23%;
+            width: 23.5%;
         }
     }
 </style>
