@@ -3,7 +3,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="content">
-            <block class="Experius\DonationProduct\Block\Donation\ListProduct" name="donationlist" before="-" template="donation.phtml"/>
+            <block class="Experius\DonationProduct\Block\Donation\ListProduct" name="cart.donation.list" before="-" template="donation.phtml"/>
         </referenceBlock>
     </body>
 </page>
