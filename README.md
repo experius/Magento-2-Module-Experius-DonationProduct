@@ -1,6 +1,8 @@
 <h1>Magento 2 Module Experius DonationProduct</h1>
 
-Demo website: Coming Soon!
+Demo website: https://donationproduct.experius.nl
+
+Twitter: https://twitter.com/heesbeen
 
 <h2>Product Type</h2>
 <p align="center">
