@@ -61,7 +61,7 @@
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="filter" xsi:type="string">text</item>
-					<item name="label" translate="true" xsi:type="string">name</item>
+					<item name="label" translate="true" xsi:type="string">Charity Name</item>
 				</item>
 			</argument>
 		</column>
@@ -69,7 +69,7 @@
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="filter" xsi:type="string">text</item>
-					<item name="label" translate="true" xsi:type="string">sku</item>
+					<item name="label" translate="true" xsi:type="string">Sku</item>
 				</item>
 			</argument>
 		</column>
@@ -77,7 +77,7 @@
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="filter" xsi:type="string">text</item>
-					<item name="label" translate="true" xsi:type="string">amount</item>
+					<item name="label" translate="true" xsi:type="string">Amount</item>
 				</item>
 			</argument>
 		</column>
@@ -85,7 +85,39 @@
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="filter" xsi:type="string">text</item>
-					<item name="label" translate="true" xsi:type="string">order_id</item>
+					<item name="label" translate="true" xsi:type="string">Order</item>
+				</item>
+			</argument>
+		</column>
+		<column name="order_id">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="filter" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Order</item>
+				</item>
+			</argument>
+		</column>
+		<column name="order_status">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="filter" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Order Status</item>
+				</item>
+			</argument>
+		</column>
+		<column name="invoiced">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="filter" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Invoiced</item>
+				</item>
+			</argument>
+		</column>
+		<column name="created_at">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="filter" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Created At</item>
 				</item>
 			</argument>
 		</column>
