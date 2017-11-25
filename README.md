@@ -2,7 +2,7 @@
 
 Demo website: https://donationproduct.experius.nl
 
-Twitter: https://twitter.com/heesbeen / https://twitter.com/experiusnl
+Twitter: https://twitter.com/heesbeen
 
 <h2>Product Type</h2>
 <p align="center">
