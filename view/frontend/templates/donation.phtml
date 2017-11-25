@@ -111,9 +111,9 @@ if (!empty($items)) :
 
             $('.experius-donation-modal')
                 .modal(options)
-                .modal('openModal')
-                .modal('setTitle', title)
-            ;
+                .modal('openModal');
+
+            $('.experius-modal-popup .modal-title').text(title);
         }
     });
 
