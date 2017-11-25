@@ -124,7 +124,9 @@ class Donation extends \Magento\Catalog\Model\Product\Type\AbstractType
 
         $typeId = $product->getTypeId();
 
-        if ($typeId == self::TYPE_CODE && $buyRequest->getData('amount')) {
+        if ($typeId == self::TYPE_CODE && $buyRequest->getData('amount') ||
+            $typeId == self::TYPE_CODE && $buyRequest->getData('amount_fixed')
+        ) {
             $amountFixed = $buyRequest->getData('amount_fixed');
             $amount = $buyRequest->getData('amount');
             $finalAmount = ($amount>0) ? $amount : $amountFixed;
