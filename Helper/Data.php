@@ -32,6 +32,8 @@ class Data extends AbstractHelper
 
     const DONATION_CONFIGURATION_MINIMAL_AMOUNT = 'experius_donation_product/general/minimal_amount';
 
+    const DONATION_CONFIGURATION_MAXIMAL_AMOUNT = 'experius_donation_product/general/maximal_amount';
+
     private $storeManager;
 
     public function __construct(
@@ -75,7 +77,7 @@ class Data extends AbstractHelper
     public function getLabelByName($name)
     {
         if ($name=='amount') {
-            return __('Donation Amount');
+            return __('Donated Amount');
         }
         return $name;
     }
@@ -93,6 +95,21 @@ class Data extends AbstractHelper
         }
 
         return 1;
+    }
+
+    public function getMaximalAmount($product)
+    {
+        if ($product->getExperiusDonationMaximalAmount()) {
+            return (int) $product->getExperiusDonationMaximalAmount();
+        }
+
+        $config = $this->scopeConfig->getValue(self::DONATION_CONFIGURATION_MAXIMAL_AMOUNT);
+
+        if ($config) {
+            return (int) $config;
+        }
+
+        return 10000;
     }
 
     public function isEnabled()

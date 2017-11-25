@@ -139,6 +139,10 @@ class Donation extends \Magento\Catalog\Model\Product\Type\AbstractType
                 throw new \Magento\Framework\Exception\LocalizedException(__('Donation amount lower then minimal amount'));
             }
 
+            if ($finalAmount>$this->donationProductHelper->getMaximalAmount($product)) {
+                throw new \Magento\Framework\Exception\LocalizedException(__('Donation amount higher then maximal amount'));
+            }
+
             $donationData['amount'] = $finalAmount;
             $product->addCustomOption(Data::DONATION_OPTION_CODE, json_encode($donationData));
         }

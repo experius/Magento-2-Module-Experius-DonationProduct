@@ -3,8 +3,21 @@
     <default>
         <experius_donation_product>
             <general>
+                <enabled>1</enabled>
                 <minimal_amount>1</minimal_amount>
+                <maximal_amount>10000</maximal_amount>
+                <fixed_amounts>5,10,15,25,50</fixed_amounts>
             </general>
+            <layout>
+                <sidebar_enabled>1</sidebar_enabled>
+                <sidebar_product_limit>4</sidebar_product_limit>
+                <homepage_enabled>1</homepage_enabled>
+                <homepage_product_limit>4</homepage_product_limit>
+                <cart_enabled>1</cart_enabled>
+                <cart_product_limit>4</cart_product_limit>
+                <checkout_enabled>1</checkout_enabled>
+                <checkout_product_limit>4</checkout_product_limit>
+            </layout>
             <charities>
                 <api_url>https://raw.githubusercontent.com/experius/Experius-DonationFeed/master</api_url>
             </charities>
