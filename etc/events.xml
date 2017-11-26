@@ -6,4 +6,7 @@
     <event name="sales_order_item_save_after">
         <observer instance="Experius\DonationProduct\Observer\Sales\OrderItemSaveAfter" name="experius_donationproduct_observer_sales_orderitemsaveafter_sales_order_item_save_after"/>
     </event>
+    <event name="catalog_product_save_after">
+        <observer instance="Experius\DonationProduct\Observer\Catalog\ProductSaveAfter" name="experius_donationproduct_observer_catalog_productsaveafter_catalog_product_save_after"/>
+    </event>
 </config>

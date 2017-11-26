@@ -80,9 +80,12 @@ class OrderItemSaveAfter implements ObserverInterface
         }
 
         /** @var \Experius\DonationProduct\Model\Donations $donation */
-        $donation = $this->donationsModel->create();
-        $model = $donation->load($orderItem->getItemId(), 'order_item_id');
-        if ($model->getId()) {
+        $donation = $this->donationsModel->create()->load($orderItem->getItemId(), 'order_item_id');
+        if ($donation->getId()) {
+            if ($orderItem->getQtyOrdered()==$orderItem->getQtyInvoiced()) {
+                $donation->setInvoiced(1);
+                $donation->save();
+            }
             return;
         }
 
