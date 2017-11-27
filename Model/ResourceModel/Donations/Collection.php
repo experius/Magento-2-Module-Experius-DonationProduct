@@ -23,6 +23,10 @@ namespace Experius\DonationProduct\Model\ResourceModel\Donations;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
+/**
+ * Class Collection
+ * @package Experius\DonationProduct\Model\ResourceModel\Donations
+ */
 class Collection extends AbstractCollection
 {
     /**

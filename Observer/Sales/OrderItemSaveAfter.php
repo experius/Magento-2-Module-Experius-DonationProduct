@@ -28,6 +28,10 @@ use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Sales\Model\Order;
 
+/**
+ * Class OrderItemSaveAfter
+ * @package Experius\DonationProduct\Observer\Sales
+ */
 class OrderItemSaveAfter implements ObserverInterface
 {
     /**

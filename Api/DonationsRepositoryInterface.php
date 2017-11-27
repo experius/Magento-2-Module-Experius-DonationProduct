@@ -21,8 +21,10 @@
 
 namespace Experius\DonationProduct\Api;
 
-use Magento\Framework\Api\SearchCriteriaInterface;
-
+/**
+ * Interface DonationsRepositoryInterface
+ * @package Experius\DonationProduct\Api
+ */
 interface DonationsRepositoryInterface
 {
 

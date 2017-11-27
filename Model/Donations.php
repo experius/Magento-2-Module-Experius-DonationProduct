@@ -24,6 +24,10 @@ namespace Experius\DonationProduct\Model;
 use Experius\DonationProduct\Api\Data\DonationsInterface;
 use Magento\Framework\Model\AbstractModel;
 
+/**
+ * Class Donations
+ * @package Experius\DonationProduct\Model
+ */
 class Donations extends AbstractModel implements DonationsInterface
 {
     /**

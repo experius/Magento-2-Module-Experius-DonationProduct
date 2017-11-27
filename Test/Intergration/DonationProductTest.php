@@ -24,6 +24,10 @@ namespace Experius\DonationProduct\Test\Integration;
 use Magento\TestFramework\ObjectManager;
 use Magento\TestFramework\Helper\Bootstrap;
 
+/**
+ * Class DonationProductTest
+ * @package Experius\DonationProduct\Test\Integration
+ */
 class DonationProductTest extends \PHPUnit\Framework\TestCase
 {
 

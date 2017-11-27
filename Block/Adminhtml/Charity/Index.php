@@ -21,9 +21,16 @@
 
 namespace Experius\DonationProduct\Block\Adminhtml\Charity;
 
+/**
+ * Class Index
+ * @package Experius\DonationProduct\Block\Adminhtml\Charity
+ */
 class Index extends \Magento\Framework\View\Element\Template
 {
 
+    /**
+     * @return mixed
+     */
     public function getCharities()
     {
         $apiUrl = $this->_scopeConfig->getValue('experius_donation_product/charities/api_url') . '/US' . '/feed.json';

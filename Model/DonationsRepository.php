@@ -34,23 +34,51 @@ use Experius\DonationProduct\Api\Data\DonationsInterfaceFactory;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Experius\DonationProduct\Api\Data\DonationsSearchResultsInterfaceFactory;
 
+/**
+ * Class DonationsRepository
+ * @package Experius\DonationProduct\Model
+ */
 class DonationsRepository implements donationsRepositoryInterface
 {
 
+    /**
+     * @var ResourceDonations
+     */
     protected $resource;
 
+    /**
+     * @var DataObjectProcessor
+     */
     protected $dataObjectProcessor;
 
+    /**
+     * @var StoreManagerInterface
+     */
     private $storeManager;
 
+    /**
+     * @var DonationsCollectionFactory
+     */
     protected $donationsCollectionFactory;
 
+    /**
+     * @var DonationsFactory
+     */
     protected $donationsFactory;
 
+    /**
+     * @var DonationsInterfaceFactory
+     */
     protected $dataDonationsFactory;
 
+    /**
+     * @var DonationsSearchResultsInterfaceFactory
+     */
     protected $searchResultsFactory;
 
+    /**
+     * @var DataObjectHelper
+     */
     protected $dataObjectHelper;
 
 

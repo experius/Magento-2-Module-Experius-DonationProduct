@@ -21,9 +21,16 @@
 
 namespace Experius\DonationProduct\Controller\Adminhtml\Donations;
 
+/**
+ * Class Index
+ * @package Experius\DonationProduct\Controller\Adminhtml\Donations
+ */
 class Index extends \Magento\Backend\App\Action
 {
 
+    /**
+     * @var \Magento\Framework\View\Result\PageFactory
+     */
     protected $resultPageFactory;
 
     /**

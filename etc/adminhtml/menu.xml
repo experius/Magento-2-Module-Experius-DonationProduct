@@ -1,4 +1,10 @@
 <?xml version="1.0" ?>
+<!--
+/**
+ * Copyright © Experius. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
 	<menu>
 		<add action="experius_donationproduct/donations/index" id="Experius::experius_donationproduct_donations" module="Experius_DonationProduct" parent="Magento_Reports::report_salesroot" resource="Magento_Backend::content" sortOrder="9999" title="Donations"/>

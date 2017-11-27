@@ -29,6 +29,10 @@ use Magento\Framework\App\ObjectManager;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\NoSuchEntityException;
 
+/**
+ * Class Serializer
+ * @package Experius\DonationProduct\Helper
+ */
 class Serializer extends AbstractHelper
 {
     /**

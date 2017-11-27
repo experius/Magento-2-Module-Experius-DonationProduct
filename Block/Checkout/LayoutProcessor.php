@@ -24,13 +24,28 @@ namespace Experius\DonationProduct\Block\Checkout;
 use Experius\DonationProduct\Helper\Data as DonationHelper;
 use Experius\DonationProduct\Block\Donation\ListProduct as DonationProducts;
 
+/**
+ * Class LayoutProcessor
+ * @package Experius\DonationProduct\Block\Checkout
+ */
 class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcessorInterface
 {
 
+    /**
+     * @var DonationHelper
+     */
     private $donationHelper;
 
+    /**
+     * @var DonationProducts
+     */
     private $donationProducts;
 
+    /**
+     * LayoutProcessor constructor.
+     * @param DonationHelper $donationHelper
+     * @param DonationProducts $donationProducts
+     */
     public function __construct(
         DonationHelper $donationHelper,
         DonationProducts $donationProducts
@@ -39,6 +54,10 @@ class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcesso
         $this->donationProducts = $donationProducts;
     }
 
+    /**
+     * @param array $result
+     * @return array
+     */
     public function process($result)
     {
         if (!$this->donationHelper->isEnabled()) {
@@ -52,6 +71,10 @@ class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcesso
         return $result;
     }
 
+    /**
+     * @param $scope
+     * @return array
+     */
     public function getDonationForm($scope)
     {
         $donationForm =

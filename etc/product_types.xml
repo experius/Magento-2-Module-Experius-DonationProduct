@@ -1,4 +1,10 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Experius. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Catalog/etc/product_types.xsd">
     <type name="donation" label="Donation Product" modelInstance="Experius\DonationProduct\Model\Product\Type\Donation" indexPriority="25" sortOrder="25">
         <customAttributes>

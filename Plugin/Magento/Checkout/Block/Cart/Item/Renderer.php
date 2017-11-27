@@ -23,11 +23,22 @@ namespace Experius\DonationProduct\Plugin\Magento\Checkout\Block\Cart\Item;
 
 use Experius\DonationProduct\Helper\Data;
 
+/**
+ * Class Renderer
+ * @package Experius\DonationProduct\Plugin\Magento\Checkout\Block\Cart\Item
+ */
 class Renderer
 {
 
+    /**
+     * @var Data
+     */
     protected $donationProductHelper;
 
+    /**
+     * Renderer constructor.
+     * @param Data $donationProductHelper
+     */
     public function __construct(
         Data $donationProductHelper
     ) {
@@ -35,6 +46,11 @@ class Renderer
         $this->donationProductHelper = $donationProductHelper;
     }
 
+    /**
+     * @param \Magento\Checkout\Block\Cart\Item\Renderer $subject
+     * @param $result
+     * @return array
+     */
     public function afterGetProductOptions(
         \Magento\Checkout\Block\Cart\Item\Renderer $subject,
         $result

@@ -23,16 +23,33 @@ namespace Experius\DonationProduct\Plugin\Magento\Catalog\Helper\Product;
 
 use Experius\DonationProduct\Helper\Data;
 
+/**
+ * Class Configuration
+ * @package Experius\DonationProduct\Plugin\Magento\Catalog\Helper\Product
+ */
 class Configuration
 {
+    /**
+     * @var Data
+     */
     protected $donationProductHelper;
 
+    /**
+     * Configuration constructor.
+     * @param Data $donationProductHelper
+     */
     public function __construct(
         Data $donationProductHelper
     ) {
         $this->donationProductHelper = $donationProductHelper;
     }
 
+    /**
+     * @param \Magento\Catalog\Helper\Product\Configuration $subject
+     * @param \Closure $proceed
+     * @param \Magento\Catalog\Model\Product\Configuration\Item\ItemInterface $item
+     * @return array|mixed
+     */
     public function aroundGetOptions(
         \Magento\Catalog\Helper\Product\Configuration $subject,
         \Closure $proceed,
