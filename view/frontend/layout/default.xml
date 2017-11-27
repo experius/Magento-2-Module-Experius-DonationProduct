@@ -6,6 +6,9 @@
  */
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Experius_DonationProduct::css/donation.css" />
+    </head>
     <body>
         <referenceContainer name="sidebar.additional">
             <block class="Experius\DonationProduct\Block\Donation\ListProduct" name="sidebar.donation.list" before="-" template="donation.phtml"/>

@@ -5,3 +5,206 @@
 .page-product-donation .box-tocart {
 	margin-top: 10px;
 }
+
+.experius-donation {
+	background-color: #f5f5f5;
+	box-sizing: border-box;
+	margin-bottom: 24px;
+	padding: 20px;
+}
+.experius-donation * {
+	box-sizing: border-box;
+}
+.experius-donation .experius-donation-product-list {
+	display: block;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+.experius-donation .experius-donation-product-list header {
+	width: 100%;
+}
+.experius-donation .experius-donation-product {
+	background-color: #FFFFFF;
+	border-radius: 2px;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+	display: inline-block;
+	margin: 0 1% 10px 0;
+	padding: 20px;
+	width: 48%;
+}
+.experius-donation .experius-donation-image-wrapper {
+	display: block;
+	height: 0;
+	padding-bottom: 100%;
+	position: relative;
+	width: 100%;
+}
+.experius-donation .experius-donation-product-image {
+	left: 50%;
+	max-height: 100%;
+	max-width: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	width: auto;
+}
+.experius-donation .experius-donation-product-tocart {
+	background-color: #00457F;
+	border-radius: 2px;
+	border: none;
+	color: white;
+	display: none;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 5px;
+	margin-top: 20px;
+	text-align: center;
+	width: 100%;
+}
+
+.experius-donation-modal {
+	display: none;
+	text-align: center;
+}
+
+.experius-donation-modal .charity-description {
+	padding: 10px;
+}
+.experius-donation-modal .charity-form .experius-donation-amounts .experius-donations-fixed-amounts {
+	display: flex;
+	flex-direction:row;
+}
+.experius-donation-modal .charity-form .experius-donation-amounts .experius-donations-fixed-amounts  input[type="radio"] {
+	display: none;
+}
+.experius-donation-modal .charity-form .experius-donation-amounts .experius-donations-fixed-amounts  label.experius-donation-amount-label {
+	background-color: #00457F;
+	border-radius: 3px;
+	border: none;
+	box-sizing: border-box;
+	color: white;
+	flex:1 1 auto;
+	height: 40px;
+	line-height: 40px;
+	margin: 10px;
+	padding: 0 5px;
+	text-align: center;
+}
+.experius-donation-modal .charity-form .experius-donation-amounts .experius-donation-custom-amount {
+	margin-bottom: 2rem;
+	padding: 10px;
+}
+
+.experius-donation-modal .charity-form .experius-donation-amounts .experius-donation-amount-notification {
+	margin-bottom: 2rem;
+	font-style: italic;
+}
+.experius-donation-modal .charity-form .experius-donation-amounts .experius-donation-custom-amount .custom-donation-amount-field .custom-amount-currency-symbol{
+	border: 1px solid #c2c2c2;
+	border-radius: 3px 0 0 3px;
+	border-right: 0;
+	box-sizing: border-box;
+	display: block;
+	float: left;
+	font-weight: bold;
+	height: 40px;
+	line-height: 38px;
+	width: 7%;
+}
+.experius-donation-modal .charity-form .experius-donation-amounts .experius-donation-custom-amount .custom-donation-amount-field input{
+	border-radius: 0 3px 3px 0;
+	box-sizing: border-box;
+	display: block;
+	height: 40px;
+	padding: 0 20px;
+	width: 93%;
+}
+.experius-donation  .experius-donation-product:hover,
+.experius-donation-modal .charity-form .experius-donation-amounts label:hover {
+	cursor: pointer;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.experius-donation  .experius-donation-product:hover .experius-donation-product-tocart,
+.experius-donation-modal .charity-form .experius-donation-amounts .experius-donations-fixed-amounts label:hover,
+.experius-donation-modal .charity-form .experius-donation-amounts .experius-donations-fixed-amounts input[type="radio"]:checked+label {
+	background-color: #ff8159;
+	text-decoration: none;
+}
+.experius-donation-modal .charity-form .experius-donation-form-actions {
+	padding: 10px;
+}
+.experius-donation-modal .charity-form .experius-donation-form-actions button.charity-button.action {
+	line-height: 2.2rem;
+	padding: 14px 17px;
+	width: 100%;
+}
+
+/* Magento 1 inside column */
+.col-left .experius-donation {
+	padding: 10px;
+}
+.col-left .experius-donation .experius-donation-product {
+	width: 100%;
+}
+
+.sidebar .experius-donation {
+
+}
+
+.sidebar .experius-donation .experius-donation-product{
+	width: 31%;
+	padding: 0px;
+}
+
+.sidebar .experius-donation .experius-donation-product-tocart {
+	display: none;
+}
+
+@media (max-width: 380px) {
+	.experius-donation-modal .charity-form .experius-donation-amounts .experius-donations-fixed-amounts  label.experius-donation-amount-label {
+		margin: 5px;
+		padding: 0px;
+	}
+}
+
+@media (min-width: 479px) {
+	.experius-donation .experius-donation-mobile-instructions {
+		display: none;
+	}
+	.experius-donation .experius-donation-product-tocart {
+		display: block;
+	}
+}
+@media (min-width: 599px) {
+	.experius-donation .experius-donation-product {
+		width: 31%;
+	}
+}
+@media (min-width: 768px) {
+	.experius-modal-popup .modal-inner-wrap {
+		width: 65%;
+	}
+}
+@media (min-width: 803px) {
+	.experius-modal-popup .modal-inner-wrap {
+		width: 50%;
+	}
+	.checkout-cart-index .experius-donation .experius-donation-product {
+		width: 23.5%;
+	}
+}
+@media (min-width: 1024px) {
+	.experius-donation .experius-donation-product {
+		width: 23.5%;
+	}
+}
+@media (min-width: 1200px) {
+	.experius-modal-popup .modal-inner-wrap {
+		width: 40%;
+	}
+}

@@ -4,338 +4,96 @@
 $items = $block->getProductCollection();
 $imageThumbnailId = 'category_page_grid';
 $imageDetailId = 'category_page_grid';
-
-if (!empty($items)) :
 ?>
 
-<section class="experius-donation">
-    <header>
-        <h3>
-            <?php echo __('Support a charity with your donation'); ?>
-        </h3>
-    </header>
-    <p>
-        <?php echo __('Support a charity with your donation'); ?>
-    </p>
-    <section class="experius-donation-product-list">
+<?php if (!empty($items)) : ?>
+    <section class="experius-donation">
         <header>
-            <h4><?php echo __('Charities that can use your support'); ?></h4>
-            <p class="experius-donation-mobile-instructions">
-                <?php echo __('Click a Charity to support'); ?>
-            </p>
+            <h3>
+                <?php echo __('Support a charity with your donation'); ?>
+            </h3>
         </header>
-        <?php foreach ($items as $item) : ?>
-            <article
-                class="experius-donation-product"
-                data-title="<?php echo $item->getName(); ?>"
-                data-description="<?php echo htmlspecialchars($item->getShortDescription()); ?>"
-                data-imageurl="<?php echo $block->getImage($item,$imageDetailId)->getImageUrl(); ?>"
-                data-productid="<?php echo $item->getId(); ?>"
-                data-addtocarturl="<?php echo $block->getAddToCartUrl($item); ?>">
-                <a title="<?php echo $item->getName(); ?>" class="experius-donation-image-wrapper">
-                    <img src="<?php echo $block->getImage($item,$imageThumbnailId)->getImageUrl(); ?>" alt="<?php echo $item->getName(); ?>" class="experius-donation-product-image" />
-                </a>
-                <a class="experius-donation-product-tocart">
-                    <?php echo __('I want to donate'); ?>
-                </a>
-            </article>
-        <?php endforeach; ?>
+        <p>
+            <?php echo __('Support a charity with your donation'); ?>
+        </p>
+        <section class="experius-donation-product-list">
+            <header>
+                <h4><?php echo __('Charities that can use your support'); ?></h4>
+                <p class="experius-donation-mobile-instructions">
+                    <?php echo __('Click a Charity to support'); ?>
+                </p>
+            </header>
+            <?php foreach ($items as $item) : ?>
+                <article
+                    class="experius-donation-product"
+                    data-title="<?php echo $item->getName(); ?>"
+                    data-description="<?php echo htmlspecialchars($item->getShortDescription()); ?>"
+                    data-imageurl="<?php echo $block->getImage($item,$imageDetailId)->getImageUrl(); ?>"
+                    data-productid="<?php echo $item->getId(); ?>"
+                    data-addtocarturl="<?php echo $block->getAddToCartUrl($item); ?>">
+                    <a title="<?php echo $item->getName(); ?>" class="experius-donation-image-wrapper">
+                        <img src="<?php echo $block->getImage($item,$imageThumbnailId)->getImageUrl(); ?>" alt="<?php echo $item->getName(); ?>" class="experius-donation-product-image" />
+                    </a>
+                    <a class="experius-donation-product-tocart">
+                        <?php echo __('I want to donate'); ?>
+                    </a>
+                </article>
+            <?php endforeach; ?>
+        </section>
     </section>
-</section>
 
-<div class="experius-donation-modal">
-    <article>
-        <img src="https://via.placeholder.com/200x200" alt="" class="charity-image" />
-        <p class="charity-description"></p>
-    </article>
-    <form method="POST" class="charity-form" id="experius-donation-product-addtocart-form">
-        <?php echo $block->getBlockHtml('formkey'); ?>
-        <div class="experius-donation-amounts" data-role="">
-            <div class="experius-donations-fixed-amounts">
-                <?php foreach($block->getFixedAmounts() as $fixedAmount=>$viewFixedAmount): ?>
-                    <input type="radio" name="amount_fixed" id="amount_fixed_<?php echo $fixedAmount; ?>" value="<?php echo $fixedAmount; ?>">
-                    <label for="amount_fixed_<?php echo $fixedAmount; ?>" class="experius-donation-amount-label" data-amount="<?php echo $fixedAmount; ?>">
-                        <span><?php echo $viewFixedAmount; ?></span>
-                    </label>
-                <?php endforeach; ?>
+    <div class="experius-donation-modal">
+        <article>
+            <img src="https://via.placeholder.com/200x200" alt="" class="charity-image" />
+            <p class="charity-description"></p>
+        </article>
+        <form method="POST" class="charity-form" id="experius-donation-product-addtocart-form">
+            <?php echo $block->getBlockHtml('formkey'); ?>
+            <div class="experius-donation-amounts" data-role="">
+                <div class="experius-donations-fixed-amounts">
+                    <?php foreach($block->getFixedAmounts() as $fixedAmount=>$viewFixedAmount): ?>
+                        <input type="radio" name="amount_fixed" id="amount_fixed_<?php echo $fixedAmount; ?>" value="<?php echo $fixedAmount; ?>">
+                        <label for="amount_fixed_<?php echo $fixedAmount; ?>" class="experius-donation-amount-label" data-amount="<?php echo $fixedAmount; ?>">
+                            <span><?php echo $viewFixedAmount; ?></span>
+                        </label>
+                    <?php endforeach; ?>
+                </div>
+                <p class="experius-donation-custom-amount">
+                    <span class="custom-donation-amount-field">
+                        <span class="custom-amount-currency-symbol"><?php echo $block->getCurrencySymbol(); ?></span>
+                        <input name="amount" id="amount" title="amount" class="input-text validate-number" type="text" data-validate="{required:true, 'validate-number': true}" aria-required="true" value="">
+                    </span>
+                </p>
+                <p class="experius-donation-amount-notification">
+                    <?php echo __('The selected amount will be added to your shopping cart.'); ?>
+                </p>
             </div>
-            <p class="experius-donation-custom-amount">
-                <span class="custom-donation-amount-field">
-                    <span class="custom-amount-currency-symbol"><?php echo $block->getCurrencySymbol(); ?></span>
-                    <input name="amount" id="amount" title="amount" class="input-text validate-number" type="text" data-validate="{required:true, 'validate-number': true}" aria-required="true" value="">
-                </span>
-            </p>
-            <p class="experius-donation-amount-notification">
-                <?php echo __('The selected amount will be added to your shopping cart.'); ?>
-            </p>
-        </div>
-        <div class="experius-donation-form-actions">
-            <button type="submit" class="button charity-button action primary" id="submit"><?php echo __('I want to donate this amount'); ?></button>
-        </div>
-    </form>
-</div>
-<script>
-    require([
-        'jquery',
-        'Magento_Ui/js/modal/modal'
-    ], function ($, modal) {
+            <div class="experius-donation-form-actions">
+                <button type="submit" class="button charity-button action primary" id="submit"><?php echo __('I want to donate this amount'); ?></button>
+            </div>
+        </form>
+    </div>
 
-
-        var options = {
-            type: 'popup',
-            title: 'Donation',
-            responsive: true,
-            innerScroll: true,
-            modalClass: 'experius-modal-popup',
-            buttons: []
+    <script type="text/x-magento-init">
+    {
+        "*": {
+            "donation":
+            {
+                "formSelector":"#product_addtocart_form",
+                "url":"<?php echo $block->getUrl('configurator/form/post'); ?>",
+                "wrapperSelector":"#configurator-form-wrapper",
+                "buttonSelector": "#product-addtocart-button",
+                "loaderWrapper": "#configurator-form-wrapper",
+                "ajaxWrapper": "#configurator-form-wrapper",
+                "priceWrapper": ".price"
+            }
         }
+    }
+    </script>
 
-    var popupContainer = $('.experius-donation-modal');
-    var pImage = $('.charity-image', popupContainer);
-    var pDescription = $('.charity-description', popupContainer);
-    var pForm = $('.charity-form', popupContainer);
-    var popup = modal(options, popupContainer);
-
-    $('html').on('click', '.experius-donation-product', function(){
-        var charity = jQuery(this);
-        if(charity.data('productid') != ''){
-            var title           = charity.data('title'),
-                description     = charity.data('description'),
-                imageurl        = charity.data('imageurl'),
-                addtocarturl    = charity.data('addtocarturl');
-
-                pImage.attr('src', imageurl).attr('alt', title);
-                pDescription.html(description);
-                pForm.attr('action', addtocarturl);
-                pImage.attr('src', imageurl);
-
-            $('.experius-donation-modal')
-                .modal(options)
-                .modal('openModal');
-
-            $('.experius-modal-popup .modal-title').text(title);
-        }
-    });
-
-    <?php if($block->useAjaxAddToCart()): ?>
-    $("#experius-donation-product-addtocart-form").submit(function(e) {
-
-        $.ajax({
-            type: "POST",
-            url: jQuery("#experius-donation-product-addtocart-form").attr('action'),
-            data: jQuery("#experius-donation-product-addtocart-form").serialize(),
-            showLoader: true
-        });
-        e.preventDefault();
-    });
-    <?php endif; ?>
-
-});
-</script>
+    <script>
+        jQuery('body').trigger('contentUpdated');
+    </script>gi
 
 <?php endif; ?>
 
-<style>
-    .experius-donation {
-        background-color: #f5f5f5;
-        box-sizing: border-box;
-        margin-bottom: 24px;
-        padding: 20px;
-    }
-    .experius-donation * {
-        box-sizing: border-box;
-    }
-    .experius-donation .experius-donation-product-list {
-        display: block;
-        flex-flow: row wrap;
-        justify-content: space-between;
-    }
-    .experius-donation .experius-donation-product-list header {
-        width: 100%;
-    }
-    .experius-donation .experius-donation-product {
-        background-color: #FFFFFF;
-        border-radius: 2px;
-        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
-        display: inline-block;
-        margin: 0 1% 10px 0;
-        padding: 20px;
-        width: 48%;
-    }
-    .experius-donation .experius-donation-image-wrapper {
-        display: block;
-        height: 0;
-        padding-bottom: 100%;
-        position: relative;
-        width: 100%;
-    }
-    .experius-donation .experius-donation-product-image {
-        left: 50%;
-        max-height: 100%;
-        max-width: 100%;
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%,-50%);
-        width: auto;
-    }
-    .experius-donation .experius-donation-product-tocart {
-        background-color: #00457F;
-        border-radius: 2px;
-        border: none;
-        color: white;
-        display: none;
-        height: 40px;
-        line-height: 40px;
-        padding: 0 5px;
-        margin-top: 20px;
-        text-align: center;
-        width: 100%;
-    }
-
-    .experius-donation-modal {
-        display: none;
-        text-align: center;
-    }
-
-    .experius-donation-modal .charity-description {
-        padding: 10px;
-    }
-    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donations-fixed-amounts {
-        display: flex;
-        flex-direction:row;
-    }
-    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donations-fixed-amounts  input[type="radio"] {
-        display: none;
-    }
-    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donations-fixed-amounts  label.experius-donation-amount-label {
-        background-color: #00457F;
-        border-radius: 3px;
-        border: none;
-        box-sizing: border-box;
-        color: white;
-        flex:1 1 auto;
-        height: 40px;
-        line-height: 40px;
-        margin: 10px;
-        padding: 0 5px;
-        text-align: center;
-    }
-    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donation-custom-amount {
-        margin-bottom: 2rem;
-        padding: 10px;
-    }
-
-    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donation-amount-notification {
-        margin-bottom: 2rem;
-        font-style: italic;
-    }
-    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donation-custom-amount .custom-donation-amount-field .custom-amount-currency-symbol{
-        border: 1px solid #c2c2c2;
-        border-radius: 3px 0 0 3px;
-        border-right: 0;
-        box-sizing: border-box;
-        display: block;
-        float: left;
-        font-weight: bold;
-        height: 40px;
-        line-height: 38px;
-        width: 7%;
-    }
-    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donation-custom-amount .custom-donation-amount-field input{
-        border-radius: 0 3px 3px 0;
-        box-sizing: border-box;
-        display: block;
-        height: 40px;
-        padding: 0 20px;
-        width: 93%;
-    }
-    .experius-donation  .experius-donation-product:hover,
-    .experius-donation-modal .charity-form .experius-donation-amounts label:hover {
-        cursor: pointer;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-    .experius-donation  .experius-donation-product:hover .experius-donation-product-tocart,
-    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donations-fixed-amounts label:hover,
-    .experius-donation-modal .charity-form .experius-donation-amounts .experius-donations-fixed-amounts input[type="radio"]:checked+label {
-        background-color: #ff8159;
-        text-decoration: none;
-    }
-    .experius-donation-modal .charity-form .experius-donation-form-actions {
-        padding: 10px;
-    }
-    .experius-donation-modal .charity-form .experius-donation-form-actions button.charity-button.action {
-        line-height: 2.2rem;
-        padding: 14px 17px;
-        width: 100%;
-    }
-
-    /* Magento 1 inside column */
-    .col-left .experius-donation {
-        padding: 10px;
-    }
-    .col-left .experius-donation .experius-donation-product {
-        width: 100%;
-    }
-
-    .sidebar .experius-donation {
-
-    }
-
-    .sidebar .experius-donation .experius-donation-product{
-        width: 31%;
-        padding: 0px;
-    }
-
-    .sidebar .experius-donation .experius-donation-product-tocart {
-        display: none;
-    }
-
-    @media (max-width: 380px) {
-        .experius-donation-modal .charity-form .experius-donation-amounts .experius-donations-fixed-amounts  label.experius-donation-amount-label {
-            margin: 5px;
-            padding: 0px;
-        }
-    }
-
-    @media (min-width: 479px) {
-        .experius-donation .experius-donation-mobile-instructions {
-            display: none;
-        }
-        .experius-donation .experius-donation-product-tocart {
-            display: block;
-        }
-    }
-    @media (min-width: 599px) {
-        .experius-donation .experius-donation-product {
-            width: 31%;
-        }
-    }
-    @media (min-width: 768px) {
-        .experius-modal-popup .modal-inner-wrap {
-            width: 65%;
-        }
-    }
-    @media (min-width: 803px) {
-        .experius-modal-popup .modal-inner-wrap {
-            width: 50%;
-        }
-        .checkout-cart-index .experius-donation .experius-donation-product {
-            width: 23.5%;
-        }
-    }
-    @media (min-width: 1024px) {
-        .experius-donation .experius-donation-product {
-            width: 23.5%;
-        }
-    }
-    @media (min-width: 1200px) {
-        .experius-modal-popup .modal-inner-wrap {
-            width: 40%;
-        }
-    }
-</style>

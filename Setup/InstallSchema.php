@@ -123,6 +123,11 @@ class InstallSchema implements InstallSchemaInterface
             'Creation date'
         );
 
+        $tableExperiusDonationProductDonations->addIndex(
+            $installer->getIdxName('experius_donations', ['order_item_id']),
+            ['order_item_id']
+        );
+
         $setup->getConnection()->createTable($tableExperiusDonationProductDonations);
 
         $setup->endSetup();
