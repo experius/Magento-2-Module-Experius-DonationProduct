@@ -26,13 +26,13 @@ define([
                 buttons: []
             }
 
-            var popupContainer = $('.experius-donation-modal');
+            var popupContainer = $( this.options.popupContainer);
             var pImage = $('.charity-image', popupContainer);
             var pDescription = $('.charity-description', popupContainer);
             var pForm = $('.charity-form', popupContainer);
             var popup = modal(options, popupContainer);
 
-            $('html').on('click', '.experius-donation-product', function(){
+            $('html').on('click', this.options.productSelector, function(){
                 var charity = jQuery(this);
                 if(charity.data('productid') != ''){
                     var title           = charity.data('title'),
@@ -53,16 +53,17 @@ define([
                 }
             });
 
-            // $("#experius-donation-product-addtocart-form").submit(function(e) {
-            //
-            //     $.ajax({
-            //         type: "POST",
-            //         url: jQuery("#experius-donation-product-addtocart-form").attr('action'),
-            //         data: jQuery("#experius-donation-product-addtocart-form").serialize(),
-            //         showLoader: true
-            //     });
-            //     e.preventDefault();
-            // });
+            if(this.options.ajaxCart) {
+                $(this.options.addToCartFormId).submit(function(e) {
+                    $.ajax({
+                        type: "POST",
+                        url: jQuery(this.options.addToCartFormId).attr('action'),
+                        data: jQuery(this.options.addToCartFormId).serialize(),
+                        showLoader: true
+                    });
+                    e.preventDefault();
+                });
+            }
         }
 
     });

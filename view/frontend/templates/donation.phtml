@@ -79,21 +79,18 @@ $imageDetailId = 'category_page_grid';
         "*": {
             "donation":
             {
-                "formSelector":"#product_addtocart_form",
-                "url":"<?php echo $block->getUrl('configurator/form/post'); ?>",
-                "wrapperSelector":"#configurator-form-wrapper",
-                "buttonSelector": "#product-addtocart-button",
-                "loaderWrapper": "#configurator-form-wrapper",
-                "ajaxWrapper": "#configurator-form-wrapper",
-                "priceWrapper": ".price"
+                "popupContainer":".experius-donation-modal",
+                "productSelector":".experius-donation-product",
+                "addToCartFormId":"#experius-donation-product-addtocart-form",
+                "modalClass":".experius-donation-modal",
+                "ajaxCart": false
             }
         }
     }
     </script>
 
-    <script>
+    <script type="text/javascript">
         jQuery('body').trigger('contentUpdated');
-    </script>gi
-
+    </script>
 <?php endif; ?>
 
