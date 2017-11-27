@@ -81,7 +81,7 @@ class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcesso
             [
                 'component' => 'Magento_Ui/js/form/components/html',
                 'config' => [
-                    'content'=> $this->donationProducts->setTemplate('donation.phtml')->toHtml(),
+                    'content'=> $this->donationProducts->setTemplate('donation.phtml')->toHtml() . "<script type=\"text/javascript\">jQuery('body').trigger('contentUpdated');</script>",
                     "products" => $this->donationProducts->getProductCollectionArray()
                 ]
             ];
