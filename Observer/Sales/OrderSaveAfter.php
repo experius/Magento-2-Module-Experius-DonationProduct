@@ -73,9 +73,18 @@ class OrderSaveAfter implements ObserverInterface
         $donations = $this->donationsRepository->getDonationsByOrderId($orderId);
 
         foreach ($donations as $donationItem) {
-            $donation = $this->donationsModel->load($donationItem->getId());
-            $donation->setOrderStatus($order->getStatus());
-            $donation->save();
+            $this->updateDonationItemData($donationItem, $order->getStatus());
         }
+    }
+
+    /**
+     * @param $donationItem
+     * @param $orderStatus
+     */
+    private function updateDonationItemData($donationItem, $orderStatus)
+    {
+        /** @var \Experius\DonationProduct\Model\Donations $donationItem */
+        $donationItem->setOrderStatus($orderStatus);
+        $donationItem->save();
     }
 }
