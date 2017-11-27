@@ -42,6 +42,14 @@ class Data extends AbstractHelper
 
     const DONATION_CONFIGURATION_FIXED_AMOUNTS = 'experius_donation_product/general/fixed_amounts';
 
+    const DONATION_CONFIGURATION_LIMIT_SIDEBAR = 'experius_donation_product/general/sidebar_product_limit';
+
+    const DONATION_CONFIGURATION_LIMIT_HOMEPAGE = 'experius_donation_product/general/homepage_product_limit';
+
+    const DONATION_CONFIGURATION_LIMIT_CART = 'experius_donation_product/general/cart_product_limit';
+
+    const DONATION_CONFIGURATION_LIMIT_CHECKOUT =  'experius_donation_product/general/checkout_product_limit';
+
     /**
      * @var StoreManagerInterface
      */
@@ -179,5 +187,24 @@ class Data extends AbstractHelper
     public function getCurrencySymbol()
     {
         return $this->storeManager->getStore()->getCurrentCurrency()->getCurrencySymbol();
+    }
+
+    public function getLimitByBlockName($blockName)
+    {
+        $limit = $this->scopeConfig->getValue(self::DONATION_CONFIGURATION_LIMIT_CHECKOUT);
+
+        switch ($blockName) {
+            case "sidebar.donation.list":
+                $limit = $this->scopeConfig->getValue(self::DONATION_CONFIGURATION_LIMIT_SIDEBAR);
+                break;
+            case "cms.donation.list":
+                $limit = $this->scopeConfig->getValue(self::DONATION_CONFIGURATION_LIMIT_HOMEPAGE);
+                break;
+            case "cart.donation.list":
+                $limit = $this->scopeConfig->getValue(self::DONATION_CONFIGURATION_LIMIT_CART);
+                break;
+        }
+
+        return $limit;
     }
 }

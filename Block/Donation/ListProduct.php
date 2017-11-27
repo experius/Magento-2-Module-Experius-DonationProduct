@@ -105,30 +105,23 @@ class ListProduct extends \Magento\Framework\View\Element\Template
      */
     public function getProductCollection()
     {
+        $pageSize = $this->donationHelper->getLimitByBlockName($this->_nameInLayout);
+
         $searchCriteria = $this->searchCriteriaBuilder
             ->addFilter('type_id', 'donation', 'eq')
             ->addFilter('status', 1, 'eq')
-            ->setPageSize(10)
+            ->setPageSize($pageSize)
             ->setCurrentPage(1)
             ->addSortOrder($this->sortOrder->setDirection('DESC')->setField('name'))
             ->create();
 
         $products = $this->productRepository->getList($searchCriteria);
 
-        return $products->getItems();
-    }
+        $items = $products->getItems();
 
-    /**
-     * @return array
-     */
-    public function getProductCollectionArray()
-    {
-        $products = [];
-        foreach ($this->getProductCollection() as $productId => $product) {
-            $products[$productId] = $product->getData();
-        }
+        shuffle($items);
 
-        return $products;
+        return $items;
     }
 
     /**
