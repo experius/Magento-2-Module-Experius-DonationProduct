@@ -38,6 +38,7 @@
 		<columnsControls name="columns_controls"/>
 		<filters name="listing_filters"/>
 		<paging name="listing_paging"/>
+		<exportButton name="export_button"/>
 	</listingToolbar>
 	<columns name="experius_donationproduct_donations_columns">
 		<argument name="data" xsi:type="array"/>
