@@ -27,6 +27,10 @@ use Experius\DonationProduct\Model\DonationsRepository;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 
+/**
+ * Class OrderSaveAfter
+ * @package Experius\DonationProduct\Observer\Sales
+ */
 class OrderSaveAfter implements ObserverInterface
 {
     /**

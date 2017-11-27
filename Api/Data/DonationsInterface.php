@@ -21,6 +21,10 @@
 
 namespace Experius\DonationProduct\Api\Data;
 
+/**
+ * Interface DonationsInterface
+ * @package Experius\DonationProduct\Api\Data
+ */
 interface DonationsInterface
 {
 

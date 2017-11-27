@@ -25,13 +25,35 @@ use Magento\Framework\Pricing\PriceCurrencyInterface;
 use Magento\Customer\Api\GroupManagementInterface;
 use Experius\DonationProduct\Helper\Data;
 
+/**
+ * Class Price
+ * @package Experius\DonationProduct\Model\Product
+ */
 class Price extends \Magento\Catalog\Model\Product\Type\Price
 {
 
+    /**
+     * @var
+     */
     protected $donationProductHelper;
 
+    /**
+     * @var
+     */
     protected $eventManager;
 
+    /**
+     * Price constructor.
+     * @param \Magento\CatalogRule\Model\ResourceModel\RuleFactory $ruleFactory
+     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     * @param \Magento\Framework\Stdlib\DateTime\TimezoneInterface $localeDate
+     * @param \Magento\Customer\Model\Session $customerSession
+     * @param \Magento\Framework\Event\ManagerInterface $eventManager
+     * @param PriceCurrencyInterface $priceCurrency
+     * @param GroupManagementInterface $groupManagement
+     * @param \Magento\Catalog\Api\Data\ProductTierPriceInterfaceFactory $tierPriceFactory
+     * @param \Magento\Framework\App\Config\ScopeConfigInterface $config
+     */
     public function __construct(
         \Magento\CatalogRule\Model\ResourceModel\RuleFactory $ruleFactory,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
@@ -57,12 +79,21 @@ class Price extends \Magento\Catalog\Model\Product\Type\Price
         );
     }
 
+    /**
+     * @param \Magento\Catalog\Model\Product $product
+     * @return mixed
+     */
     public function getPrice($product)
     {
         $price = $this->getDonationAmount(1, $product);
         return $price;
     }
 
+    /**
+     * @param float|null $qty
+     * @param \Magento\Catalog\Model\Product $product
+     * @return mixed
+     */
     public function getFinalPrice($qty, $product)
     {
         $finalPrice = $this->getDonationAmount($qty, $product);
@@ -78,12 +109,22 @@ class Price extends \Magento\Catalog\Model\Product\Type\Price
     }
 
 
+    /**
+     * @param \Magento\Catalog\Model\Product $product
+     * @param null $qty
+     * @return mixed
+     */
     public function getBasePrice($product, $qty = null)
     {
         $price =  $this->getDonationAmount($qty, $product);
         return $price;
     }
 
+    /**
+     * @param $qty
+     * @param $product
+     * @return mixed
+     */
     public function getDonationAmount($qty, $product)
     {
 

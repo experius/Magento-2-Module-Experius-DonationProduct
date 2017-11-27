@@ -25,10 +25,23 @@ use Magento\Catalog\Block\Product\AbstractProduct;
 use Magento\Catalog\Block\Product\Context;
 use Experius\DonationProduct\Helper\Data as DonationHelper;
 
+/**
+ * Class Donation
+ * @package Experius\DonationProduct\Block\Product\Type
+ */
 class Donation extends AbstractProduct
 {
+    /**
+     * @var DonationHelper
+     */
     protected $donationHelper;
 
+    /**
+     * Donation constructor.
+     * @param Context $context
+     * @param DonationHelper $donationHelper
+     * @param array $data
+     */
     public function __construct(
         Context $context,
         DonationHelper $donationHelper,
@@ -43,30 +56,44 @@ class Donation extends AbstractProduct
         );
     }
 
+    /**
+     * @return int
+     */
     public function getMinimalAmount()
     {
         return $this->donationHelper->getMinimalAmount($this->getProduct());
     }
 
+    /**
+     * @return mixed
+     */
     public function getConfiguratorCode()
     {
         return $this->donationHelper->getConfiguratorCode($this->getProduct());
     }
 
+    /**
+     * @return mixed
+     */
     public function getCurrencySymbol()
     {
         return $this->donationHelper->getCurrencySymbol();
     }
 
+    /**
+     * @return array
+     */
     public function getFixedAmounts()
     {
         return $this->donationHelper->getFixedAmounts();
     }
 
+    /**
+     * @return string
+     */
     public function getMinimalDonationAmount()
     {
         return $this->donationHelper->getCurrencySymbol() . ' ' . $this->donationHelper->getMinimalAmount($this->getProduct());
     }
-
 
 }

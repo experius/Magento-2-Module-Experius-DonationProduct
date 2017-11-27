@@ -29,20 +29,53 @@ use Magento\Framework\Api\SortOrder;
 use Magento\Checkout\Helper\Cart as CartHelper;
 use Magento\Catalog\Block\Product\ImageBuilder;
 
+/**
+ * Class ListProduct
+ * @package Experius\DonationProduct\Block\Donation
+ */
 class ListProduct extends \Magento\Framework\View\Element\Template
 {
+    /**
+     * @var DonationHelper
+     */
     protected $donationHelper;
 
+    /**
+     * @var SearchCriteriaBuilder
+     */
     protected $searchCriteriaBuilder;
 
+    /**
+     * @var SortOrder
+     */
     protected $sortOrder;
 
+    /**
+     * @var ProductRepository
+     */
     protected $productRepository;
 
+    /**
+     * @var CartHelper
+     */
     protected $cartHelper;
 
+    /**
+     * @var ImageBuilder
+     */
     private $imageBuilder;
 
+    /**
+     * ListProduct constructor.
+     * @param DonationHelper $donationHelper
+     * @param ProductRepository $productRepository
+     * @param SearchCriteriaBuilder $searchCriteriaBuilder
+     * @param SortOrder $sortOrder
+     * @param Context $context
+     * @param CartHelper $cartHelper
+     * @param ImageBuilder $imageBuilder
+     * @param array $data
+     */
     public function __construct(
         DonationHelper $donationHelper,
         ProductRepository $productRepository,
@@ -67,6 +100,9 @@ class ListProduct extends \Magento\Framework\View\Element\Template
         );
     }
 
+    /**
+     * @return \Magento\Catalog\Api\Data\ProductInterface[]
+     */
     public function getProductCollection()
     {
         $searchCriteria = $this->searchCriteriaBuilder
@@ -82,6 +118,9 @@ class ListProduct extends \Magento\Framework\View\Element\Template
         return $products->getItems();
     }
 
+    /**
+     * @return array
+     */
     public function getProductCollectionArray()
     {
         $products = [];
@@ -92,7 +131,11 @@ class ListProduct extends \Magento\Framework\View\Element\Template
         return $products;
     }
 
-
+    /**
+     * @param $product
+     * @param array $additional
+     * @return string
+     */
     public function getAddToCartUrl($product, $additional = [])
     {
         return $this->cartHelper->getAddUrl($product, $additional);
@@ -115,16 +158,25 @@ class ListProduct extends \Magento\Framework\View\Element\Template
             ->create();
     }
 
+    /**
+     * @return array
+     */
     public function getFixedAmounts()
     {
         return $this->donationHelper->getFixedAmounts();
     }
 
+    /**
+     * @return mixed
+     */
     public function getCurrencySymbol()
     {
         return $this->donationHelper->getCurrencySymbol();
     }
 
+    /**
+     * @return mixed
+     */
     public function useAjaxAddToCart()
     {
         return $this->getData('ajax_add_to_cart');

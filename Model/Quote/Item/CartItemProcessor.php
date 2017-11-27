@@ -29,6 +29,10 @@ use Magento\Quote\Api\Data\CartItemInterface;
 use Magento\Framework\DataObject\Factory as DataObjectFactory;
 use Magento\Quote\Model\Quote\ProductOptionFactory;
 
+/**
+ * Class CartItemProcessor
+ * @package Experius\DonationProduct\Model\Quote\Item
+ */
 class CartItemProcessor implements CartItemProcessorInterface
 {
     /**

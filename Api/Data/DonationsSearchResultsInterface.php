@@ -21,6 +21,10 @@
 
 namespace Experius\DonationProduct\Api\Data;
 
+/**
+ * Interface DonationsSearchResultsInterface
+ * @package Experius\DonationProduct\Api\Data
+ */
 interface DonationsSearchResultsInterface extends \Magento\Framework\Api\SearchResultsInterface
 {
 

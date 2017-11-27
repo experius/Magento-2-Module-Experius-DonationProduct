@@ -25,17 +25,33 @@ use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Store\Model\StoreManagerInterface;
 
+/**
+ * Class Data
+ * @package Experius\DonationProduct\Helper
+ */
 class Data extends AbstractHelper
 {
 
     const DONATION_OPTION_CODE = 'donation_options';
 
+    const DONATION_CONFIGURATION_ENABLED = 'experius_donation_product/general/enabled';
+
     const DONATION_CONFIGURATION_MINIMAL_AMOUNT = 'experius_donation_product/general/minimal_amount';
 
     const DONATION_CONFIGURATION_MAXIMAL_AMOUNT = 'experius_donation_product/general/maximal_amount';
 
+    const DONATION_CONFIGURATION_FIXED_AMOUNTS = 'experius_donation_product/general/fixed_amounts';
+
+    /**
+     * @var StoreManagerInterface
+     */
     private $storeManager;
 
+    /**
+     * Data constructor.
+     * @param Context $context
+     * @param StoreManagerInterface $storeManager
+     */
     public function __construct(
         Context $context,
         StoreManagerInterface $storeManager
@@ -45,6 +61,11 @@ class Data extends AbstractHelper
         parent::__construct($context);
     }
 
+    /**
+     * @param $optionJson
+     * @param $product
+     * @return array
+     */
     public function optionsJsonToMagentoOptionsArray($optionJson, $product)
     {
         $options = [];
@@ -74,6 +95,10 @@ class Data extends AbstractHelper
         return $options;
     }
 
+    /**
+     * @param $name
+     * @return \Magento\Framework\Phrase
+     */
     public function getLabelByName($name)
     {
         if ($name=='amount') {
@@ -82,6 +107,10 @@ class Data extends AbstractHelper
         return $name;
     }
 
+    /**
+     * @param $product
+     * @return int
+     */
     public function getMinimalAmount($product)
     {
         if ($product->getExperiusDonationMinAmount()) {
@@ -97,6 +126,10 @@ class Data extends AbstractHelper
         return 1;
     }
 
+    /**
+     * @param $product
+     * @return int
+     */
     public function getMaximalAmount($product)
     {
         if ($product->getExperiusDonationMaximalAmount()) {
@@ -112,14 +145,26 @@ class Data extends AbstractHelper
         return 10000;
     }
 
+    /**
+     * @return mixed
+     */
     public function isEnabled()
     {
-        return true;
+        return $this->scopeConfig->getValue(self::DONATION_CONFIGURATION_ENABLED);
     }
 
+    /**
+     * @return array
+     */
     public function getFixedAmounts()
     {
         $fixedAmountsConfig = [5,10,15,25,50];
+
+        $config = $this->scopeConfig->getValue(self::DONATION_CONFIGURATION_FIXED_AMOUNTS);
+
+        if ($config) {
+            $fixedAmountsConfig = explode(',', $config);
+        }
 
         $fixedAmounts = [];
         foreach ($fixedAmountsConfig as $fixedAmount) {
@@ -128,6 +173,9 @@ class Data extends AbstractHelper
         return $fixedAmounts;
     }
 
+    /**
+     * @return mixed
+     */
     public function getCurrencySymbol()
     {
         return $this->storeManager->getStore()->getCurrentCurrency()->getCurrencySymbol();

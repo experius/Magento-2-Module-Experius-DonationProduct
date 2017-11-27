@@ -1,4 +1,10 @@
 <?xml version="1.0" ?>
+<!--
+/**
+ * Copyright © Experius. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="sales_order_save_after">
         <observer instance="Experius\DonationProduct\Observer\Sales\OrderSaveAfter" name="experius_donationproduct_observer_sales_ordersaveafter_sales_order_save_after"/>

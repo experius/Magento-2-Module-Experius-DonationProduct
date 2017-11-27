@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
-
+<!--
+/**
+ * Copyright © Experius. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
     <extension_attributes for="Magento\Quote\Api\Data\ProductOptionInterface">
         <attribute code="donation_options" type="Experius\DonationProduct\Api\Data\DonationOptionsInterface" />
