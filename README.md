@@ -1,4 +1,4 @@
-<h1>Magento 2 Module Experius DonationProduct (ALPHA)</h1>
+<h1>Magento 2 Module Experius DonationProduct (BETA)</h1>
 
 Demo website: https://donationproduct.experius.nl
 
