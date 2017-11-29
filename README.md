@@ -19,9 +19,9 @@ You can also create a regular category with all the donation products with a reg
 
 Off course it is possible to implement this block on any location by a Magento frontend developer,
 
-A Donation Product has a lot in commen with a virtual product. It has no stock, weight and doesn't need a shipping method or address to be set in the checkout.
+A "Donation Product" has a lot in common with a "Virtual Product". It has no stock, weight and doesn't need a shipping method or address to be set in the checkout.
 
-<h4>Donation Modal</h4>
+<h4>Donation Popup</h4>
 <p align="center">
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/donation-modal.png" width="50%" title="Product Page">
 </p>
@@ -61,9 +61,9 @@ Add a new product with type 'Donation Product'
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/product-type-donation.png" width="50%" title="Product Type">
 </p>
 
-<h4>Product</h4>
+<h4>Edit Product</h4>
 
-You can configur the minimum donation amount.
+You can configure the minimum donation amount.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/product-setting.png" width="50%" title="Product Setting">
@@ -71,13 +71,13 @@ You can configur the minimum donation amount.
 
 <h4>Report</h4>
 
-A report table is made to store every single Donation Product sale. You can make a export, sum up the amount per charity and tranfer the money.
+A report table is made to store every single "Donation Product" sale. You can make a export, sum up the amount per charity and transfer the money.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/report.png" width="50%" title="Report">
 </p>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/report-grid.png" width="50%" title="Report Grid">
+  <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/report-grid.png" width="100%" title="Report Grid">
 </p>
 
 <h4>Settings</h4>
