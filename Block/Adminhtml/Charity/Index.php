@@ -31,9 +31,25 @@ class Index extends \Magento\Framework\View\Element\Template
     /**
      * @return mixed
      */
+    public function getApiUrl()
+    {
+        return $this->_scopeConfig->getValue('experius_donation_product/charities/api_url');
+    }
+
+    /**
+     * @return mixed
+     */
     public function getCharities()
     {
-        $apiUrl = $this->_scopeConfig->getValue('experius_donation_product/charities/api_url') . '/US' . '/feed.json';
+        $localCode = ($this->getRequest()->getParam('locale')) ? $this->getRequest()->getParam('locale') : "US";
+        $apiUrl = $this->getApiUrl() . '/' . $localCode . '/feed.json';
+        $charitiesData = json_decode(file_get_contents($apiUrl), true);
+        return $charitiesData;
+    }
+
+    public function getLocales()
+    {
+        $apiUrl = $this->getApiUrl() . '/locales.json';
         return json_decode(file_get_contents($apiUrl), true);
     }
 }

@@ -1,7 +1,20 @@
 <?php /* @var $block \Experius\DonationProduct\Block\Adminhtml\Charity\Index */ ?>
 
+<form method="GET">
+    <select name="locale" class="admin__control-select" onchange="this.form.submit()">
+        <?php foreach($block->getLocales() as $value=>$label): ?>
+            <option value="<?php echo $value; ?>"><?php echo $label; ?></option>
+        <?php endforeach; ?>
+    </select>
+</form>
+
+<p style="padding: 10px; background: #f8f8f8; margin: 20px 0 0 0;">
+    <?php echo __('Contribute and add your Favorite (Local) Charities to our import feed on'); ?>
+    <a href="https://github.com/experius/Experius-DonationFeed" target="_blank"><?php echo __('Github'); ?></a>
+</p>
+
 <div class="admin__data-grid-wrap" data-role="grid-wrapper">
-    <table class="data-grid data-grid-draggable" data-role="grid">
+    <table class="data-grid" data-role="grid">
         <thead>
             <th class="data-grid-th">
                 <span class="data-grid-cell-content"><?php echo __('Image'); ?></span>
