@@ -38,8 +38,3 @@ Twitter: https://twitter.com/heesbeen
 <p align="center">
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/report.png" width="50%" title="Report">
 </p>
-
-<h2>Import</h2>
-<p align="center">
-  <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/import.png" width="50%" title="Import">
-</p>
