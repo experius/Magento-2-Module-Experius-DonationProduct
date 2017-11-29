@@ -71,7 +71,7 @@ You can configure the minimum donation amount.
 
 <h4>Report</h4>
 
-A report table is made to store every single "Donation Product" sale. You can make a export, sum up the amount per charity and transfer the money.
+A report table is made to store every single "Donation Product" sale. You can make an export, sum up the amount per charity and transfer the money.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/report.png" width="50%" title="Report">
