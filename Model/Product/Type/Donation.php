@@ -204,5 +204,4 @@ class Donation extends \Magento\Catalog\Model\Product\Type\AbstractType
 
         return parent::prepareForCartAdvanced($buyRequest, $product, $processMode);
     }
-
 }

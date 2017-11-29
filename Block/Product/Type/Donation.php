@@ -95,5 +95,4 @@ class Donation extends AbstractProduct
     {
         return $this->donationHelper->getCurrencySymbol() . ' ' . $this->donationHelper->getMinimalAmount($this->getProduct());
     }
-
 }

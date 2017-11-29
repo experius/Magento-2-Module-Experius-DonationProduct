@@ -8,7 +8,7 @@
             </label>
             <div class="control">
                 <div class="options-list nested" id="options-4-list">
-                    <?php foreach($block->getFixedAmounts() as $fixedAmount=>$viewFixedAmount): ?>
+                    <?php foreach ($block->getFixedAmounts() as $fixedAmount => $viewFixedAmount) : ?>
                         <div class="field choice admin__field admin__field-option">
                             <input type="radio" class="radio admin__control-radio" name="amount_fixed" value="<?php echo $fixedAmount; ?>">
                             <label class="label admin__field-label" for="options_4_2"><span><?php echo $viewFixedAmount; ?></span></label>
@@ -19,7 +19,7 @@
         </div>
         <div class="field">
             <label class="label">
-                <span><?php echo __('Choose your own Amount %1 (minimum %2)',$block->getCurrencySymbol(),$block->getMinimalDonationAmount()); ?></span>
+                <span><?php echo __('Choose your own Amount %1 (minimum %2)', $block->getCurrencySymbol(), $block->getMinimalDonationAmount()); ?></span>
             </label>
             <div class="control">
                 <input name="amount" id="amount" title="amount" placeholder="<?php echo $block->getCurrencySymbol(); ?>" class="input-text validate-number" type="text" data-validate="{required:true, 'validate-number': true}" value="">

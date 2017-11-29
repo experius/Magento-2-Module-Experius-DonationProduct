@@ -28,11 +28,11 @@ $imageDetailId = 'category_page_grid';
                     class="experius-donation-product"
                     data-title="<?php echo $item->getName(); ?>"
                     data-description="<?php echo htmlspecialchars($item->getShortDescription()); ?>"
-                    data-imageurl="<?php echo $block->getImage($item,$imageDetailId)->getImageUrl(); ?>"
+                    data-imageurl="<?php echo $block->getImage($item, $imageDetailId)->getImageUrl(); ?>"
                     data-productid="<?php echo $item->getId(); ?>"
                     data-addtocarturl="<?php echo $block->getAddToCartUrl($item); ?>">
                     <a title="<?php echo $item->getName(); ?>" class="experius-donation-image-wrapper">
-                        <img src="<?php echo $block->getImage($item,$imageThumbnailId)->getImageUrl(); ?>" alt="<?php echo $item->getName(); ?>" class="experius-donation-product-image" />
+                        <img src="<?php echo $block->getImage($item, $imageThumbnailId)->getImageUrl(); ?>" alt="<?php echo $item->getName(); ?>" class="experius-donation-product-image" />
                     </a>
                     <a class="experius-donation-product-tocart">
                         <?php echo __('I want to donate'); ?>
@@ -51,7 +51,7 @@ $imageDetailId = 'category_page_grid';
             <?php echo $block->getBlockHtml('formkey'); ?>
             <div class="experius-donation-amounts" data-role="">
                 <div class="experius-donations-fixed-amounts">
-                    <?php foreach($block->getFixedAmounts() as $fixedAmount=>$viewFixedAmount): ?>
+                    <?php foreach ($block->getFixedAmounts() as $fixedAmount => $viewFixedAmount) : ?>
                         <input type="radio" name="amount_fixed" id="amount_fixed_<?php echo $fixedAmount; ?>" value="<?php echo $fixedAmount; ?>">
                         <label for="amount_fixed_<?php echo $fixedAmount; ?>" class="experius-donation-amount-label" data-amount="<?php echo $fixedAmount; ?>">
                             <span><?php echo $viewFixedAmount; ?></span>
