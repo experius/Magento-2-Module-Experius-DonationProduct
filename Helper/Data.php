@@ -24,6 +24,7 @@ namespace Experius\DonationProduct\Helper;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Store\Model\ScopeInterface;
 
 /**
  * Class Data
@@ -42,13 +43,21 @@ class Data extends AbstractHelper
 
     const DONATION_CONFIGURATION_FIXED_AMOUNTS = 'experius_donation_product/general/fixed_amounts';
 
-    const DONATION_CONFIGURATION_LIMIT_SIDEBAR = 'experius_donation_product/general/sidebar_product_limit';
+    const DONATION_CONFIGURATION_PRODUCT_LIMIT_SIDEBAR = 'experius_donation_product/general/sidebar_product_limit';
 
-    const DONATION_CONFIGURATION_LIMIT_HOMEPAGE = 'experius_donation_product/general/homepage_product_limit';
+    const DONATION_CONFIGURATION_PRODUCT_LIMIT_HOMEPAGE = 'experius_donation_product/general/homepage_product_limit';
 
-    const DONATION_CONFIGURATION_LIMIT_CART = 'experius_donation_product/general/cart_product_limit';
+    const DONATION_CONFIGURATION_PRODUCT_LIMIT_CART = 'experius_donation_product/general/cart_product_limit';
 
-    const DONATION_CONFIGURATION_LIMIT_CHECKOUT =  'experius_donation_product/general/checkout_product_limit';
+    const DONATION_CONFIGURATION_PRODUCT_LIMIT_CHECKOUT =  'experius_donation_product/general/checkout_product_limit';
+
+    const DONATION_CONFIGURATION_LAYOUT_CHECKOUT_ENABLED =  'experius_donation_product/layout/checkout_enabled';
+
+    const DONATION_CONFIGURATION_LAYOUT_SIDEBAR_ENABLED =  'experius_donation_product/layout/sidebar_enabled';
+
+    const DONATION_CONFIGURATION_LAYOUT_HOMEPAGE_ENABLED =  'experius_donation_product/layout/homepage_enabled';
+
+    const DONATION_CONFIGURATION_LAYOUT_CART_ENABLED =  'experius_donation_product/layout/cart_enabled';
 
     /**
      * @var StoreManagerInterface
@@ -125,7 +134,10 @@ class Data extends AbstractHelper
             return (int) $product->getExperiusDonationMinAmount();
         }
 
-        $config = $this->scopeConfig->getValue(self::DONATION_CONFIGURATION_MINIMAL_AMOUNT);
+        $config = $this->scopeConfig->getValue(
+            self::DONATION_CONFIGURATION_MINIMAL_AMOUNT,
+            ScopeInterface::SCOPE_STORE
+        );
 
         if ($config) {
             return (int) $config;
@@ -144,7 +156,10 @@ class Data extends AbstractHelper
             return (int) $product->getExperiusDonationMaximalAmount();
         }
 
-        $config = $this->scopeConfig->getValue(self::DONATION_CONFIGURATION_MAXIMAL_AMOUNT);
+        $config = $this->scopeConfig->getValue(
+            self::DONATION_CONFIGURATION_MAXIMAL_AMOUNT,
+            ScopeInterface::SCOPE_STORE
+        );
 
         if ($config) {
             return (int) $config;
@@ -158,7 +173,10 @@ class Data extends AbstractHelper
      */
     public function isEnabled()
     {
-        return $this->scopeConfig->getValue(self::DONATION_CONFIGURATION_ENABLED);
+        return $this->scopeConfig->getValue(
+            self::DONATION_CONFIGURATION_ENABLED,
+            ScopeInterface::SCOPE_STORE
+        );
     }
 
     /**
@@ -168,7 +186,10 @@ class Data extends AbstractHelper
     {
         $fixedAmountsConfig = [5,10,15,25,50];
 
-        $config = $this->scopeConfig->getValue(self::DONATION_CONFIGURATION_FIXED_AMOUNTS);
+        $config = $this->scopeConfig->getValue(
+            self::DONATION_CONFIGURATION_FIXED_AMOUNTS,
+            ScopeInterface::SCOPE_STORE
+        );
 
         if ($config) {
             $fixedAmountsConfig = explode(',', $config);
@@ -191,20 +212,45 @@ class Data extends AbstractHelper
 
     public function getLimitByBlockName($blockName)
     {
-        $limit = $this->scopeConfig->getValue(self::DONATION_CONFIGURATION_LIMIT_CHECKOUT);
+        $limit = $this->scopeConfig->getValue(
+            self::DONATION_CONFIGURATION_PRODUCT_LIMIT_CHECKOUT,
+            ScopeInterface::SCOPE_STORE
+        );
 
         switch ($blockName) {
             case "sidebar.donation.list":
-                $limit = $this->scopeConfig->getValue(self::DONATION_CONFIGURATION_LIMIT_SIDEBAR);
+                $limit = $this->scopeConfig->getValue(
+                    self::DONATION_CONFIGURATION_PRODUCT_LIMIT_SIDEBAR,
+                    ScopeInterface::SCOPE_STORE
+                );
                 break;
             case "cms.donation.list":
-                $limit = $this->scopeConfig->getValue(self::DONATION_CONFIGURATION_LIMIT_HOMEPAGE);
+                $limit = $this->scopeConfig->getValue(
+                    self::DONATION_CONFIGURATION_PRODUCT_LIMIT_HOMEPAGE,
+                    ScopeInterface::SCOPE_STORE
+                );
                 break;
             case "cart.donation.list":
-                $limit = $this->scopeConfig->getValue(self::DONATION_CONFIGURATION_LIMIT_CART);
+                $limit = $this->scopeConfig->getValue(
+                    self::DONATION_CONFIGURATION_PRODUCT_LIMIT_CART,
+                    ScopeInterface::SCOPE_STORE
+                );
                 break;
         }
 
         return $limit;
     }
+
+    public function isLayoutCheckoutEnabled()
+    {
+        if (!$this->isEnabled()) {
+            return false;
+        }
+
+        return $this->scopeConfig->getValue(
+            self::DONATION_CONFIGURATION_LAYOUT_CHECKOUT_ENABLED,
+            ScopeInterface::SCOPE_STORE
+        );
+    }
+
 }

@@ -11,7 +11,7 @@
     </head>
     <body>
         <referenceContainer name="sidebar.additional">
-            <block class="Experius\DonationProduct\Block\Donation\ListProduct" name="sidebar.donation.list" before="-" template="donation.phtml"/>
+            <block class="Experius\DonationProduct\Block\Donation\ListProduct" name="sidebar.donation.list" before="-" template="donation.phtml" ifconfig="experius_donation_product/layout/sidebar_enabled"/>
         </referenceContainer>
     </body>
 </page>

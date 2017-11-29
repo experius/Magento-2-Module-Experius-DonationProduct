@@ -8,7 +8,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Experius\DonationProduct\Block\Donation\ListProduct" name="cms.donation.list" after="-" template="donation.phtml"/>
+            <block class="Experius\DonationProduct\Block\Donation\ListProduct" name="cms.donation.list" after="-" template="donation.phtml" ifconfig="experius_donation_product/layout/homepage_enabled"/>
         </referenceContainer>
     </body>
 </page>

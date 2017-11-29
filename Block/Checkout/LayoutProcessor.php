@@ -64,9 +64,17 @@ class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcesso
             return $result;
         }
 
-        $result['components']['checkout']['children']['steps']['children']
-        ['billing-step']['children']['payment']['children']
-        ['afterMethods']['children']['experius-donations'] = $this->getDonationForm('billing');
+        if (!$this->donationHelper->isLayoutCheckoutEnabled('checkout')) {
+            return $result;
+        }
+
+        if (isset($result['components']['checkout']['children']['steps']['children']
+            ['billing-step']['children']['payment']['children']
+            ['afterMethods']['children'])) {
+            $result['components']['checkout']['children']['steps']['children']
+            ['billing-step']['children']['payment']['children']
+            ['afterMethods']['children']['experius-donations'] = $this->getDonationForm('billing');
+        }
 
         return $result;
     }
