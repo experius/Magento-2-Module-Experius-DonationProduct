@@ -1,8 +1,21 @@
-<h1>Magento 2 Module Experius DonationProduct (BETA)</h1>
+<h1>Magento 2 Module Experius DonationProduct (RC1.0)</h1>
 
 Demo website: https://donationproduct.experius.nl
 
 <h2>Frontend</h2>
+
+- This module adds a new product type "Donation Product" to your Magento 2 installation.
+- A customer can add this donation product to the cart with a self chosen amount.
+
+The donation products can be viewed on several location in your Magento 2 webshop
+- Homepage
+- Sidebar
+- Cart
+- Checkout
+
+Or just create a regular category with all the donation products.
+
+Off course it is possible to implement this block on any location by a Magento frontend developer
 
 <h4>Product Page</h4>
 <p align="center">
@@ -37,16 +50,25 @@ Demo website: https://donationproduct.experius.nl
 <h2>Backend</h2>
 
 <h4>Product Type</h4>
+
+Add a new product with type 'Donation Product'
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/product-type-donation.png" width="50%" title="Product Type">
 </p>
 
 <h4>Product</h4>
+
+You can configur the minimum donation amount.
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/product-setting.png" width="50%" title="Product Setting">
 </p>
 
 <h4>Report</h4>
+
+A report table is made to store every single Donation Product sale. You can make a export, sum up the amount per charity and tranfer the money.
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/report.png" width="50%" title="Report">
 </p>
@@ -55,6 +77,10 @@ Demo website: https://donationproduct.experius.nl
 </p>
 
 <h4>Settings</h4>
+
+There is a setting to enable or disable the complete module.
+There are settings to enable and disable the visibility of blocks on several locations in your webshop.
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/settings.png" width="50%" title="Settings">
 </p>
