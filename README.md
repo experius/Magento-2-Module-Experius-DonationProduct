@@ -15,7 +15,9 @@ The donation products can be viewed on several location in your Magento 2 websho
 
 Or just create a regular category with all the donation products.
 
-Off course it is possible to implement this block on any location by a Magento frontend developer
+Off course it is possible to implement this block on any location by a Magento frontend developer,
+
+A Donation Product has a lot in commen with a virtual product. It has no stock, weight and doesn't need a shipping method or address to be set in the checkout.
 
 <h4>Product Page</h4>
 <p align="center">
