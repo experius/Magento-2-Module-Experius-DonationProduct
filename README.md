@@ -12,12 +12,18 @@ The donation products can be viewed on several location in your Magento 2 websho
 - Sidebar
 - Cart
 - Checkout
+When clicked on a charity of the customers choice a popup will open with the charities details and a add to cart button. 
 
-Or just create a regular category with all the donation products.
+You can also create a regular category with all the donation products with a regular product detail page.
 
 Off course it is possible to implement this block on any location by a Magento frontend developer,
 
 A Donation Product has a lot in commen with a virtual product. It has no stock, weight and doesn't need a shipping method or address to be set in the checkout.
+
+<h4>Donation Modal</h4>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/donation-modal.png" width="50%" title="Product Page">
+</p>
 
 <h4>Product Page</h4>
 <p align="center">
@@ -42,11 +48,6 @@ A Donation Product has a lot in commen with a virtual product. It has no stock, 
 <h4>Full Size Block</h4>
 <p align="center">
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/donation-full-size.png" width="50%" title="Product Page">
-</p>
-
-<h4>Donation Modal</h4>
-<p align="center">
-  <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/donation-modal.png" width="50%" title="Product Page">
 </p>
 
 <h2>Backend</h2>
