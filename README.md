@@ -12,6 +12,7 @@ The donation products can be viewed on several location in your Magento 2 websho
 - Sidebar
 - Cart
 - Checkout
+
 When clicked on a charity of the customers choice a popup will open with the charities details and a add to cart button. 
 
 You can also create a regular category with all the donation products with a regular product detail page.
@@ -76,7 +77,7 @@ A report table is made to store every single Donation Product sale. You can make
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/report.png" width="50%" title="Report">
 </p>
 <p align="center">
-  <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/report-grid.png.png" width="50%" title="Report Grid">
+  <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/report-grid.png" width="50%" title="Report Grid">
 </p>
 
 <h4>Settings</h4>
