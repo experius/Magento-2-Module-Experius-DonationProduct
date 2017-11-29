@@ -1,0 +1,40 @@
+Donations,Donaties
+"Donated Amount","Gedoneerd bedrag"
+"Could not save the donations: %1","Could not save the donations: %1"
+"Donations with id ""%1"" does not exist.","Donations with id ""%1"" does not exist."
+"Could not delete the Donations: %1","Could not delete the Donations: %1"
+"You need to choose a amount to donate","You need to choose a amount to donate"
+"Please enter a donation amount","Please enter a donation amount"
+"Donation amount lower then minimal amount","Donatie bedrag lager dan minimum"
+"Donation amount higher then maximal amount","Donatie bedrag hoger dan minimum"
+"Support a charity with your donation","Steun een goed doel met een donatie"
+"Charities that can use your support","Goede doelen die uw steun kunnen gebruiken"
+"Click a Charity to support","Klik op een goed naar keuze"
+"I want to donate","Ik wil doneren"
+"The selected amount will be added to your shopping cart.","Het ingevoerde bedrag wordt toegevoegd aan uw winkelmand"
+"I want to donate this amount","Ik wil dit bedrag doneren"
+"Choose an amount to donate","Kies een bedrag om te doneren"
+"Choose your own Amount %1 (minimum %2)","Kies uw eigen bedrag %1 (minimum %2)"
+"Donation Product","Donatie Product"
+General,General
+Enabled,Enabled
+"Minimal Donation Amount","Minimale Donatie Bedrag"
+"Maximal Donation Amount","Maximale Donatie Bedrag"
+"Fixed Donation Amount","Vast Donatie Bedrag"
+Layout,Layout
+Sidebar,Sidebar
+"Sidebar Product Limit","Sidebar Product Limit"
+Homepage,Homepage
+"Homepage Product Limit","Homepage Product Limit"
+Cart,Cart
+"Cart Product Limit","Cart Product Limit"
+Checkout,Checkout
+"Checkout Product Limit","Checkout Product Limit"
+ID,ID
+"Charity Name","Charity Name"
+Sku,Sku
+Amount,Amount
+Order,Order
+"Order Status","Order Status"
+Invoiced,Invoiced
+"Created At","Created At"
