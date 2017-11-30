@@ -2,6 +2,14 @@
 
 Demo website: https://donationproduct.experius.nl
 
+<h2>Installation</h2>
+
+Add the module to your composer.json
+```composer require experius/module-donationproduct "~1.0.0"```
+
+Run the Magento Setup Upgrade
+```bin/magento setup:upgrade```
+
 <h2>Frontend</h2>
 
 - This module adds a new product type "Donation Product" to your Magento 2 installation.
@@ -71,6 +79,8 @@ You can configure the minimum donation amount.
 
 <h4>Report</h4>
 
+Reports > Sales > Donations
+
 A report table is made to store every single "Donation Product" sale. You can make an export, sum up the amount per charity and transfer the money.
 
 <p align="center">
@@ -81,6 +91,8 @@ A report table is made to store every single "Donation Product" sale. You can ma
 </p>
 
 <h4>Settings</h4>
+
+Stores > Settings > Configuration > Catalog > Donation Product
 
 There is a setting to enable or disable the complete module.
 There are settings to enable and disable the visibility of blocks on several locations in your webshop.
