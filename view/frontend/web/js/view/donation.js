@@ -11,7 +11,6 @@ define([
     $.widget('mage.donation', {
 
         _create: function () {
-            console.log('test ui');
             this.initDonationModal();
         },
 
