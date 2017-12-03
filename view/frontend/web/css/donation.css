@@ -156,12 +156,18 @@
 
 }
 
+#opc-sidebar .experius-donation{
+	padding: 0;
+}
+
+#opc-sidebar .experius-donation .experius-donation-product,
 .cart-summary .experius-donation .experius-donation-product,
 .sidebar .experius-donation .experius-donation-product{
 	width: 31%;
 	padding: 0px;
 }
 
+#opc-sidebar .experius-donation .experius-donation-product-tocart,
 .cart-summary .experius-donation .experius-donation-product-tocart,
 .sidebar .experius-donation .experius-donation-product-tocart {
 	display: none;

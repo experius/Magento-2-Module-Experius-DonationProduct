@@ -64,6 +64,14 @@
                     <label>Checkout Product Limit</label>
                     <comment/>
                 </field>
+                <field id="checkout_sidebar_enabled" translate="label" type="select" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Checkout Sidebar</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="checkout_sidebar_product_limit" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="180" translate="label" type="text">
+                    <label>Checkout Sidebar Product Limit</label>
+                    <comment/>
+                </field>
             </group>
         </section>
     </system>

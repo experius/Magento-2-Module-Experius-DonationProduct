@@ -23,6 +23,8 @@
                 <cart_product_limit>4</cart_product_limit>
                 <checkout_enabled>1</checkout_enabled>
                 <checkout_product_limit>4</checkout_product_limit>
+                <checkout_sidebar_enabled>1</checkout_sidebar_enabled>
+                <checkout_sidebar_product_limit>4</checkout_sidebar_product_limit>
             </layout>
             <charities>
                 <api_url>https://raw.githubusercontent.com/experius/Experius-DonationFeed/master</api_url>

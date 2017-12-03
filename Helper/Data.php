@@ -53,6 +53,9 @@ class Data extends AbstractHelper
 
     const DONATION_CONFIGURATION_LAYOUT_CHECKOUT_ENABLED =  'experius_donation_product/layout/checkout_enabled';
 
+    const DONATION_CONFIGURATION_LAYOUT_CHECKOUT_SIDEBAR_ENABLED =
+        'experius_donation_product/layout/checkout_sidebar_enabled';
+
     const DONATION_CONFIGURATION_LAYOUT_SIDEBAR_ENABLED =  'experius_donation_product/layout/sidebar_enabled';
 
     const DONATION_CONFIGURATION_LAYOUT_HOMEPAGE_ENABLED =  'experius_donation_product/layout/homepage_enabled';
@@ -253,4 +256,15 @@ class Data extends AbstractHelper
         );
     }
 
+    public function isLayoutCheckoutSidebarEnabled()
+    {
+        if (!$this->isEnabled()) {
+            return false;
+        }
+
+        return $this->scopeConfig->getValue(
+            self::DONATION_CONFIGURATION_LAYOUT_CHECKOUT_SIDEBAR_ENABLED,
+            ScopeInterface::SCOPE_STORE
+        );
+    }
 }

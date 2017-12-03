@@ -64,16 +64,19 @@ class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcesso
             return $result;
         }
 
-        if (!$this->donationHelper->isLayoutCheckoutEnabled('checkout')) {
-            return $result;
-        }
-
-        if (isset($result['components']['checkout']['children']['steps']['children']
+        if ($this->donationHelper->isLayoutCheckoutEnabled() &&
+            isset($result['components']['checkout']['children']['steps']['children']
             ['billing-step']['children']['payment']['children']
             ['afterMethods']['children'])) {
             $result['components']['checkout']['children']['steps']['children']
             ['billing-step']['children']['payment']['children']
-            ['afterMethods']['children']['experius-donations'] = $this->getDonationForm('billing');
+            ['afterMethods']['children']['experius-donations'] = $this->getDonationForm();
+        }
+
+        if ($this->donationHelper->isLayoutCheckoutSidebarEnabled() &&
+            isset($result['components']['checkout']['children']['sidebar']['children']['summary']['children'])) {
+            $result['components']['checkout']['children']['sidebar']['children']['summary']['children']
+            ['experius-donations'] = $this->getDonationForm();
         }
 
         return $result;
@@ -83,7 +86,7 @@ class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcesso
      * @param $scope
      * @return array
      */
-    public function getDonationForm($scope)
+    public function getDonationForm()
     {
         $donationForm =
             [
