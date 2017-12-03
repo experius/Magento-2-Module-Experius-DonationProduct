@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/logo.png" width="30%" title="Product Page">
+</p>
+
 <h1>Magento 2 Module Experius DonationProduct (RC1.0)</h1>
 
 Demo website: https://donationproduct.experius.nl
