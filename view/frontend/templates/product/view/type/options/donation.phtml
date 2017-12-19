@@ -22,7 +22,7 @@
                 <span><?php echo __('Choose your own Amount %1 (minimum %2)', $block->getCurrencySymbol(), $block->getMinimalDonationAmount()); ?></span>
             </label>
             <div class="control">
-                <input name="amount" id="amount" title="amount" placeholder="<?php echo $block->getCurrencySymbol(); ?>" class="input-text validate-number" type="text" data-validate="{required:true, 'validate-number': true}" value="">
+                <input name="amount" id="amount" title="amount" placeholder="<?php echo $block->getCurrencySymbol(); ?>" class="input-text validate-number" type="text" data-validate="{required:false, 'validate-number': true}" value="">
             </div>
         </div>
     </div>
