@@ -43,11 +43,6 @@ A "Donation Product" has a lot in common with a "Virtual Product". It has no sto
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/product-page.png" width="50%" title="Product Page">
 </p>
 
-<h4>Cart Page</h4>
-<p align="center">
-  <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/cart.png" width="50%" title="Cart Page">
-</p>
-
 <h4>Category Page</h4>
 
 To view the donation products in a category (just like the screenshot below). Create a category in the Magento Admin and add the donation products to that category. 
@@ -68,7 +63,7 @@ It can be disabled in the settings. See settings chapter.
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/donation-sidebar.png" title="Product Page">
 </p>
 
-<h4>Full Size Block</h4>
+<h4>Full Size Block (Homepage)</h4>
 
 The full size block is visible on the homepage. It can be disabled in the settings. See settings chapter.
 
@@ -84,6 +79,22 @@ The full size block is visible on the homepage. It can be disabled in the settin
   <block class="Experius\DonationProduct\Block\Donation\ListProduct" name="donation.block" after="-" template="Experius_DonationProduct::donation.phtml"/>
 </referenceContainer>  
 ```
+
+<h4>Checkout Block</h4>
+
+The checkout donation block is visible in the checkout totals block. It can be disabled in the settings. See settings chapter.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/donation-checkout.png" width="50%" title="Checkout Donation">
+</p>
+
+<h4>Cart Page</h4>
+
+The cart page donation block is visible on the cart page. It can be disabled in the settings. See settings chapter.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/cart.png" width="50%" title="Cart Page">
+</p>
 
 <h2>Backend</h2>
 
