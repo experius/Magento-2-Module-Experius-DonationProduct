@@ -19,17 +19,17 @@ Run the Magento Setup Upgrade
 - This module adds a new product type "Donation Product" to your Magento 2 installation.
 - A customer can add this donation product to the cart with a self chosen amount.
 
-The donation products can be viewed on several location in your Magento 2 webshop
+The donation products can be viewed on several standard locations in your Magento 2 webshop
 - Homepage
 - Sidebar
 - Cart
 - Checkout
 
+Off course it is possible to implement this block on any location by a Magento frontend developer. Or in a cms of category layout update via the Magento Admin. Xml example is provided in the 'Full Size Block' chapter.
+
 When clicked on a charity of the customers choice a popup will open with the charities details and a add to cart button. 
 
 You can also create a regular category with all the donation products with a regular product detail page.
-
-Off course it is possible to implement this block on any location by a Magento frontend developer,
 
 A "Donation Product" has a lot in common with a "Virtual Product". It has no stock, weight and doesn't need a shipping method or address to be set in the checkout.
 
