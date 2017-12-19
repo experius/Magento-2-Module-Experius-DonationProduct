@@ -47,13 +47,13 @@ $imageDetailId = 'category_page_grid';
             <img src="https://via.placeholder.com/200x200" alt="" class="charity-image" />
             <p class="charity-description"></p>
         </article>
-        <form method="POST" class="charity-form" id="experius-donation-product-addtocart-form">
+        <form method="POST" class="charity-form" id="experius-donation-product-addtocart-form-<?php echo $block->getNameInLayout(); ?>">
             <?php echo $block->getBlockHtml('formkey'); ?>
             <div class="experius-donation-amounts" data-role="">
                 <div class="experius-donations-fixed-amounts">
                     <?php foreach ($block->getFixedAmounts() as $fixedAmount => $viewFixedAmount) : ?>
-                        <input type="radio" name="amount_fixed" id="amount_fixed_<?php echo $fixedAmount; ?>" value="<?php echo $fixedAmount; ?>">
-                        <label for="amount_fixed_<?php echo $fixedAmount; ?>" class="experius-donation-amount-label" data-amount="<?php echo $fixedAmount; ?>">
+                        <input type="radio" name="amount_fixed" id="amount-fixed-<?php echo $fixedAmount; ?>-<?php echo $block->getNameInLayout(); ?>" value="<?php echo $fixedAmount; ?>">
+                        <label for="amount-fixed-<?php echo $fixedAmount; ?>-<?php echo $block->getNameInLayout(); ?>" class="experius-donation-amount-label" data-amount="<?php echo $fixedAmount; ?>">
                             <span><?php echo $viewFixedAmount; ?></span>
                         </label>
                     <?php endforeach; ?>
@@ -61,7 +61,7 @@ $imageDetailId = 'category_page_grid';
                 <p class="experius-donation-custom-amount">
                     <span class="custom-donation-amount-field">
                         <span class="custom-amount-currency-symbol"><?php echo $block->getCurrencySymbol(); ?></span>
-                        <input name="amount" id="amount" title="amount" class="input-text validate-number" type="text" data-validate="{required:true, 'validate-number': true}" aria-required="true" value="">
+                        <input name="amount" title="amount" class="amount input-text validate-number" type="text" data-validate="{required:true, 'validate-number': true}" aria-required="true" value="">
                     </span>
                 </p>
                 <p class="experius-donation-amount-notification">
@@ -69,7 +69,7 @@ $imageDetailId = 'category_page_grid';
                 </p>
             </div>
             <div class="experius-donation-form-actions">
-                <button type="submit" class="button charity-button action primary" id="submit"><?php echo __('I want to donate this amount'); ?></button>
+                <button type="submit" class="button charity-button action primary"><?php echo __('I want to donate this amount'); ?></button>
             </div>
         </form>
     </div>
@@ -81,7 +81,7 @@ $imageDetailId = 'category_page_grid';
             {
                 "popupContainer":".experius-donation-modal",
                 "productSelector":".experius-donation-product",
-                "addToCartFormId":"#experius-donation-product-addtocart-form",
+                "addToCartFormId":"#experius-donation-product-addtocart-form-<?php echo $block->getNameInLayout(); ?>",
                 "modalClass":".experius-donation-modal",
                 "ajaxCart": false
             }
