@@ -49,19 +49,41 @@ A "Donation Product" has a lot in common with a "Virtual Product". It has no sto
 </p>
 
 <h4>Category Page</h4>
+
+To view the donation products in a category (just like the screenshot below). Create a category in the Magento Admin and add the donation products to that category. 
+
+- Categories can be added in Magento Admin > Catalog > Categories
+- After the category is made add the products to the Category via the 'Products in Category' tab. 
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/category-view.png" width="50%" title="Product Page">
 </p>
 
 <h4>Sidebar Block</h4>
+
+This block wil be visible on every page wich has a layout with a sidebar implemented. 
+It can be disabled in the settings. See settings chapter.
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/donation-sidebar.png" title="Product Page">
 </p>
 
 <h4>Full Size Block</h4>
+
+The full size block is visible on the homepage. It can be disabled in the settings. See settings chapter.
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/donation-full-size.png" width="50%" title="Product Page">
 </p>
+
+- A frontend Magento developer can implement this in custom position in you template by using the following xml.
+- You can also use the xml below to add the block to a cms page. For example your 404 page. Edit the cms page and add the xml to the 'Design' tab > 'Layout Update XML' field.
+
+```xml
+<referenceContainer name="content">
+  <block class="Experius\DonationProduct\Block\Donation\ListProduct" name="donation.block" after="-" template="Experius_DonationProduct::donation.phtml"/>
+</referenceContainer>  
+```
 
 <h2>Backend</h2>
 
