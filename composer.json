@@ -8,7 +8,7 @@
             "name": "Derrick Heesbeen"
         }
     ],
-    "version": "1.0.5",
+    "version": "1.0.6",
     "type": "magento2-module",
     "minimum-stability": "dev",
     "require": {},
