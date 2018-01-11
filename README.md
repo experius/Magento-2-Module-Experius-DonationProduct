@@ -4,8 +4,8 @@
 
 <h1>Magento 2 Module Experius DonationProduct (RC1.0)</h1>
 
-Demo website: https://donationproduct.experius.nl
-Marketplace link: https://marketplace.magento.com/experius-module-donationproduct.html
+- Demo website: https://donationproduct.experius.nl
+- Magento Marketplace: https://marketplace.magento.com/experius-module-donationproduct.html
 
 <h2>Installation</h2>
 
