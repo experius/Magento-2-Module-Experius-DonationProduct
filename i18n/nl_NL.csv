@@ -9,6 +9,7 @@ Donations,Donaties
 "Donation amount higher then maximal amount","Donatie bedrag hoger dan minimum"
 "Support a charity with your donation","Steun een goed doel met een donatie"
 "Charities that can use your support","Goede doelen die uw steun kunnen gebruiken"
+"Pick one of our favorite charities and donate","Kies een van onze favoriete goede doelen en doneer"
 "Click a Charity to support","Klik op een goed naar keuze"
 "I want to donate","Ik wil doneren"
 "The selected amount will be added to your shopping cart.","Het ingevoerde bedrag wordt toegevoegd aan uw winkelmand"
@@ -37,4 +38,5 @@ Amount,Amount
 Order,Order
 "Order Status","Order Status"
 Invoiced,Invoiced
-"Created At","Created At"
+"Created At","Created At",
+"View order","Bekijk order"
