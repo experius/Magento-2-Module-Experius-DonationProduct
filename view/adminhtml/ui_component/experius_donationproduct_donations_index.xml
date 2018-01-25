@@ -106,16 +106,17 @@
 				</item>
 			</argument>
 		</column>
-		<column name="invoiced" component="Magento_Ui/js/grid/columns/select">
-			<settings>
-				<options class="Magento\Config\Model\Config\Source\Yesno"/>
-				<filter>select</filter>
-				<editor>
-					<editorType>select</editorType>
-				</editor>
-				<dataType>select</dataType>
-				<label translate="true">Invoiced</label>
-			</settings>
+		<column name="invoiced">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">Magento\Config\Model\Config\Source\Yesno</item>
+				<item name="config" xsi:type="array">
+					<item name="filter" xsi:type="string">select</item>
+					<item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+					<item name="editor" xsi:type="string">select</item>
+					<item name="dataType" xsi:type="string">select</item>
+					<item name="label" xsi:type="string" translate="true">Invoiced</item>
+				</item>
+			</argument>
 		</column>
 		<column name="created_at">
 			<argument name="data" xsi:type="array">
@@ -128,13 +129,11 @@
 		<actionsColumn name="actions" class="Experius\DonationProduct\Ui\Component\Listing\Column\ViewAction">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
+					<item name="indexField" xsi:type="string">order_id</item>
 					<item name="viewUrlPath" xsi:type="string">sales/order/view</item>
 					<item name="urlEntityParamName" xsi:type="string">order_id</item>
 				</item>
 			</argument>
-			<settings>
-				<indexField>order_id</indexField>
-			</settings>
 		</actionsColumn>
 	</columns>
 </listing>
