@@ -126,12 +126,12 @@
 				</item>
 			</argument>
 		</column>
-		<actionsColumn name="actions" class="Experius\DonationProduct\Ui\Component\Listing\Column\ViewAction">
+		<actionsColumn name="actions" class="Experius\DonationProduct\Ui\Component\Listing\Column\ViewOrder">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="indexField" xsi:type="string">order_id</item>
-					<item name="viewUrlPath" xsi:type="string">sales/order/view</item>
-					<item name="urlEntityParamName" xsi:type="string">order_id</item>
+					<item name="urlPath" xsi:type="string">sales/order/view</item>
+					<item name="urlParamName" xsi:type="string">order_id</item>
 				</item>
 			</argument>
 		</actionsColumn>
