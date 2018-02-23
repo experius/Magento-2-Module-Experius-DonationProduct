@@ -138,3 +138,14 @@ There are settings to enable and disable the visibility of blocks on several loc
 <p align="center">
   <img src="https://raw.githubusercontent.com/experius/Magento-2-Module-Experius-DonationProduct/master/Docs/Screenshots/settings.png" width="50%" title="Settings">
 </p>
+
+<h4>Uninstall</h4>
+
+Follow the step below to uninstall the module.
+
+1. Login in to Magento
+2. Go to Catalog > Products. Filter on product type 'Donation Product'
+3. Delete all the Products with the type 'Donation Product'
+4. Go to System > Attributes > Product 
+5. Search the attribute 'experius_donation_min_amount' (Minimal Donation Amount) and delete it
+6. Run the following in the command line ```bin/magento module:uninstall Experius_DonationProduct``` 
