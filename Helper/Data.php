@@ -172,17 +172,6 @@ class Data extends AbstractHelper
     }
 
     /**
-     * @return mixed
-     */
-    public function isEnabled()
-    {
-        return $this->scopeConfig->getValue(
-            self::DONATION_CONFIGURATION_ENABLED,
-            ScopeInterface::SCOPE_STORE
-        );
-    }
-
-    /**
      * @return array
      */
     public function getFixedAmounts()
@@ -246,9 +235,6 @@ class Data extends AbstractHelper
 
     public function isLayoutCheckoutEnabled()
     {
-        if (!$this->isEnabled()) {
-            return false;
-        }
 
         return $this->scopeConfig->getValue(
             self::DONATION_CONFIGURATION_LAYOUT_CHECKOUT_ENABLED,
@@ -258,9 +244,6 @@ class Data extends AbstractHelper
 
     public function isLayoutCheckoutSidebarEnabled()
     {
-        if (!$this->isEnabled()) {
-            return false;
-        }
 
         return $this->scopeConfig->getValue(
             self::DONATION_CONFIGURATION_LAYOUT_CHECKOUT_SIDEBAR_ENABLED,

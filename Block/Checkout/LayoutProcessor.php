@@ -60,9 +60,6 @@ class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcesso
      */
     public function process($result)
     {
-        if (!$this->donationHelper->isEnabled()) {
-            return $result;
-        }
 
         if ($this->donationHelper->isLayoutCheckoutEnabled() &&
             isset($result['components']['checkout']['children']['steps']['children']

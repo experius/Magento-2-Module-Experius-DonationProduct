@@ -13,10 +13,6 @@
             <resource>Experius_Donations::config_experius_donations</resource>
             <group id="general" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
                 <label>General</label>
-                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Enabled</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
                 <field id="minimal_amount" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label" type="text">
                     <label>Minimal Donation Amount</label>
                     <comment/>
