@@ -47,13 +47,13 @@ $imageDetailId = 'category_page_grid';
             <img src="https://via.placeholder.com/200x200" alt="" class="charity-image" />
             <p class="charity-description"></p>
         </article>
-        <form method="POST" class="charity-form" id="experius-donation-product-addtocart-form-<?php echo $block->getNameInLayout(); ?>">
+        <form method="POST" class="charity-form" id="experius-donation-product-addtocart-form-<?php echo $block->getIdentifier(); ?>">
             <?php echo $block->getBlockHtml('formkey'); ?>
             <div class="experius-donation-amounts" data-role="">
                 <div class="experius-donations-fixed-amounts">
                     <?php foreach ($block->getFixedAmounts() as $fixedAmount => $viewFixedAmount) : ?>
-                        <input type="radio" name="amount_fixed" id="amount-fixed-<?php echo $fixedAmount; ?>-<?php echo $block->getNameInLayout(); ?>" value="<?php echo $fixedAmount; ?>">
-                        <label for="amount-fixed-<?php echo $fixedAmount; ?>-<?php echo $block->getNameInLayout(); ?>" class="experius-donation-amount-label" data-amount="<?php echo $fixedAmount; ?>">
+                        <input type="radio" name="amount_fixed" id="amount-fixed-<?php echo $fixedAmount; ?>-<?php echo $block->getIdentifier(); ?>" value="<?php echo $fixedAmount; ?>">
+                        <label for="amount-fixed-<?php echo $fixedAmount; ?>-<?php echo $block->getIdentifier(); ?>" class="experius-donation-amount-label" data-amount="<?php echo $fixedAmount; ?>">
                             <span><?php echo $viewFixedAmount; ?></span>
                         </label>
                     <?php endforeach; ?>
@@ -81,7 +81,7 @@ $imageDetailId = 'category_page_grid';
             {
                 "popupContainer":".experius-donation-modal",
                 "productSelector":".experius-donation-product",
-                "addToCartFormId":"#experius-donation-product-addtocart-form-<?php echo $block->getNameInLayout(); ?>",
+                "addToCartFormId":"#experius-donation-product-addtocart-form-<?php echo $block->getIdentifier(); ?>",
                 "modalClass":".experius-donation-modal",
                 "ajaxCart": false
             }

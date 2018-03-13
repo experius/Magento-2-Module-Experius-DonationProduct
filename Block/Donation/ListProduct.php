@@ -174,4 +174,9 @@ class ListProduct extends \Magento\Framework\View\Element\Template
     {
         return $this->getData('ajax_add_to_cart');
     }
+
+    public function getIdentifier()
+    {
+        return str_replace('.', '-', parent::getNameInLayout());
+    }
 }

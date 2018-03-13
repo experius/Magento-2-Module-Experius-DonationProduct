@@ -22,7 +22,7 @@
 namespace Experius\DonationProduct\Block\Checkout;
 
 use Experius\DonationProduct\Helper\Data as DonationHelper;
-use Experius\DonationProduct\Block\Donation\ListProduct as DonationProducts;
+use Experius\DonationProduct\Block\Donation\ListProductFactory as DonationProductsFactory;
 
 /**
  * Class LayoutProcessor
@@ -37,9 +37,9 @@ class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcesso
     private $donationHelper;
 
     /**
-     * @var DonationProducts
+     * @var \Experius\DonationProduct\Block\Donation\ListProduct
      */
-    private $donationProducts;
+    private $donationProductsFactory;
 
     /**
      * LayoutProcessor constructor.
@@ -48,10 +48,10 @@ class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcesso
      */
     public function __construct(
         DonationHelper $donationHelper,
-        DonationProducts $donationProducts
+        DonationProductsFactory $donationProductsFactory
     ) {
         $this->donationHelper = $donationHelper;
-        $this->donationProducts = $donationProducts;
+        $this->donationProductsFactory = $donationProductsFactory;
     }
 
     /**
@@ -67,13 +67,13 @@ class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcesso
             ['afterMethods']['children'])) {
             $result['components']['checkout']['children']['steps']['children']
             ['billing-step']['children']['payment']['children']
-            ['afterMethods']['children']['experius-donations'] = $this->getDonationForm();
+            ['afterMethods']['children']['experius-donations'] = $this->getDonationForm('checkout.donation.list');
         }
 
         if ($this->donationHelper->isLayoutCheckoutSidebarEnabled() &&
             isset($result['components']['checkout']['children']['sidebar']['children']['summary']['children'])) {
             $result['components']['checkout']['children']['sidebar']['children']['summary']['children']
-            ['experius-donations'] = $this->getDonationForm();
+            ['experius-donations'] = $this->getDonationForm('checkout.sidebar.donation.list');
         }
 
         return $result;
@@ -83,13 +83,20 @@ class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcesso
      * @param $scope
      * @return array
      */
-    public function getDonationForm()
+    public function getDonationForm($nameInLayout)
     {
+        $donationProductsBlock = $this->donationProductsFactory->create();
+        $donationProductsBlock->setTemplate('donation.phtml');
+        $donationProductsBlock->setNameInLayout($nameInLayout);
+
+        $content = $donationProductsBlock->toHtml();
+        $content .= "<script type=\"text/javascript\">jQuery('body').trigger('contentUpdated');</script>";
+
         $donationForm =
             [
                 'component' => 'Magento_Ui/js/form/components/html',
                 'config' => [
-                    'content'=> $this->donationProducts->setTemplate('donation.phtml')->toHtml() . "<script type=\"text/javascript\">jQuery('body').trigger('contentUpdated');</script>"
+                    'content'=> $content
                 ]
             ];
 
