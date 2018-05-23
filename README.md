@@ -149,3 +149,33 @@ Follow the step below to uninstall the module.
 4. Go to System > Attributes > Product 
 5. Search the attribute 'experius_donation_min_amount' (Minimal Donation Amount) and delete it
 6. Run the following in the command line ```bin/magento module:uninstall Experius_DonationProduct``` 
+
+<h4>FAQ</h4>
+
+<b><i>Can i combine the 'Donation product options' with 'Custom options / Customizable Options'?</i></b>
+
+Although its not supported, it can be done! You have change the following template by overwriting it with your own custom template version.
+vendor/magento/module-catalog/view/frontend/templates/product/view/form.phtml. You probaly have to hide or remove a duplicate addtocart button
+
+The donation product uses the 'product_info_form_content' container. This is only rendered when no 'Custom options' are found.
+```php 
+<?php if (!$block->hasOptions()):?>
+    <?= $block->getChildHtml('product_info_form_content') ?>
+<?php else:?>
+    <?php if ($_product->isSaleable() && $block->getOptionsContainer() == 'container1'):?>
+        <?= $block->getChildChildHtml('options_container') ?>
+    <?php endif;?>
+<?php endif; ?>
+```
+
+If you want to render both 'Custom options' and 'Donation options'. Change the if statement.
+
+```php 
+<?php if (!$block->hasOptions() || $_product->getTypeId()=='donation'):?>
+    <?= $block->getChildHtml('product_info_form_content') ?>
+<?php else:?>
+    <?php if ($_product->isSaleable() && $block->getOptionsContainer() == 'container1'):?>
+        <?= $block->getChildChildHtml('options_container') ?>
+    <?php endif;?>
+<?php endif; ?>
+```
