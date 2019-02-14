@@ -59,5 +59,4 @@ class AddToCartMinimumAmountTest extends \Magento\TestFramework\TestCase\Abstrac
 
         $this->assertSessionMessages($this->equalTo(['Donation amount lower then minimal amount']));
     }
-
 }

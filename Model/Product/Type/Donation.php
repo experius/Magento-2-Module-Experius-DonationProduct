@@ -135,7 +135,10 @@ class Donation extends \Magento\Catalog\Model\Product\Type\AbstractType
         $options = parent::getOrderOptions($product);
 
         if ($configurationOption = $product->getCustomOption(Data::DONATION_OPTION_CODE)) {
-            $optionsArray = $this->donationProductHelper->optionsJsonToMagentoOptionsArray($configurationOption->getValue(), $product);
+            $optionsArray = $this->donationProductHelper->optionsJsonToMagentoOptionsArray(
+                $configurationOption->getValue(),
+                $product
+            );
             $currentOptions = (isset($options['options'])) ? $options['options'] : [];
             $options['options'] = array_merge($currentOptions, $optionsArray);
         }
@@ -191,11 +194,15 @@ class Donation extends \Magento\Catalog\Model\Product\Type\AbstractType
             }
 
             if ($finalAmount<$this->donationProductHelper->getMinimalAmount($product)) {
-                throw new \Magento\Framework\Exception\LocalizedException(__('Donation amount lower then minimal amount'));
+                throw new \Magento\Framework\Exception\LocalizedException(
+                    __('Donation amount lower then minimal amount')
+                );
             }
 
             if ($finalAmount>$this->donationProductHelper->getMaximalAmount($product)) {
-                throw new \Magento\Framework\Exception\LocalizedException(__('Donation amount higher then maximal amount'));
+                throw new \Magento\Framework\Exception\LocalizedException(
+                    __('Donation amount higher then maximal amount')
+                );
             }
 
             $donationData['amount'] = $finalAmount;

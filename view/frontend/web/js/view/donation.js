@@ -6,7 +6,7 @@ define([
     "mage/validation",
     "uiComponent",
     "Magento_Ui/js/modal/modal"
-], function($, $t, ko, storage, validation, Component, modal) {
+], function ($, $t, ko, storage, validation, Component, modal) {
 
     $.widget('mage.donation', {
 
@@ -14,7 +14,7 @@ define([
             this.initDonationModal();
         },
 
-        initDonationModal: function(){
+        initDonationModal: function () {
 
             var options = {
                 type: 'popup',
@@ -25,7 +25,7 @@ define([
                 buttons: []
             }
 
-            var popupContainer = $( this.options.popupContainer);
+            var popupContainer = $(this.options.popupContainer);
             var pImage = $('.charity-image', popupContainer);
             var pDescription = $('.charity-description', popupContainer);
             var pForm = $('.charity-form', popupContainer);
@@ -35,9 +35,9 @@ define([
 
             this.addFormValidation();
 
-            $('html').on('click', this.options.productSelector, function(){
+            $('html').on('click', this.options.productSelector, function () {
                 var charity = jQuery(this);
-                if(charity.data('productid') != ''){
+                if (charity.data('productid') != '') {
                     var title           = charity.data('title'),
                         description     = charity.data('description'),
                         imageurl        = charity.data('imageurl'),
@@ -62,8 +62,8 @@ define([
                 }
             });
 
-            if(this.options.ajaxCart) {
-                $(this.options.addToCartFormId).submit(function(e) {
+            if (this.options.ajaxCart) {
+                $(this.options.addToCartFormId).submit(function (e) {
                     $.ajax({
                         type: "POST",
                         url: jQuery(this.options.addToCartFormId).attr('action'),
@@ -75,7 +75,7 @@ define([
             }
         },
 
-        addFormValidation: function() {
+        addFormValidation: function () {
             var addtoCartForm = $(this.options.addToCartFormId);
             addtoCartForm.mage('validation', {});
         }

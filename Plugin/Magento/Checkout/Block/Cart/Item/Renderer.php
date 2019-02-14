@@ -63,7 +63,10 @@ class Renderer
             $options = [];
             $showOptionsInCart = false;
             if ($itemOption && $showOptionsInCart) {
-                $options = $this->donationProductHelper->optionsJsonToMagentoOptionsArray($itemOption->getValue(), $product);
+                $options = $this->donationProductHelper->optionsJsonToMagentoOptionsArray(
+                    $itemOption->getValue(),
+                    $product
+                );
             }
 
             return array_merge($options, $result);

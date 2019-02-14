@@ -64,5 +64,4 @@ class AddToCartTest extends \Magento\TestFramework\TestCase\AbstractController
         $this->assertEquals(999, $item->getProductId(), 'Quote has more than one product');
         $this->assertEquals($donationAmount, $item->getPrice(), 'Expected product price failed');
     }
-
 }

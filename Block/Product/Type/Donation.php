@@ -101,7 +101,10 @@ class Donation extends AbstractProduct
      */
     public function getMinimalDonationAmount()
     {
-        return $this->donationHelper->getCurrencySymbol() . ' ' . $this->donationHelper->getMinimalAmount($this->getProduct());
+        $minimalAmount = $this->donationHelper->getCurrencySymbol() . ' ';
+        $minimalAmount .= $this->donationHelper->getMinimalAmount($this->getProduct());
+
+        return $minimalAmount;
     }
 
     /**
@@ -111,6 +114,4 @@ class Donation extends AbstractProduct
     {
         return $this->donationHelper->getHtmlValidationClasses($this->getProduct());
     }
-
-
 }

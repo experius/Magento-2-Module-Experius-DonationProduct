@@ -15,6 +15,18 @@ Add the module to your composer.json
 Run the Magento Setup Upgrade
 ```bin/magento setup:upgrade```
 
+Install Sample Data (optional)
+
+A number of international charities will be created for testing purposes
+
+(Oxfam, Greenpeace, Save the Children, Amnesty International, World Wildlife Fund)
+
+```bin/magento experius_donationproduct:sampledata:deploy```
+
+Remove Sample Data (optional)
+
+```bin/magento experius_donationproduct:sampledata:remove```
+
 <h2>Frontend</h2>
 
 - This module adds a new product type "Donation Product" to your Magento 2 installation.

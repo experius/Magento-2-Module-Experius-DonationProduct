@@ -155,5 +155,4 @@ class SampleData
         }
         return $product;
     }
-
 }
