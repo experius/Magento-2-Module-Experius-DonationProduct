@@ -44,4 +44,20 @@
 		</arguments>
 	</type>
 
+	<type name="Magento\Framework\Console\CommandList">
+		<arguments>
+			<argument name="commands" xsi:type="array">
+				<item name="SampleDataDeploy" xsi:type="object">Experius\DonationProduct\Console\Command\SampleDataDeploy</item>
+			</argument>
+		</arguments>
+	</type>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="SampleDataRemove" xsi:type="object">Experius\DonationProduct\Console\Command\SampleDataRemove</item>
+            </argument>
+        </arguments>
+    </type>
+
 </config>

@@ -175,8 +175,27 @@ class ListProduct extends \Magento\Framework\View\Element\Template
         return $this->getData('ajax_add_to_cart');
     }
 
+    /**
+     * @return mixed
+     */
     public function getIdentifier()
     {
         return str_replace('.', '-', parent::getNameInLayout());
+    }
+
+    /**
+     * @return string
+     */
+    public function getMinimalDonationAmount($product)
+    {
+        return $this->donationHelper->getCurrencySymbol() . ' ' . $this->donationHelper->getMinimalAmount($product);
+    }
+
+    /**
+     * @return string
+     */
+    public function getHtmlValidationClasses($product)
+    {
+        return $this->donationHelper->getHtmlValidationClasses($product);
     }
 }

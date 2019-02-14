@@ -29,7 +29,11 @@ define([
             var pImage = $('.charity-image', popupContainer);
             var pDescription = $('.charity-description', popupContainer);
             var pForm = $('.charity-form', popupContainer);
+            var pInput = $('#custom-amount-input-' + this.options.identifier);
+            var pMinLabel = $('.experius-donation-minimal-amount-label');
             var popup = modal(options, popupContainer);
+
+            this.addFormValidation();
 
             $('html').on('click', this.options.productSelector, function(){
                 var charity = jQuery(this);
@@ -38,11 +42,17 @@ define([
                         description     = charity.data('description'),
                         imageurl        = charity.data('imageurl'),
                         addtocarturl    = charity.data('addtocarturl');
+                        htmlvalidation  = charity.data('htmlvalidation');
+                        minimalamount  = charity.data('minimal-amount');
+
 
                     pImage.attr('src', imageurl).attr('alt', title);
                     pDescription.html(description);
                     pForm.attr('action', addtocarturl);
                     pImage.attr('src', imageurl);
+                    pInput.removeClass();
+                    pInput.addClass(htmlvalidation);
+                    pMinLabel.text(pMinLabel.text().replace("%2", minimalamount));
 
                     $('.experius-donation-modal')
                         .modal(options)
@@ -63,6 +73,11 @@ define([
                     e.preventDefault();
                 });
             }
+        },
+
+        addFormValidation: function() {
+            var addtoCartForm = $(this.options.addToCartFormId);
+            addtoCartForm.mage('validation', {});
         }
 
     });

@@ -65,6 +65,14 @@ class Donation extends AbstractProduct
     }
 
     /**
+     * @return int
+     */
+    public function getMaximalAmount()
+    {
+        return $this->donationHelper->getMaximalAmount($this->getProduct());
+    }
+
+    /**
      * @return mixed
      */
     public function getConfiguratorCode()
@@ -95,4 +103,14 @@ class Donation extends AbstractProduct
     {
         return $this->donationHelper->getCurrencySymbol() . ' ' . $this->donationHelper->getMinimalAmount($this->getProduct());
     }
+
+    /**
+     * @return string
+     */
+    public function getHtmlValidationClasses()
+    {
+        return $this->donationHelper->getHtmlValidationClasses($this->getProduct());
+    }
+
+
 }

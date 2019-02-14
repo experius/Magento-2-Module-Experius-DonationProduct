@@ -30,6 +30,8 @@ $imageDetailId = 'category_page_grid';
                     data-description="<?php echo htmlspecialchars($item->getShortDescription()); ?>"
                     data-imageurl="<?php echo $block->getImage($item, $imageDetailId)->getImageUrl(); ?>"
                     data-productid="<?php echo $item->getId(); ?>"
+                    data-htmlvalidation="<?php echo $block->getHtmlValidationClasses($item); ?>"
+                    data-minimal-amount="<?php echo $block->getMinimalDonationAmount($item); ?>"
                     data-addtocarturl="<?php echo $block->getAddToCartUrl($item); ?>">
                     <a title="<?php echo $item->getName(); ?>" class="experius-donation-image-wrapper">
                         <img src="<?php echo $block->getImage($item, $imageThumbnailId)->getImageUrl(); ?>" alt="<?php echo $item->getName(); ?>" class="experius-donation-product-image" />
@@ -44,7 +46,7 @@ $imageDetailId = 'category_page_grid';
 
     <div class="experius-donation-modal">
         <article>
-            <img src="https://via.placeholder.com/200x200" alt="" class="charity-image" />
+            <img src="" alt="" class="charity-image" />
             <p class="charity-description"></p>
         </article>
         <form method="POST" class="charity-form" id="experius-donation-product-addtocart-form-<?php echo $block->getIdentifier(); ?>">
@@ -58,10 +60,13 @@ $imageDetailId = 'category_page_grid';
                         </label>
                     <?php endforeach; ?>
                 </div>
+                <label class="label">
+                    <span class="experius-donation-minimal-amount-label"><?php echo __('Choose your own Amount %1 (minimum %2)', $block->getCurrencySymbol()); ?></span>
+                </label>
                 <p class="experius-donation-custom-amount">
                     <span class="custom-donation-amount-field">
                         <span class="custom-amount-currency-symbol"><?php echo $block->getCurrencySymbol(); ?></span>
-                        <input name="amount" title="amount" class="amount input-text validate-number" type="text" data-validate="{required:true, 'validate-number': true}" aria-required="true" value="">
+                        <input id="custom-amount-input-<?php echo $block->getIdentifier(); ?>" name="amount" title="amount" class="input-text validate-number" type="text" data-validate="{required:true, 'validate-number': true}" aria-required="true" value="">
                     </span>
                 </p>
                 <p class="experius-donation-amount-notification">
@@ -83,7 +88,8 @@ $imageDetailId = 'category_page_grid';
                 "productSelector":".experius-donation-product",
                 "addToCartFormId":"#experius-donation-product-addtocart-form-<?php echo $block->getIdentifier(); ?>",
                 "modalClass":".experius-donation-modal",
-                "ajaxCart": false
+                "ajaxCart": false,
+                "identifier": "<?php echo $block->getIdentifier(); ?>"
             }
         }
     }

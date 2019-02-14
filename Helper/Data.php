@@ -195,13 +195,17 @@ class Data extends AbstractHelper
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCurrencySymbol()
     {
-        return $this->storeManager->getStore()->getCurrentCurrency()->getCurrencySymbol();
+        return (string) $this->storeManager->getStore()->getCurrentCurrency()->getCurrencySymbol();
     }
 
+    /**
+     * @param $blockName
+     * @return int
+     */
     public function getLimitByBlockName($blockName)
     {
         $limit = $this->scopeConfig->getValue(
@@ -230,24 +234,38 @@ class Data extends AbstractHelper
                 break;
         }
 
-        return $limit;
+        return (int) $limit;
     }
 
+    /**
+     * @return int
+     */
     public function isLayoutCheckoutEnabled()
     {
-
-        return $this->scopeConfig->getValue(
+        return (int) $this->scopeConfig->getValue(
             self::DONATION_CONFIGURATION_LAYOUT_CHECKOUT_ENABLED,
             ScopeInterface::SCOPE_STORE
         );
     }
 
+    /**
+     * @return int
+     */
     public function isLayoutCheckoutSidebarEnabled()
     {
-
-        return $this->scopeConfig->getValue(
+        return (int) $this->scopeConfig->getValue(
             self::DONATION_CONFIGURATION_LAYOUT_CHECKOUT_SIDEBAR_ENABLED,
             ScopeInterface::SCOPE_STORE
         );
+    }
+
+    /**
+     * @param $product
+     * @return string
+     */
+    public function getHtmlValidationClasses($product)
+    {
+        $range = 'digits-range-' . $this->getMinimalAmount($product) . '-' . $this->getMaximalAmount($product);
+        return (string) 'input-text validate-number validate-digits-range ' . $range;
     }
 }
