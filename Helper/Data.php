@@ -35,21 +35,19 @@ class Data extends AbstractHelper
 
     const DONATION_OPTION_CODE = 'donation_options';
 
-    const DONATION_CONFIGURATION_ENABLED = 'experius_donation_product/general/enabled';
-
     const DONATION_CONFIGURATION_MINIMAL_AMOUNT = 'experius_donation_product/general/minimal_amount';
 
     const DONATION_CONFIGURATION_MAXIMAL_AMOUNT = 'experius_donation_product/general/maximal_amount';
 
     const DONATION_CONFIGURATION_FIXED_AMOUNTS = 'experius_donation_product/general/fixed_amounts';
 
-    const DONATION_CONFIGURATION_PRODUCT_LIMIT_SIDEBAR = 'experius_donation_product/general/sidebar_product_limit';
+    const DONATION_CONFIGURATION_PRODUCT_LIMIT_SIDEBAR = 'experius_donation_product/layout/sidebar_product_limit';
 
-    const DONATION_CONFIGURATION_PRODUCT_LIMIT_HOMEPAGE = 'experius_donation_product/general/homepage_product_limit';
+    const DONATION_CONFIGURATION_PRODUCT_LIMIT_HOMEPAGE = 'experius_donation_product/layout/homepage_product_limit';
 
-    const DONATION_CONFIGURATION_PRODUCT_LIMIT_CART = 'experius_donation_product/general/cart_product_limit';
+    const DONATION_CONFIGURATION_PRODUCT_LIMIT_CART = 'experius_donation_product/layout/cart_product_limit';
 
-    const DONATION_CONFIGURATION_PRODUCT_LIMIT_CHECKOUT =  'experius_donation_product/general/checkout_product_limit';
+    const DONATION_CONFIGURATION_PRODUCT_LIMIT_CHECKOUT =  'experius_donation_product/layout/checkout_product_limit';
 
     const DONATION_CONFIGURATION_LAYOUT_CHECKOUT_ENABLED =  'experius_donation_product/layout/checkout_enabled';
 
