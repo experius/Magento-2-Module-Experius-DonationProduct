@@ -9,9 +9,9 @@
             <div class="control">
                 <div class="options-list nested" id="options-4-list">
                     <?php foreach ($block->getFixedAmounts() as $fixedAmount => $viewFixedAmount) : ?>
-                        <div class="field choice admin__field admin__field-option">
-                            <input type="radio" class="radio admin__control-radio" name="amount_fixed" value="<?php echo $fixedAmount; ?>">
-                            <label class="label admin__field-label" for="options_4_2"><span><?php echo $viewFixedAmount; ?></span></label>
+                        <div class="field choice admin__field">
+                            <input type="radio" class="radio input-radio-fixed-donation" name="amount_fixed" value="<?php echo $fixedAmount; ?>">
+                            <label class="label" for="options_4_2"><span><?php echo $viewFixedAmount; ?></span></label>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -27,3 +27,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    require([
+        "jquery",
+    ], function ($) {
+        var amountInput =  $('#amount');
+        $('#product_addtocart_form').on('change', '.input-radio-fixed-donation', function () {
+            amountInput.removeClass('required');
+            amountInput.validation().valid();
+        });
+        $('#product_addtocart_form').on('change', '#amount', function () {
+            amountInput.validation().valid();
+        });
+    });
+</script>

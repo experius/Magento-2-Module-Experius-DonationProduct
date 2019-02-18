@@ -54,7 +54,7 @@ $imageDetailId = 'category_page_grid';
             <div class="experius-donation-amounts" data-role="">
                 <div class="experius-donations-fixed-amounts">
                     <?php foreach ($block->getFixedAmounts() as $fixedAmount => $viewFixedAmount) : ?>
-                        <input type="radio" name="amount_fixed" id="amount-fixed-<?php echo $fixedAmount; ?>-<?php echo $block->getIdentifier(); ?>" value="<?php echo $fixedAmount; ?>">
+                        <input type="radio" name="amount_fixed" class="input-radio-amount-<?php echo $block->getIdentifier(); ?>" id="amount-fixed-<?php echo $fixedAmount; ?>-<?php echo $block->getIdentifier(); ?>" value="<?php echo $fixedAmount; ?>">
                         <label for="amount-fixed-<?php echo $fixedAmount; ?>-<?php echo $block->getIdentifier(); ?>" class="experius-donation-amount-label" data-amount="<?php echo $fixedAmount; ?>">
                             <span><?php echo $viewFixedAmount; ?></span>
                         </label>
@@ -66,7 +66,7 @@ $imageDetailId = 'category_page_grid';
                 <p class="experius-donation-custom-amount">
                     <span class="custom-donation-amount-field">
                         <span class="custom-amount-currency-symbol"><?php echo $block->getCurrencySymbol(); ?></span>
-                        <input id="custom-amount-input-<?php echo $block->getIdentifier(); ?>" name="amount" title="amount" class="input-text validate-number" type="text" data-validate="{required:true, 'validate-number': true}" aria-required="true" value="">
+                        <input id="custom-amount-input-<?php echo $block->getIdentifier(); ?>" name="amount" title="amount" class="input-text validate-number" type="text" value="">
                     </span>
                 </p>
                 <p class="experius-donation-amount-notification">
@@ -89,7 +89,8 @@ $imageDetailId = 'category_page_grid';
                 "addToCartFormId":"#experius-donation-product-addtocart-form-<?php echo $block->getIdentifier(); ?>",
                 "modalClass":".experius-donation-modal",
                 "ajaxCart": false,
-                "identifier": "<?php echo $block->getIdentifier(); ?>"
+                "identifier": "<?php echo $block->getIdentifier(); ?>",
+                "inputRadioSelector": ".input-radio-amount-<?php echo $block->getIdentifier(); ?>"
             }
         }
     }

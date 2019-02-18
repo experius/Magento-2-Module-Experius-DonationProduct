@@ -26,9 +26,6 @@
                 <checkout_sidebar_enabled>1</checkout_sidebar_enabled>
                 <checkout_sidebar_product_limit>4</checkout_sidebar_product_limit>
             </layout>
-            <charities>
-                <api_url>https://raw.githubusercontent.com/experius/Experius-DonationFeed/master</api_url>
-            </charities>
         </experius_donation_product>
     </default>
 </config>

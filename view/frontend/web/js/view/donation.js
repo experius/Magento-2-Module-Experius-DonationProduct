@@ -62,6 +62,15 @@ define([
                 }
             });
 
+            $('html').on('change', this.options.inputRadioSelector, function () {
+                pInput.removeClass('required');
+                pInput.validation().valid();
+            });
+
+            $('html').on('change', '#custom-amount-input-' + this.options.identifier, function () {
+                pInput.validation().valid();
+            });
+
             if (this.options.ajaxCart) {
                 $(this.options.addToCartFormId).submit(function (e) {
                     $.ajax({

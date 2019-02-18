@@ -136,7 +136,6 @@ class SampleData
             ->setAttributeSetId($attributeSetId)
             ->setWebsiteIds([$this->storeManager->getDefaultStoreView()->getWebsiteId()])
             ->setStatus(\Magento\Catalog\Model\Product\Attribute\Source\Status::STATUS_ENABLED)
-            ->setStockData(['is_in_stock' => 1, 'manage_stock' => 0])
             ->setStoreId(\Magento\Store\Model\Store::DEFAULT_STORE_ID);
 
         if (empty($data['visibility'])) {

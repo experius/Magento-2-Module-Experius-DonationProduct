@@ -264,6 +264,6 @@ class Data extends AbstractHelper
     public function getHtmlValidationClasses($product)
     {
         $range = 'digits-range-' . $this->getMinimalAmount($product) . '-' . $this->getMaximalAmount($product);
-        return (string) 'input-text validate-number validate-digits-range ' . $range;
+        return (string) 'required input-text validate-number validate-digits-range ' . $range;
     }
 }
