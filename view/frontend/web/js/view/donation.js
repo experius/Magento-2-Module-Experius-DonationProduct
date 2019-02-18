@@ -16,6 +16,8 @@ define([
 
         initDonationModal: function () {
 
+            var self = this;
+
             var options = {
                 type: 'popup',
                 title: 'Donation',
@@ -45,6 +47,7 @@ define([
                         htmlvalidation  = charity.data('htmlvalidation');
                         minimalamount  = charity.data('minimal-amount');
 
+                    self.resetRadioButtons();
 
                     pImage.attr('src', imageurl).attr('alt', title);
                     pDescription.html(description);
@@ -82,6 +85,10 @@ define([
                     e.preventDefault();
                 });
             }
+        },
+
+        resetRadioButtons: function () {
+            $(this.options.inputRadioSelector).attr('checked', false);
         },
 
         addFormValidation: function () {
