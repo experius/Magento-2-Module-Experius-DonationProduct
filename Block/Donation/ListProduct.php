@@ -198,4 +198,9 @@ class ListProduct extends \Magento\Framework\View\Element\Template
     {
         return $this->donationHelper->getHtmlValidationClasses($product);
     }
+
+    public function ajaxCartEnabled()
+    {
+        return false;
+    }
 }

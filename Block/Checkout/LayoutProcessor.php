@@ -23,6 +23,7 @@ namespace Experius\DonationProduct\Block\Checkout;
 
 use Experius\DonationProduct\Helper\Data as DonationHelper;
 use Experius\DonationProduct\Block\Donation\ListProductFactory as DonationProductsFactory;
+use Magento\Framework\View\Element\MessagesFactory as MessagesFactory;
 
 /**
  * Class LayoutProcessor
@@ -42,16 +43,24 @@ class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcesso
     private $donationProductsFactory;
 
     /**
+     * @var \Magento\Framework\View\Element\MessagesFactory
+     */
+    private $messagesFactory;
+
+    /**
      * LayoutProcessor constructor.
      * @param DonationHelper $donationHelper
      * @param DonationProducts $donationProducts
+     * @param MessagesFactory $messagesFactory
      */
     public function __construct(
         DonationHelper $donationHelper,
-        DonationProductsFactory $donationProductsFactory
+        DonationProductsFactory $donationProductsFactory,
+        MessagesFactory $messagesFactory
     ) {
         $this->donationHelper = $donationHelper;
         $this->donationProductsFactory = $donationProductsFactory;
+        $this->messagesFactory = $messagesFactory;
     }
 
     /**
@@ -85,9 +94,17 @@ class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcesso
      */
     public function getDonationForm($nameInLayout)
     {
+        /* @var $donationProductsBlock \Experius\DonationProduct\Block\Donation\ListProduct */
         $donationProductsBlock = $this->donationProductsFactory->create();
         $donationProductsBlock->setTemplate('donation.phtml');
         $donationProductsBlock->setNameInLayout($nameInLayout);
+        $donationProductsBlock->getLayout()->addBlock($donationProductsBlock,$nameInLayout);
+
+        /* @var $messagesBlock \Magento\Framework\View\Element\Messages */
+        $messagesBlock = $this->messagesFactory->create();
+        $messagesBlock->setTemplate('Magento_Theme::messages.phtml');
+
+        $donationProductsBlock->addChild('messages', $messagesBlock);
 
         $content = $donationProductsBlock->toHtml();
         $content .= "<script type=\"text/javascript\">jQuery('body').trigger('contentUpdated');</script>";

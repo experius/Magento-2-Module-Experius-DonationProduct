@@ -11,7 +11,9 @@
     </head>
     <body>
         <referenceContainer name="sidebar.additional">
-            <block class="Experius\DonationProduct\Block\Donation\ListProduct" name="sidebar.donation.list" before="-" template="donation.phtml" ifconfig="experius_donation_product/layout/sidebar_enabled"/>
+            <block class="Experius\DonationProduct\Block\Donation\ListProduct" name="sidebar.donation.list" before="-" template="donation.phtml" ifconfig="experius_donation_product/layout/sidebar_enabled">
+                <block class="Magento\Framework\View\Element\Messages" name="sidebar.donation.list.messages" as="messages" template="Magento_Theme::messages.phtml"/>
+            </block>
         </referenceContainer>
     </body>
 </page>

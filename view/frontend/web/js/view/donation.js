@@ -5,8 +5,9 @@ define([
     "mage/storage",
     "mage/validation",
     "uiComponent",
-    "Magento_Ui/js/modal/modal"
-], function ($, $t, ko, storage, validation, Component, modal) {
+    "Magento_Ui/js/modal/modal",
+    "Magento_Checkout/js/action/get-totals"
+], function ($, $t, ko, storage, validation, Component, modal, getTotalsAction) {
 
     $.widget('mage.donation', {
 
@@ -32,10 +33,14 @@ define([
             var pDescription = $('.charity-description', popupContainer);
             var pForm = $('.charity-form', popupContainer);
             var pInput = $('#custom-amount-input-' + this.options.identifier);
-            var pMinLabel = $('.experius-donation-minimal-amount-label');
+            var pMinLabel = $('.experius-donation-minimal-amount-label-' + this.options.identifier);
             var popup = modal(options, popupContainer);
 
             this.addFormValidation();
+
+            if (this.options.ajaxCart) {
+                this.initAjaxCart();
+            }
 
             $('html').on('click', this.options.productSelector, function () {
                 var charity = jQuery(this);
@@ -47,6 +52,8 @@ define([
                         htmlvalidation  = charity.data('htmlvalidation');
                         minimalamount  = charity.data('minimal-amount');
 
+
+                    self.clearMessages();
                     self.resetRadioButtons();
 
                     pImage.attr('src', imageurl).attr('alt', title);
@@ -55,7 +62,8 @@ define([
                     pImage.attr('src', imageurl);
                     pInput.removeClass();
                     pInput.addClass(htmlvalidation);
-                    pMinLabel.text(pMinLabel.text().replace("%2", minimalamount));
+
+                    pMinLabel.text(minimalamount);
 
                     $('.experius-donation-modal')
                         .modal(options)
@@ -74,17 +82,30 @@ define([
                 pInput.validation().valid();
             });
 
-            if (this.options.ajaxCart) {
-                $(this.options.addToCartFormId).submit(function (e) {
-                    $.ajax({
-                        type: "POST",
-                        url: jQuery(this.options.addToCartFormId).attr('action'),
-                        data: jQuery(this.options.addToCartFormId).serialize(),
-                        showLoader: true
-                    });
-                    e.preventDefault();
+        },
+
+        initAjaxCart: function() {
+            var self = this;
+            $(this.options.addToCartFormId).submit(function (e) {
+
+                if(!$(self.options.addToCartFormId).valid()) {
+                    return;
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: jQuery(self.options.addToCartFormId).attr('action'),
+                    data: jQuery(self.options.addToCartFormId).serialize(),
+                    showLoader: true,
+                    success: function(response) {
+                        if (response.backUrl) {
+                            window.location.replace(response.backUrl);
+                        }
+                        self.refreshCheckoutCartAndTotals();
+                    }
                 });
-            }
+                e.preventDefault();
+            });
         },
 
         resetRadioButtons: function () {
@@ -94,6 +115,15 @@ define([
         addFormValidation: function () {
             var addtoCartForm = $(this.options.addToCartFormId);
             addtoCartForm.mage('validation', {});
+        },
+
+        clearMessages: function() {
+            $('.experius-donation-modal .message').remove();
+        },
+
+        refreshCheckoutCartAndTotals: function() {
+            var deferred = $.Deferred();
+            getTotalsAction([], deferred);
         }
 
     });

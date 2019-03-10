@@ -7,76 +7,79 @@ $imageDetailId = 'category_page_grid';
 ?>
 
 <?php if (!empty($items)) : ?>
-    <section class="experius-donation">
-        <header>
-            <h3>
-                <?php echo __('Support a charity with your donation'); ?>
-            </h3>
-        </header>
-        <p>
-            <?php echo __('Pick one of our favorite charities and donate'); ?>
-        </p>
-        <section class="experius-donation-product-list">
+    <div class="experius-donation-wrapper" id="experius-donation-wrapper-<?php echo $block->getIdentifier(); ?>">
+        <section class="experius-donation">
             <header>
-                <h4><?php echo __('Charities that can use your support'); ?></h4>
-                <p class="experius-donation-mobile-instructions">
-                    <?php echo __('Click a Charity to support'); ?>
-                </p>
+                <h3>
+                    <?php echo __('Support a charity with your donation'); ?>
+                </h3>
             </header>
-            <?php foreach ($items as $item) : ?>
-                <article
-                    class="experius-donation-product"
-                    data-title="<?php echo $item->getName(); ?>"
-                    data-description="<?php echo htmlspecialchars($item->getShortDescription()); ?>"
-                    data-imageurl="<?php echo $block->getImage($item, $imageDetailId)->getImageUrl(); ?>"
-                    data-productid="<?php echo $item->getId(); ?>"
-                    data-htmlvalidation="<?php echo $block->getHtmlValidationClasses($item); ?>"
-                    data-minimal-amount="<?php echo $block->getMinimalDonationAmount($item); ?>"
-                    data-addtocarturl="<?php echo $block->getAddToCartUrl($item); ?>">
-                    <a title="<?php echo $item->getName(); ?>" class="experius-donation-image-wrapper">
-                        <img src="<?php echo $block->getImage($item, $imageThumbnailId)->getImageUrl(); ?>" alt="<?php echo $item->getName(); ?>" class="experius-donation-product-image" />
-                    </a>
-                    <a class="experius-donation-product-tocart">
-                        <?php echo __('I want to donate'); ?>
-                    </a>
-                </article>
-            <?php endforeach; ?>
+            <p>
+                <?php echo __('Pick one of our favorite charities and donate'); ?>
+            </p>
+            <section class="experius-donation-product-list">
+                <header>
+                    <h4><?php echo __('Charities that can use your support'); ?></h4>
+                    <p class="experius-donation-mobile-instructions">
+                        <?php echo __('Click a Charity to support'); ?>
+                    </p>
+                </header>
+                <?php foreach ($items as $item) : ?>
+                    <article
+                        class="experius-donation-product"
+                        data-title="<?php echo $item->getName(); ?>"
+                        data-description="<?php echo htmlspecialchars($item->getShortDescription()); ?>"
+                        data-imageurl="<?php echo $block->getImage($item, $imageDetailId)->getImageUrl(); ?>"
+                        data-productid="<?php echo $item->getId(); ?>"
+                        data-htmlvalidation="<?php echo $block->getHtmlValidationClasses($item); ?>"
+                        data-minimal-amount="<?php echo __('Choose your own Amount %1 (minimum %2)', $block->getCurrencySymbol(), $block->getMinimalDonationAmount($item)); ?>"
+                        data-addtocarturl="<?php echo $block->getAddToCartUrl($item); ?>">
+                        <a title="<?php echo $item->getName(); ?>" class="experius-donation-image-wrapper">
+                            <img src="<?php echo $block->getImage($item, $imageThumbnailId)->getImageUrl(); ?>" alt="<?php echo $item->getName(); ?>" class="experius-donation-product-image" />
+                        </a>
+                        <a class="experius-donation-product-tocart">
+                            <?php echo __('I want to donate'); ?>
+                        </a>
+                    </article>
+                <?php endforeach; ?>
+            </section>
         </section>
-    </section>
 
-    <div class="experius-donation-modal">
-        <article>
-            <img src="" alt="" class="charity-image" />
-            <p class="charity-description"></p>
-        </article>
-        <form method="POST" class="charity-form" id="experius-donation-product-addtocart-form-<?php echo $block->getIdentifier(); ?>">
-            <?php echo $block->getBlockHtml('formkey'); ?>
-            <div class="experius-donation-amounts" data-role="">
-                <div class="experius-donations-fixed-amounts">
-                    <?php foreach ($block->getFixedAmounts() as $fixedAmount => $viewFixedAmount) : ?>
-                        <input type="radio" name="amount_fixed" class="input-radio-amount-<?php echo $block->getIdentifier(); ?>" id="amount-fixed-<?php echo $fixedAmount; ?>-<?php echo $block->getIdentifier(); ?>" value="<?php echo $fixedAmount; ?>">
-                        <label for="amount-fixed-<?php echo $fixedAmount; ?>-<?php echo $block->getIdentifier(); ?>" class="experius-donation-amount-label" data-amount="<?php echo $fixedAmount; ?>">
-                            <span><?php echo $viewFixedAmount; ?></span>
-                        </label>
-                    <?php endforeach; ?>
+        <div class="experius-donation-modal" id="experius-donation-modal-<?php echo $block->getIdentifier(); ?>">
+            <?php echo $block->getChildHtml('messages'); ?>
+            <article>
+                <img src="" alt="" class="charity-image" />
+                <p class="charity-description"></p>
+            </article>
+            <form method="POST" class="charity-form" id="experius-donation-product-addtocart-form-<?php echo $block->getIdentifier(); ?>">
+                <?php echo $block->getBlockHtml('formkey'); ?>
+                <div class="experius-donation-amounts" data-role="">
+                    <div class="experius-donations-fixed-amounts">
+                        <?php foreach ($block->getFixedAmounts() as $fixedAmount => $viewFixedAmount) : ?>
+                            <input type="radio" name="amount_fixed" class="input-radio-amount-<?php echo $block->getIdentifier(); ?>" id="amount-fixed-<?php echo $fixedAmount; ?>-<?php echo $block->getIdentifier(); ?>" value="<?php echo $fixedAmount; ?>">
+                            <label for="amount-fixed-<?php echo $fixedAmount; ?>-<?php echo $block->getIdentifier(); ?>" class="experius-donation-amount-label" data-amount="<?php echo $fixedAmount; ?>">
+                                <span><?php echo $viewFixedAmount; ?></span>
+                            </label>
+                        <?php endforeach; ?>
+                    </div>
+                    <label class="label">
+                        <span class="experius-donation-minimal-amount-label-<?php echo $block->getIdentifier(); ?>"><?php echo __('Choose your own Amount %1 (minimum %2)', $block->getCurrencySymbol()); ?></span>
+                    </label>
+                    <p class="experius-donation-custom-amount">
+                        <span class="custom-donation-amount-field">
+                            <span class="custom-amount-currency-symbol"><?php echo $block->getCurrencySymbol(); ?></span>
+                            <input id="custom-amount-input-<?php echo $block->getIdentifier(); ?>" name="amount" title="amount" class="input-text validate-number" type="text" value="">
+                        </span>
+                    </p>
+                    <p class="experius-donation-amount-notification">
+                        <?php echo __('The selected amount will be added to your shopping cart.'); ?>
+                    </p>
                 </div>
-                <label class="label">
-                    <span class="experius-donation-minimal-amount-label"><?php echo __('Choose your own Amount %1 (minimum %2)', $block->getCurrencySymbol()); ?></span>
-                </label>
-                <p class="experius-donation-custom-amount">
-                    <span class="custom-donation-amount-field">
-                        <span class="custom-amount-currency-symbol"><?php echo $block->getCurrencySymbol(); ?></span>
-                        <input id="custom-amount-input-<?php echo $block->getIdentifier(); ?>" name="amount" title="amount" class="input-text validate-number" type="text" value="">
-                    </span>
-                </p>
-                <p class="experius-donation-amount-notification">
-                    <?php echo __('The selected amount will be added to your shopping cart.'); ?>
-                </p>
-            </div>
-            <div class="experius-donation-form-actions">
-                <button type="submit" class="button charity-button action primary"><?php echo __('I want to donate this amount'); ?></button>
-            </div>
-        </form>
+                <div class="experius-donation-form-actions">
+                    <button type="submit" class="button charity-button action primary"><?php echo __('I want to donate this amount'); ?></button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script type="text/x-magento-init">
@@ -88,12 +91,24 @@ $imageDetailId = 'category_page_grid';
                 "productSelector":".experius-donation-product",
                 "addToCartFormId":"#experius-donation-product-addtocart-form-<?php echo $block->getIdentifier(); ?>",
                 "modalClass":".experius-donation-modal",
-                "ajaxCart": false,
+                "ajaxCart": true,
                 "identifier": "<?php echo $block->getIdentifier(); ?>",
                 "inputRadioSelector": ".input-radio-amount-<?php echo $block->getIdentifier(); ?>"
             }
         }
     }
+    </script>
+
+    <script>
+        //<![CDATA[
+        requirejs([
+            'jquery',
+        ], function($){
+            if ($.fn.applyBindings != undefined) {
+                $('#experius-donation-wrapper-<?php echo $block->getIdentifier(); ?>').applyBindings();
+            }
+        });
+        //]]>
     </script>
 <?php endif; ?>
 
