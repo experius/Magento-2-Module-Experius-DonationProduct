@@ -131,7 +131,7 @@ class ListProduct extends \Magento\Framework\View\Element\Template
      */
     public function getAddToCartUrl($product, $additional = [])
     {
-        return $this->cartHelper->getAddUrl($product, $additional);
+        return $this->getUrl('donation/cart/add', ['product' => $product->getEntityId()]);
     }
 
 
@@ -166,15 +166,7 @@ class ListProduct extends \Magento\Framework\View\Element\Template
     {
         return $this->donationHelper->getCurrencySymbol();
     }
-
-    /**
-     * @return mixed
-     */
-    public function useAjaxAddToCart()
-    {
-        return $this->getData('ajax_add_to_cart');
-    }
-
+    
     /**
      * @return mixed
      */
@@ -197,5 +189,13 @@ class ListProduct extends \Magento\Framework\View\Element\Template
     public function getHtmlValidationClasses($product)
     {
         return $this->donationHelper->getHtmlValidationClasses($product);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAjaxEnabled()
+    {
+        return true;
     }
 }

@@ -31,7 +31,7 @@ $imageDetailId = 'category_page_grid';
                     data-imageurl="<?php echo $block->getImage($item, $imageDetailId)->getImageUrl(); ?>"
                     data-productid="<?php echo $item->getId(); ?>"
                     data-htmlvalidation="<?php echo $block->getHtmlValidationClasses($item); ?>"
-                    data-minimal-amount="<?php echo $block->getMinimalDonationAmount($item); ?>"
+                    data-minimal-amount="<?php echo __('Choose your own Amount %1 (minimum %2)', $block->getCurrencySymbol(), $block->getMinimalDonationAmount($item)); ?>"
                     data-addtocarturl="<?php echo $block->getAddToCartUrl($item); ?>">
                     <a title="<?php echo $item->getName(); ?>" class="experius-donation-image-wrapper">
                         <img src="<?php echo $block->getImage($item, $imageThumbnailId)->getImageUrl(); ?>" alt="<?php echo $item->getName(); ?>" class="experius-donation-product-image" />
@@ -61,7 +61,7 @@ $imageDetailId = 'category_page_grid';
                     <?php endforeach; ?>
                 </div>
                 <label class="label">
-                    <span class="experius-donation-minimal-amount-label"><?php echo __('Choose your own Amount %1 (minimum %2)', $block->getCurrencySymbol()); ?></span>
+                    <span class="experius-donation-minimal-amount-label-<?php echo $block->getIdentifier(); ?>"><?php echo __('Choose your own Amount %1 (minimum %2)', $block->getCurrencySymbol()); ?></span>
                 </label>
                 <p class="experius-donation-custom-amount">
                     <span class="custom-donation-amount-field">
@@ -88,7 +88,7 @@ $imageDetailId = 'category_page_grid';
                 "productSelector":".experius-donation-product",
                 "addToCartFormId":"#experius-donation-product-addtocart-form-<?php echo $block->getIdentifier(); ?>",
                 "modalClass":".experius-donation-modal",
-                "ajaxCart": false,
+                "ajaxCart": <?php if($block->isAjaxEnabled()) : ?>true<?php else : ?>false<?php endif; ?>,
                 "identifier": "<?php echo $block->getIdentifier(); ?>",
                 "inputRadioSelector": ".input-radio-amount-<?php echo $block->getIdentifier(); ?>"
             }
