@@ -131,7 +131,10 @@ class ListProduct extends \Magento\Framework\View\Element\Template
      */
     public function getAddToCartUrl($product, $additional = [])
     {
-        return $this->getUrl('donation/cart/add', ['product' => $product->getEntityId()]);
+        if ($this->isAjaxEnabled()) {
+            return $this->getUrl('donation/cart/add', ['product' => $product->getEntityId()]);
+        }
+        return $this->cartHelper->getAddUrl($product, $additional);
     }
 
 

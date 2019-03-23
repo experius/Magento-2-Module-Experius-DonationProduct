@@ -88,6 +88,7 @@ class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcesso
         $donationProductsBlock = $this->donationProductsFactory->create();
         $donationProductsBlock->setTemplate('donation.phtml');
         $donationProductsBlock->setNameInLayout($nameInLayout);
+        $donationProductsBlock->setAjaxRefreshOnSuccess(true);
 
         $content = $donationProductsBlock->toHtml();
         $content .= "<script type=\"text/javascript\">jQuery('body').trigger('contentUpdated');</script>";

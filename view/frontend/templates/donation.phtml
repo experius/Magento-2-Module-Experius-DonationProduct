@@ -88,9 +88,19 @@ $imageDetailId = 'category_page_grid';
                 "productSelector":".experius-donation-product",
                 "addToCartFormId":"#experius-donation-product-addtocart-form-<?php echo $block->getIdentifier(); ?>",
                 "modalClass":".experius-donation-modal",
-                "ajaxCart": <?php if($block->isAjaxEnabled()) : ?>true<?php else : ?>false<?php endif; ?>,
+                "ajaxCart": <?php if ($block->isAjaxEnabled()) :
+?>true<?php
+else :
+?>false<?php
+endif; ?>,
                 "identifier": "<?php echo $block->getIdentifier(); ?>",
-                "inputRadioSelector": ".input-radio-amount-<?php echo $block->getIdentifier(); ?>"
+                "inputRadioSelector": ".input-radio-amount-<?php echo $block->getIdentifier(); ?>",
+                "setAjaxRefreshOnSuccess": <?php if ($block->getAjaxRefreshOnSuccess()) :
+?>true<?php
+else :
+?>false<?php
+endif; ?>,
+                "setAjaxRefreshOnSuccessMsg": "<?php echo __('The page will be refreshed.') ?>"
             }
         }
     }

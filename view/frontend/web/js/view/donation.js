@@ -98,10 +98,14 @@ define([
                         self.clearMessages();
                         if (response.success) {
                             self.addMessage(response.success, 'success');
-                            location.reload();
                         }
                         if (response.error) {
                             self.addMessage(response.error, 'error');
+                        }
+                        if(response.success && self.options.setAjaxRefreshOnSuccess) {
+                            setTimeout(function() {
+                                location.reload();
+                            }, 1000);
                         }
                     }
                 });
@@ -114,6 +118,9 @@ define([
         },
 
         addMessage: function(message, type) {
+            if (this.options.setAjaxRefreshOnSuccess) {
+                message = message + ' ' + this.options.setAjaxRefreshOnSuccessMsg
+            }
             var messageHtml = '<div class="message">' +
                 '<div class="message '+ type +'">' + message + '</div>' +
                 '</div>';
