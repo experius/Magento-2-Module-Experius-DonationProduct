@@ -26,6 +26,7 @@ use Experius\DonationProduct\Helper\Data as DonationHelper;
 use Magento\Catalog\Model\ProductRepository;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SortOrder;
+use Magento\Framework\Pricing\PriceCurrencyInterface as CurrencyInterface;
 use Magento\Checkout\Helper\Cart as CartHelper;
 use Magento\Catalog\Block\Product\ImageBuilder;
 
@@ -35,6 +36,11 @@ use Magento\Catalog\Block\Product\ImageBuilder;
  */
 class ListProduct extends \Magento\Framework\View\Element\Template
 {
+    /**
+     * @var CurrencyInterface
+     */
+    private $currencyInterface;
+
     /**
      * @var DonationHelper
      */
@@ -73,6 +79,7 @@ class ListProduct extends \Magento\Framework\View\Element\Template
      * @param SortOrder $sortOrder
      * @param Context $context
      * @param CartHelper $cartHelper
+     * @param CurrencyInterface $currencyInterace
      * @param ImageBuilder $imageBuilder
      * @param array $data
      */
@@ -83,6 +90,7 @@ class ListProduct extends \Magento\Framework\View\Element\Template
         SortOrder $sortOrder,
         Context $context,
         CartHelper $cartHelper,
+        CurrencyInterface $currencyInterace,
         ImageBuilder $imageBuilder,
         array $data = []
     ) {
@@ -92,6 +100,7 @@ class ListProduct extends \Magento\Framework\View\Element\Template
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->sortOrder = $sortOrder;
         $this->cartHelper = $cartHelper;
+        $this->currencyInterface = $currencyInterace;
         $this->imageBuilder = $imageBuilder;
 
         parent::__construct(
@@ -169,7 +178,7 @@ class ListProduct extends \Magento\Framework\View\Element\Template
     {
         return $this->donationHelper->getCurrencySymbol();
     }
-    
+
     /**
      * @return mixed
      */
@@ -183,7 +192,7 @@ class ListProduct extends \Magento\Framework\View\Element\Template
      */
     public function getMinimalDonationAmount($product)
     {
-        return $this->donationHelper->getCurrencySymbol() . ' ' . $this->donationHelper->getMinimalAmount($product);
+        return $this->currencyInterface->convertAndFormat($this->donationHelper->getMinimalAmount($product), false);
     }
 
     /**

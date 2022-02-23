@@ -23,6 +23,7 @@ namespace Experius\DonationProduct\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
+use Magento\Framework\Pricing\PriceCurrencyInterface as CurrencyInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Store\Model\ScopeInterface;
 
@@ -32,7 +33,6 @@ use Magento\Store\Model\ScopeInterface;
  */
 class Data extends AbstractHelper
 {
-
     const DONATION_OPTION_CODE = 'donation_options';
 
     const DONATION_CONFIGURATION_MINIMAL_AMOUNT = 'experius_donation_product/general/minimal_amount';
@@ -61,6 +61,11 @@ class Data extends AbstractHelper
     const DONATION_CONFIGURATION_LAYOUT_CART_ENABLED =  'experius_donation_product/layout/cart_enabled';
 
     /**
+     * @var CurrencyInterface
+     */
+    private $currencyInterface;
+
+    /**
      * @var StoreManagerInterface
      */
     private $storeManager;
@@ -68,12 +73,15 @@ class Data extends AbstractHelper
     /**
      * Data constructor.
      * @param Context $context
+     * @param CurrencyInterface $currencyInterface
      * @param StoreManagerInterface $storeManager
      */
     public function __construct(
         Context $context,
+        CurrencyInterface $currencyInterface,
         StoreManagerInterface $storeManager
     ) {
+        $this->currencyInterface = $currencyInterface;
         $this->storeManager = $storeManager;
 
         parent::__construct($context);
@@ -187,8 +195,9 @@ class Data extends AbstractHelper
 
         $fixedAmounts = [];
         foreach ($fixedAmountsConfig as $fixedAmount) {
-            $fixedAmounts[$fixedAmount] = $this->getCurrencySymbol() . ' ' . $fixedAmount;
+            $fixedAmounts[$fixedAmount] = $this->currencyInterface->convertAndFormat($fixedAmount, false);
         }
+
         return $fixedAmounts;
     }
 
