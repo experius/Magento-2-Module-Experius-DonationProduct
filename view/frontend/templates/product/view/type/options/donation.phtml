@@ -19,7 +19,7 @@
         </div>
         <div class="field">
             <label class="label">
-                <span><?php echo __('Choose your own Amount %1 (minimum %2)', $block->getCurrencySymbol(), $block->getMinimalDonationAmount()); ?></span>
+                <span><?php echo __('Choose your own Amount (minimum %1)', $block->getMinimalDonationAmount()); ?></span>
             </label>
             <div class="control">
                 <input name="amount" id="amount" title="amount" placeholder="<?php echo $block->getCurrencySymbol(); ?>" class="<?php echo $block->getHtmlValidationClasses(); ?>" type="text" data-validate="{required:false, 'validate-number': true}" value="">
