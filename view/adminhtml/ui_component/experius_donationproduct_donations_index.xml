@@ -118,13 +118,13 @@
 				</item>
 			</argument>
 		</column>
-		<column name="created_at">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="filter" xsi:type="string">text</item>
-					<item name="label" translate="true" xsi:type="string">Created At</item>
-				</item>
-			</argument>
+		<column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+			<settings>
+                		<filter>dateRange</filter>
+                		<dataType>date</dataType>
+                		<label translate="true">Purchase Date</label>
+                		<sorting>desc</sorting>
+            		</settings>
 		</column>
 		<actionsColumn name="actions" class="Experius\DonationProduct\Ui\Component\Listing\Column\ViewOrder">
 			<argument name="data" xsi:type="array">
